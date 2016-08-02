@@ -1,9 +1,11 @@
 **Schema Layout**
 
   *Users*
-          id | integer | not null
-        name | string  | not null
-    hometown | string  |
+                 id | integer | not null
+               name | string  | not null
+           hometown | string  |
+    password_digest | string  | not null
+      session_token | string  | not null
 
   *Reviews*
              id | integer | not null, primary key

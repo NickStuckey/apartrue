@@ -1,11 +1,14 @@
 **Implementation Timeline**
 
   *Phase 1: backend and authentication* (2 days, W1 tuesday, wednesday)
-    - create new project
-    - create User model
-    - authentication backend setup
-    - create StaticPages controller and root view
+    - create new project ⚡︎
+    - create User model ⚡︎
+    - authentication backend setup ⚡︎
+    - create StaticPages controller and root view ⚡︎
     - set up webpack & flux scaffold with skeleton files
+      - login form
+      - sign up form
+      - ever present logout button
     - setup APIUtil to interact with the API
     - set up flux cycle for frontend auth
     - user signup/signin components

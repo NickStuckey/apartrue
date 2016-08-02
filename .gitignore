@@ -16,3 +16,4 @@ node_modules
 
 budnle.js
 bundle.js.map
+.DS_Store

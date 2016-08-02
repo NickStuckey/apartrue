@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
-
+group :prodution do
+  gem 'rails_12factor'
+end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use postgresql as the database for Active Record
