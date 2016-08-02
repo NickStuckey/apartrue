@@ -1,6 +1,6 @@
 const AppDispatcher = require('../dispatcher/dispatcher'),
       SessionStore = require('../stores/session_store'),
-      SessionConstants = require('../constants/Session_constants'),
+      SessionConstants = require('../constants/session_constants'),
       SessionApiUtil = require('../util/session_api_util');
 
 const SessionActions = {

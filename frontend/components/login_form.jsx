@@ -1,6 +1,7 @@
 const React = require('react');
 const SessionActions = require('../actions/session_actions');
 const SessionStore = require('../stores/session_store');
+const Link = require('react-router').Link;
 
 const LoginForm = React.createClass ({
 
@@ -10,7 +11,7 @@ const LoginForm = React.createClass ({
 
 
   componentDidMount () {
-    this.sessionListener = SessionStore.addEventListener(this.redirectIfLoggedIn);
+    this.sessionListener = SessionStore.addListner(this.redirectIfLoggedIn);
   },
 
   formType() {
@@ -59,7 +60,7 @@ const LoginForm = React.createClass ({
 
     return (
       <div className="login-form-container">
-        <form onSubmit={handleSubmit} className="login-from">
+        <form onSubmit={this.handleSubmit} className="login-from">
           <input
             type="text"
             value={this.props.username}
