@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'bcrypt'
+gem 'paperclip', '~> 5.0.0.beta1'
 
 group :prodution do
   gem 'rails_12factor'

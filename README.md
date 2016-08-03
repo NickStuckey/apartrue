@@ -49,3 +49,5 @@
   *Phase 5: google maps* (1 day, w2 thursday)
     - implement google map api on browse neighborhood page
     - CSS style browse neighborhoods page, homepage
+
+    http://apartrue.herokuapp.com/#/?_k=ev3yd2
