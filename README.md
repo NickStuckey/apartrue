@@ -5,9 +5,9 @@
     - create User model ⚡︎
     - authentication backend setup ⚡︎
     - create StaticPages controller and root view ⚡︎
-    - set up webpack & flux scaffold with skeleton files
-      - login form
-      - sign up form
+    - set up webpack & flux scaffold with skeleton files ⚡︎
+      - login form ⚡︎
+      - sign up form ⚡︎
       - ever present logout button
     - setup APIUtil to interact with the API
     - set up flux cycle for frontend auth

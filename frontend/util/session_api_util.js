@@ -1,5 +1,5 @@
 const SessionApiUtil = {
-  login (user, success, error) {
+  logIn (user, success, error) {
     $.ajax({
       url: `api/session`,
       type: 'POST',
@@ -12,7 +12,7 @@ const SessionApiUtil = {
     });
   },
 
-  logout (user, success, error) {
+  logOut (user, success, error) {
     $.ajax({
       url: '/api/session',
       method: 'delete',
@@ -51,3 +51,5 @@ fetchCurrentUser(success, complete) {
   });
 }
 };
+
+module.exports = SessionApiUtil;

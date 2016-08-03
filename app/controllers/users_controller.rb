@@ -10,12 +10,18 @@ class Api::UsersController < ApplicationController
     end
   end
 
-  def show
-
+  def delete
+    @user = current_user
+    if @user.delete
+      render {}
+    else
+      render @user.errors
+    end
   end
 
-  def delete
-
+  private
+  def user_params
+    params.require(:user).permit(:username, :password, :hometown)
   end
 
 end

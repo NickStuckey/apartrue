@@ -1,7 +1,8 @@
 const AppDispatcher = require('../dispatcher/dispatcher'),
       SessionStore = require('../stores/session_store'),
       SessionConstants = require('../constants/session_constants'),
-      SessionApiUtil = require('../util/session_api_util');
+      SessionApiUtil = require('../util/session_api_util'),
+      ErrorActions = require('./error_actions');
 
 const SessionActions = {
   signUp(formData) {
@@ -21,12 +22,12 @@ const SessionActions = {
   },
 
   logOut() {
-    SessionApiUtil.logOut(SessionActions.removeCurrentUser);
+    SessionApiUtil.logOut(this.removeCurrentUser);
   },
 
   fetchCurrentUser() {
     SessionApiUtil.fetchCurrentUser(
-      SessionActions.receiveCurrentUser,
+      this.receiveCurrentUser,
       complete
     );
   },

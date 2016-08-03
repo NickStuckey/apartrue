@@ -3,15 +3,14 @@ const SessionActions = require('../actions/session_actions');
 const SessionStore = require('../stores/session_store');
 const Link = require('react-router').Link;
 
-const LoginForm = React.createClass ({
+const LoginForm = React.createClass({
 
   contextTypes: {
     router: React.PropTypes.object.isRequired
   },
 
-
   componentDidMount () {
-    this.sessionListener = SessionStore.addListner(this.redirectIfLoggedIn);
+    this.sessionListener = SessionStore.addListener(this.redirectIfLoggedIn);
   },
 
   formType() {
@@ -41,7 +40,7 @@ const LoginForm = React.createClass ({
   },
 
   updatePasswordFeild (e) {
-    this.setState({password: e.targe.value});
+    this.setState({password: e.target.value});
   },
 
   redirectIfLoggedIn () {

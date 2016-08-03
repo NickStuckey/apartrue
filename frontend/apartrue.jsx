@@ -19,10 +19,10 @@ const App = React.createClass ({
 const routes = (
   <Router history={ hashHistory }>
     <Route path="/" component={ App } >
-      <Route path="session" component={LoginForm}/>
+      <Route path="login" component={LoginForm}/>
     </Route>
   </Router>
-)
+);
 
 document.addEventListener("DOMContentLoaded", () => {
   let root = document.getElementById('content');
