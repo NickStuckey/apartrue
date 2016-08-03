@@ -16,7 +16,7 @@ const App = React.createClass ({
   }
 });
 
-console.log('stuff');
+
 
 const routes = (
   <Router history={ hashHistory }>
