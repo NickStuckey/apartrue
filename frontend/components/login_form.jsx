@@ -2,6 +2,7 @@ const React = require('react');
 const SessionActions = require('../actions/session_actions');
 const SessionStore = require('../stores/session_store');
 const Link = require('react-router').Link;
+const ErrorStore = require('../stores/error_store');
 
 const LoginForm = React.createClass({
 
@@ -10,7 +11,20 @@ const LoginForm = React.createClass({
   },
 
   componentDidMount () {
+    this.errorListener = ErrorStore.addListener(this.forceUpdate.bind(this));
     this.sessionListener = SessionStore.addListener(this.redirectIfLoggedIn);
+  },
+
+  fieldErrors(field) {
+    const errors = ErrorStore.formErrors(this.formType());
+
+    if (!errors[field]) { return; }
+
+    const messages = errors[field].map( (errorMsg, i) => {
+      return <li key={ i }>{ errorMsg }</li>;
+    });
+
+    return <ul>{ messages }</ul>;
   },
 
   formType() {
@@ -60,19 +74,30 @@ const LoginForm = React.createClass({
     return (
       <div className="login-form-container">
         <form onSubmit={this.handleSubmit} className="login-from">
-          <input
-            type="text"
-            value={this.props.username}
-            onChange={this.updateUsernameFeild}
-            className="login-form-input-feild"
-            />
+          { this.fieldErrors('username') }
+          <label>Username
+            <input
+              type="text"
+              value={this.props.username}
+              onChange={this.updateUsernameFeild}
+              className="login-form-input-feild"
+              />
+          </label>
 
-          <input
-            type="password"
-            value={this.props.username}
-            onChange={this.updatePasswordFeild}
-            className="login-form-input-feild"
-            />
+          <br></br>
+
+          { this.fieldErrors('password') }
+          <label>Password
+            <input
+              type="password"
+              value={this.props.username}
+              onChange={this.updatePasswordFeild}
+              className="login-form-input-feild"
+              />
+          </label>
+
+          <br></br>
+
           <input type="submit" value="Sign Up"/>
         </form>
       </div>

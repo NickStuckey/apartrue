@@ -1,5 +1,5 @@
-class SessionController < ApplicationController
-  def new
+class Api::SessionsController < ApplicationController
+  def create
     @user = User.find_by_credentials(
       params[:user][:username],
       params[:user][:password]
@@ -9,7 +9,7 @@ class SessionController < ApplicationController
       sign_in(@user)
       render @user
     else
-      render @user.errors.fullmessages
+      render @user.errors.full_messages
     end
   end
 
@@ -20,7 +20,7 @@ class SessionController < ApplicationController
       sign_out
       render {}
     else
-      render @user.errors.fullmessages
+      render @user.errors.full_messages
     end
   end
 end

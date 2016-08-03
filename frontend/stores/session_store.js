@@ -8,6 +8,7 @@ let _currentUser = {};
 let _currentUserHasBeenFetched = false;
 
 const _login = function(currentUser) {
+  debugger
   _currentUser = currentUser;
   _currentUserHasBeenFetched = true;
 };
@@ -17,14 +18,18 @@ const _logout = function() {
   _currentUserHasBeenFetched = true;
 };
 
+SessionStore.isUserLoggedIn = function() {
+  return !!_currentUser.id;
+};
+
 SessionStore.__onDispatch = function (payload) {
   switch (payload.actionType) {
     case SessionConstants.LOGIN:
-      _login(payload.formData);
+      _login(payload.currentUser);
       this.__emitChange();
       break;
     case SessionConstants.LOGOUT:
-      _logout(payload.formData);
+      _logout(payload.currentUser);
       this.__emitChange();
       break;
   }

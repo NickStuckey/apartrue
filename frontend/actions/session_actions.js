@@ -2,13 +2,14 @@ const AppDispatcher = require('../dispatcher/dispatcher'),
       SessionStore = require('../stores/session_store'),
       SessionConstants = require('../constants/session_constants'),
       SessionApiUtil = require('../util/session_api_util'),
-      ErrorActions = require('./error_actions');
+      ErrorActions = require('./error_actions'),
+      hashHistory = require('react-router').hashHistory;
 
 const SessionActions = {
   signUp(formData) {
     SessionApiUtil.signUp(
       formData,
-      sessionActions.receiveCurrentUser,
+      this.receiveCurrentUser,
       ErrorActions.setErrors
     );
   },
@@ -39,11 +40,11 @@ const SessionActions = {
     });
   },
 
-  removeCurrentUser (currentUser) {
+  removeCurrentUser () {
     AppDispatcher.dispatch({
       actionType: SessionConstants.LOGOUT,
-      currentUser: currentUser
     });
+    hashHistory.push("/login");
   }
 
 };

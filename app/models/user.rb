@@ -1,9 +1,10 @@
 class User < ActiveRecord::Base
-  validates :username, :password_digest, presence: true
-  validates :username, uniqueness: true
-  validates :password, length: {minimum: 6, allow_nil: true}
 
   attr_reader :password
+
+  validates :username, :password_digest, presence: true
+  validates :username, uniqueness: true
+  validates :password, length: {minimum: 6}, allow_nil: true
 
   after_initialize :ensure_session_token
   before_validation :ensure_session_token_uniqueness
@@ -15,13 +16,19 @@ class User < ActiveRecord::Base
     return nil unless user && user.is_password?(password)
   end
 
-  def is_password?(password)
-    self.password_digest == BCrypt::Password.new(password)
+  def password=(password)
+    self.password_digest = BCrypt::Password.create(password)
+    @password = password
   end
 
-  def password=(password)
-    @password = password
-    self.password_digest = BCrypt::Password.create(password)
+  def ensure_session_token
+    self.session_token ||= generate_token
+  end
+
+  def ensure_session_token_uniqueness
+    while User.find_by(session_token: self.session_token)
+      self.session_token = generate_token
+    end
   end
 
   def reset_token!
@@ -30,17 +37,13 @@ class User < ActiveRecord::Base
     self.session_token
   end
 
-  def ensure_session_token
-    self.session_token ||= generte_token
+  private
+
+  def is_password?(password)
+    self.password_digest = BCrypt::Password.new(password)
   end
 
   def generate_token
     SecureRandom.base64(16)
-  end
-
-  def ensure_session_token_uniqueness
-    while User.find_by(session_token: self.session_token)
-      self.session_token = generate_token
-    end
   end
 end

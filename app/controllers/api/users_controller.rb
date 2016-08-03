@@ -4,9 +4,9 @@ class Api::UsersController < ApplicationController
 
     if @user.save
       sign_in(@user)
-      render @user
+      render "api/users/show"
     else
-      render @user.errors
+      render json: @user.errors, status: 422
     end
   end
 
@@ -15,7 +15,7 @@ class Api::UsersController < ApplicationController
     if @user.delete
       render {}
     else
-      render @user.errors
+      render @user.errors.full_messages
     end
   end
 

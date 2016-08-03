@@ -1,9 +1,11 @@
 const SessionApiUtil = {
   logIn (user, success, error) {
+    // debugger
     $.ajax({
       url: `api/session`,
       type: 'POST',
-      data: {formData: formData}, // NOTE this probably won't work, figure out how to format
+      dataType: "JSON",
+      data: {user: user},
       success,
       errors(xhr) {
         const errors = xhr.responseJSON;
@@ -25,10 +27,10 @@ const SessionApiUtil = {
 
   signUp(user, success, error) {
   $.ajax({
-    url: '/api/user',
+    url: '/api/users',
     type: 'POST',
     dataType: 'json',
-    data: { user },
+    data: { user: user },
     success,
     error(xhr) {
       const errors = xhr.responseJSON;
