@@ -8,12 +8,12 @@ let _currentUser = {};
 let _currentUserHasBeenFetched = false;
 
 const _login = function(currentUser) {
-  debugger
   _currentUser = currentUser;
   _currentUserHasBeenFetched = true;
 };
 
 const _logout = function() {
+
   _currentUser = {};
   _currentUserHasBeenFetched = true;
 };
@@ -29,7 +29,7 @@ SessionStore.__onDispatch = function (payload) {
       this.__emitChange();
       break;
     case SessionConstants.LOGOUT:
-      _logout(payload.currentUser);
+      _logout();
       this.__emitChange();
       break;
   }

@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
     return nil unless user && user.is_password?(password)
+    user
   end
 
   def password=(password)
@@ -37,10 +38,10 @@ class User < ActiveRecord::Base
     self.session_token
   end
 
-  private
-
   def is_password?(password)
-    self.password_digest = BCrypt::Password.new(password)
+    # debugger
+    BCrypt::Password.new(self.password_digest).is_password?(password)
+    # debugger
   end
 
   def generate_token

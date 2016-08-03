@@ -17,7 +17,7 @@ const SessionActions = {
   logIn(formData) {
     SessionApiUtil.logIn(
       formData,
-      SessionActions.receiveCurrentUser,
+      this.receiveCurrentUser,
       ErrorActions.setErrors
     );
   },

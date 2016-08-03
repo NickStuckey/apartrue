@@ -8,14 +8,14 @@
     - set up webpack & flux scaffold with skeleton files ⚡︎
       - login form ⚡︎
       - sign up form ⚡︎
-      - ever present logout button
-    - setup APIUtil to interact with the API
-    - set up flux cycle for frontend auth
-    - user signup/signin components
-    - blank landing component after signin
+      - ever present logout button ⚡︎
+    - setup APIUtil to interact with the API ⚡︎
+    - set up flux cycle for frontend auth ⚡︎
+    - user signup/signin components ⚡︎
+    - blank landing component after signin ⚡︎
     - style signin/signup components
     - seed users
-    - launch to haroku
+    - launch to haroku ⚡︎
 
   *Phase 2: properties, neighborhoods, API, and components* (2 days, w1 thursday, friday)
     - create Properties model

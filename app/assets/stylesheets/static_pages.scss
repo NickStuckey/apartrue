@@ -1,3 +1,36 @@
 // Place all the styles related to the static_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+html, body, p, ul, li, input, button, a { margin: 0px; padding: 0px; border: 0px; }
+
+body {
+  background: imgage-url("skyline.jpg");
+  background-size: cover;
+}
+
+.test {
+  background-color: blue;
+}
+// 
+// .login-form {
+//   width: 200;
+//   margin: auto;
+// }
+//
+// .login-wrapper {
+//   height: 400px;
+//   width: 500px;
+//   background-color: #E3B8CB;
+// }
+
+.guest-login-wrapper {
+}
+
+.login-form-wrapper {
+}
+
+.login-page-wrapper {
+  height: 100%;
+  width: 100%;
+}

@@ -15,7 +15,7 @@ const LoginForm = React.createClass({
     this.sessionListener = SessionStore.addListener(this.redirectIfLoggedIn);
   },
 
-  fieldErrors(field) {
+  showErrors(field) {
     const errors = ErrorStore.formErrors(this.formType());
 
     if (!errors[field]) { return; }
@@ -28,7 +28,7 @@ const LoginForm = React.createClass({
   },
 
   formType() {
-    return this.props.location.pathname.slice(1);
+    return this.props.location.pathname.slice(1).toLowerCase();
   },
 
   getInitialState () {
@@ -42,7 +42,7 @@ const LoginForm = React.createClass({
       password: this.state.password
     };
 
-    if (this.props.location.pathname === "/login") {
+    if (this.props.location.pathname.toLowerCase() === "/login") {
       SessionActions.logIn(formData);
     } else {
       SessionActions.signUp(formData);
@@ -64,42 +64,51 @@ const LoginForm = React.createClass({
   },
 
   render () {
-    let navLink;
+    let navLink, button;
     if (this.formType() === "login") {
       navLink = <Link to="/signup">create new account</Link>;
+      button = "Log In";
     } else {
       navLink = <Link to="/login">login</Link>;
+      button = "Sign Up";
     }
 
     return (
-      <div className="login-form-container">
-        <form onSubmit={this.handleSubmit} className="login-from">
-          { this.fieldErrors('username') }
-          <label>Username
-            <input
-              type="text"
-              value={this.props.username}
-              onChange={this.updateUsernameFeild}
-              className="login-form-input-feild"
-              />
-          </label>
+      <div className="login-page-wrapper">
+        <div className="login-wrapper guest-login-wrapper">
+          guest form
+        </div>
 
-          <br></br>
+        <div className="login-wrapper login-form-wrapper">
+          { this.showErrors(this.formType()) }
+          <form onSubmit={this.handleSubmit} className="login-form">
+            { this.showErrors('username') }
+            <label>Username
+              <input
+                type="text"
+                value={this.props.username}
+                onChange={this.updateUsernameFeild}
+                className="login-form-input-feild"
+                />
+            </label>
 
-          { this.fieldErrors('password') }
-          <label>Password
-            <input
-              type="password"
-              value={this.props.username}
-              onChange={this.updatePasswordFeild}
-              className="login-form-input-feild"
-              />
-          </label>
+            <br></br>
 
-          <br></br>
+            { this.showErrors('password') }
+            <label>Password
+              <input
+                type="password"
+                value={this.props.username}
+                onChange={this.updatePasswordFeild}
+                className="login-form-input-feild"
+                />
+            </label>
 
-          <input type="submit" value="Sign Up"/>
-        </form>
+            <br></br>
+
+            <input type="submit" value={button}/>
+          </form>
+        </div>
       </div>
     );
   }

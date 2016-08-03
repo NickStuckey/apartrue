@@ -1,23 +1,22 @@
 const SessionApiUtil = {
   logIn (user, success, error) {
-    // debugger
     $.ajax({
       url: `api/session`,
       type: 'POST',
       dataType: "JSON",
       data: {user: user},
       success,
-      errors(xhr) {
+      error: (xhr) => {
         const errors = xhr.responseJSON;
-        error("signup", errors);
+        error("login", errors);
       }
     });
   },
 
-  logOut (user, success, error) {
+  logOut (success) {
     $.ajax({
       url: '/api/session',
-      method: 'delete',
+      method: 'DELETE',
       success,
       error: function () {
       console.log("Logout error in SessionApiUtil#logout");
