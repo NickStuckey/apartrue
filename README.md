@@ -19,7 +19,9 @@
 
   *Phase 2: properties, neighborhoods, API, and components* (2 days, w1 thursday, friday)
     - create Properties model √
-    seed database with a few properties
+    - create Neighborhood model √
+    - seed database with Neighborhoods √
+    - seed database with a few properties
     - CRUD API for Properties
     - JBuilder for Properties
     - create all properties forms and components, set up FLUX
