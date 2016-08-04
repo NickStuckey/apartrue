@@ -35,6 +35,10 @@ const LoginForm = React.createClass({
     return ({username: "", password: ""});
   },
 
+  guestLogin () {
+    console.log('log in guest');
+  },
+
   handleSubmit (e) {
     e.preventDefault();
     const formData = {
@@ -77,46 +81,63 @@ const LoginForm = React.createClass({
       <div className="centering-page-wrapper">
         <div className="centering-mid-box">
           <div className="login-box-wrapper">
+
             <div className="login-box guest-login-box">
-              guest form
+              <h1 className="login-box-header guest-boxheader">Have a look around with a <span className="highlighted-phrase">Guest Acount</span></h1>
+              <h6 className="foot-note">No sign-up required, just click here to get started!</h6>
+
+              <div className="welcome-button-wrapper">
+                <button onClick={this.guestLogin} className="button welcome-button">
+                  Welcome
+                </button>
+              </div>
             </div>
+
+
 
             <div className="login-spacer-box">Or</div>
 
             <div className="login-box user-login-box">
-              { this.showErrors(this.formType()) }
-              <form onSubmit={this.handleSubmit} className="login-form">
-                { this.showErrors('username') }
 
-                  <input
-                    type="text"
-                    value={this.props.username}
-                    onChange={this.updateUsernameFeild}
-                    className="login-form-input-field"
-                    placeholder="username"
-                    />
+              <h1 className="login-box-header">Create a new account</h1>
+
+              { this.showErrors(this.formType()) }
+
+              <div className="login-inputs-wrapper">
+                  <form onSubmit={this.handleSubmit} className="login-form">
+                    { this.showErrors('username') }
+
+                      <input
+                        type="text"
+                        value={this.props.username}
+                        onChange={this.updateUsernameFeild}
+                        className="login-form-input-field"
+                        placeholder="username"
+                        />
+
+
+                    <br></br>
+
+                  { this.showErrors('password') }
+
+                    <input
+                      type="password"
+                      value={this.props.username}
+                      onChange={this.updatePasswordFeild}
+                      className="login-form-input-field"
+                      placeholder="password"
+                      />
 
 
                   <br></br>
+                  <div className="sign-in-button-wrapper">
+                    <input className="sign-in-button button" type="submit" value={button}/>
+                  </div>
+                </form>
 
-                { this.showErrors('password') }
-
-                  <input
-                    type="password"
-                    value={this.props.username}
-                    onChange={this.updatePasswordFeild}
-                    className="login-form-input-field"
-                    placeholder="password"
-                    />
-
-
-                <br></br>
-
-                <input className="login-form-submit-button" type="submit" value={button}/>
-              </form>
+              </div>
             </div>
           </div>
-        <div className="transparent-backing-box"></div>
       </div>
     </div>
     );
