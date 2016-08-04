@@ -29,10 +29,6 @@ body {
   display: block;
 }
 
-// .error-list {
-//   top: -40px;
-// }
-
 .error-list-item {
   top: -20px;
   text-decoration-style: none;
@@ -111,6 +107,14 @@ body {
   }
 }
 
+// .login-content-wrapper {
+//
+// }
+//
+// .error-login-content-wrapper {
+//   top: 20%;
+// }
+
 .login-form {
   display: block;
   width: 300px;
@@ -126,14 +130,6 @@ body {
   text-align: center;
   font-size: 20px;
   margin: auto;
-}
-
-.login-form-username-feild {
-
-}
-
-.login-form-password-feild {
-
 }
 
 .login-form-input-label {
@@ -156,13 +152,6 @@ body {
   font-size: 40px;
   color: white;
 }
-
-// .password-error {
-//   min-height: 40px;
-// }
-//
-// .username-error {
-// }
 
 .user-login-box {
   float:left;

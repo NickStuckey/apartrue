@@ -88,59 +88,55 @@ const LoginForm = React.createClass({
         <div className="login-box-wrapper">
 
           <div className="login-box guest-login-box">
-            <h1 className="login-box-header guest-boxheader">
-              Have a look around with a <span className="highlighted-phrase">Guest Acount</span>
-            </h1>
+            <div className="guest-login-content-wrapper">
+              <h1 className="login-box-header guest-boxheader">
+                Have a look around with a <span className="highlighted-phrase">Guest Acount</span>
+              </h1>
 
-            <h6 className="foot-note">No sign-up required, just click here to get started!</h6>
+              <h6 className="foot-note">No sign-up required, just click here to get started!</h6>
 
-            <button onClick={this.guestLogin} className="button welcome-button">
-              Welcome
-            </button>
+              <button onClick={this.guestLogin} className="button welcome-button">
+                Welcome
+              </button>
+            </div>
           </div>
 
           <div className="login-spacer-box">Or</div>
 
           <div className="login-box user-login-box">
-            <h1 className="login-box-header">{ navHeader }</h1>
+            <div className="login-content-wrapper">
+              <h1 className="login-box-header">{ navHeader }</h1>
 
+              <form onSubmit={this.handleSubmit} className="login-form">
+                  <div className="error-list-place-holder username-error">
 
-            <form onSubmit={this.handleSubmit} className="login-form">
+                    { this.showErrors(this.formType()) }
+                    { this.showErrors('username') }
+                  </div>
+                  <input
+                    type="text"
+                    value={this.props.username}
+                    onChange={this.updateUsernameFeild}
+                    className="login-form-input-field login-form-username-feild"
+                    placeholder="username"
+                    />
 
-              <div className="login-field-wrapper">
-                <div className="error-list-place-holder username-error">
+                  <div className="error-list-place-holder password-error">
 
-                  { this.showErrors(this.formType()) }
-                  { this.showErrors('username') }
-                </div>
-                <input
-                  type="text"
-                  value={this.props.username}
-                  onChange={this.updateUsernameFeild}
-                  className="login-form-input-field login-form-username-feild"
-                  placeholder="username"
-                  />
-              </div>
+                    { this.showErrors('password') }
+                  </div>
+                  <input
+                    type="password"
+                    value={this.props.username}
+                    onChange={this.updatePasswordFeild}
+                    className="login-form-input-field login-form-password-feild"
+                    placeholder="password"
+                    />
 
-
-              <div className="login-field-wrapper">
-                <div className="error-list-place-holder password-error">
-
-                  { this.showErrors('password') }
-                </div>
-                <input
-                  type="password"
-                  value={this.props.username}
-                  onChange={this.updatePasswordFeild}
-                  className="login-form-input-field login-form-password-feild"
-                  placeholder="password"
-                  />
-              </div>
-
-
-              <input className="sign-in-button button" type="submit" value={button}/>
-            </form>
-            <Link className="sign-in-navLink" to={route}>{linkText}</Link>
+                <input className="sign-in-button button" type="submit" value={button}/>
+              </form>
+              <Link className="sign-in-navLink" to={route}>{linkText}</Link>
+            </div>
           </div>
         </div>
       </div>

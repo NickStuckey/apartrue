@@ -31,290 +31,74 @@
 
 # Manhattan
 Property.create({
-  address: "188 E 64th St, New York, NY 10065",
+  address: "188 E 64th St",
+  geolocation: "40.764593,-73.964821",
+  city: "Manhattan",
+  zipcode: 10065,
   available: true,
   neighborhood_id: 1,
-  price: "",
+  price: 4000,
   num_bedrooms: 2,
-  geolocation: "40.764593,-73.964821"
+  lat: 40.764593,
+  lng: -73.964821
   })
 Property.create({
-  address: "731 Lexington Avenue, New York, NY 10022",
+  address: "583 Park Ave",
+  geolocation: "40.76545,-73.967453",
+  city: "Manhattan",
+  zipcode: 10065,
   available: true,
   neighborhood_id: 1,
-  price: "",
-  num_bedrooms: 3,
-  geolocation: "40.761737,-73.96753"
-  })
-Property.create({
-  address: " 114 E 59th St, New York, NY",
-  available: true,
-  neighborhood_id: 1,
-  price: "",
+  price: 4000,
   num_bedrooms: 2,
-  geolocation: "40.76262,-73.969152"
+  lat: 40.76545,
+  lng: -73.967453
   })
 Property.create({
-  address: "959 3rd Ave, New York, NY 10022",
+  address: "115 E 57th St",
+  geolocation: "40.761653,-73.97007",
+  city: "Manhattan",
+  zipcode: 10022,
   available: true,
   neighborhood_id: 1,
-  price: "",
-  num_bedrooms: 1,
-  geolocation: "40.760456,-73.966912"
-  })
-Property.create({
-  address: "addy",
-  available: true,
-  neighborhood_id: 1,
-  price: "",
+  price: 4000,
   num_bedrooms: 2,
-  geolocation: "adsf"
+  lat: 40.761653,
+  lng: -73.97007
   })
 Property.create({
-  address: "addy",
+  address: "453 E 60th St",
+  geolocation: "40.759568,-73.959888",
+  city: "Manhattan",
+  zipcode: 10022,
   available: true,
   neighborhood_id: 1,
-  price: "",
+  price: 4000,
   num_bedrooms: 2,
-  geolocation: "adsf"
+  lat: 40.759568,
+  lng: -73.959888
   })
 Property.create({
-  address: "addy",
+  address: "321 E 52nd St",
+  geolocation: "40.755885,-73.966449",
+  city: "Manhattan",
+  zipcode: 10022,
   available: true,
   neighborhood_id: 1,
-  price: "",
-  num_bedrooms: 3,
-  geolocation: "adsf"
-  })
-Property.create({
-  address: "addy",
-  available: true,
-  neighborhood_id: 1,
-  price: "",
+  price: 4000,
   num_bedrooms: 2,
-  geolocation: "adsf"
+  lat: 40.755885,
+  lng: -73.966449
   })
 Property.create({
-  address: "addy",
+  address: "711 3rd Ave",
+  geolocation: "40.752161,-73.972835",
+  city: "Manhattan",
+  zipcode: 10017,
   available: true,
   neighborhood_id: 1,
-  price: "",
-  num_bedrooms: 1,
-  geolocation: "adsf"
-  })
-Property.create({
-  address: "addy",
-  available: true,
-  neighborhood_id: 1,
-  price: "",
+  price: 4000,
   num_bedrooms: 2,
-  geolocation: "adsf"
-  })
-Property.create({
-  address: "addy",
-  available: true,
-  neighborhood_id: 1,
-  price: "",
-  num_bedrooms: 2,
-  geolocation: "adsf"
-  })
-Property.create({
-  address: "addy",
-  available: true,
-  neighborhood_id: 1,
-  price: "",
-  num_bedrooms: 3,
-  geolocation: "adsf"
-  })
-Property.create({
-  address: "addy",
-  available: true,
-  neighborhood_id: 1,
-  price: "",
-  num_bedrooms: 2,
-  geolocation: "adsf"
-  })
-Property.create({
-  address: "addy",
-  available: true,
-  neighborhood_id: 1,
-  price: "",
-  num_bedrooms: 1,
-  geolocation: "adsf"
-  })
-Property.create({
-  address: "addy",
-  available: true,
-  neighborhood_id: 1,
-  price: "",
-  num_bedrooms: 2,
-  geolocation: "adsf"
-  })
-
-# Brooklyn
-Property.create({
-  address: "addy",
-  available: true,
-  neighborhood_id: 1,
-  price: "",
-  num_bedrooms: 2,
-  geolocation: "adsf"
-  })
-Property.create({
-  address: "addy",
-  available: true,
-  neighborhood_id: 1,
-  price: "",
-  num_bedrooms: 2,
-  geolocation: "adsf"
-  })
-Property.create({
-  address: "addy",
-  available: true,
-  neighborhood_id: 1,
-  price: "",
-  num_bedrooms: 2,
-  geolocation: "adsf"
-  })
-Property.create({
-  address: "addy",
-  available: true,
-  neighborhood_id: 1,
-  price: "",
-  num_bedrooms: 2,
-  geolocation: "adsf"
-  })
-Property.create({
-  address: "addy",
-  available: true,
-  neighborhood_id: 1,
-  price: "",
-  num_bedrooms: 2,
-  geolocation: "adsf"
-  })
-
-# Queens
-Property.create({
-  address: "addy",
-  available: true,
-  neighborhood_id: 1,
-  price: "",
-  num_bedrooms: 2,
-  geolocation: "adsf"
-  })
-Property.create({
-  address: "addy",
-  available: true,
-  neighborhood_id: 1,
-  price: "",
-  num_bedrooms: 2,
-  geolocation: "adsf"
-  })
-Property.create({
-  address: "addy",
-  available: true,
-  neighborhood_id: 1,
-  price: "",
-  num_bedrooms: 2,
-  geolocation: "adsf"
-  })
-Property.create({
-  address: "addy",
-  available: true,
-  neighborhood_id: 1,
-  price: "",
-  num_bedrooms: 2,
-  geolocation: "adsf"
-  })
-Property.create({
-  address: "addy",
-  available: true,
-  neighborhood_id: 1,
-  price: "",
-  num_bedrooms: 2,
-  geolocation: "adsf"
-  })
-
-# Bronx
-Property.create({
-  address: "addy",
-  available: true,
-  neighborhood_id: 1,
-  price: "",
-  num_bedrooms: 2,
-  geolocation: "adsf"
-  })
-Property.create({
-  address: "addy",
-  available: true,
-  neighborhood_id: 1,
-  price: "",
-  num_bedrooms: 2,
-  geolocation: "adsf"
-  })
-Property.create({
-  address: "addy",
-  available: true,
-  neighborhood_id: 1,
-  price: "",
-  num_bedrooms: 2,
-  geolocation: "adsf"
-  })
-Property.create({
-  address: "addy",
-  available: true,
-  neighborhood_id: 1,
-  price: "",
-  num_bedrooms: 2,
-  geolocation: "adsf"
-  })
-Property.create({
-  address: "addy",
-  available: true,
-  neighborhood_id: 1,
-  price: "",
-  num_bedrooms: 2,
-  geolocation: "adsf"
-  })
-
-# Staten Island
-Property.create({
-  address: "addy",
-  available: true,
-  neighborhood_id: 1,
-  price: "",
-  num_bedrooms: 2,
-  geolocation: "adsf"
-  })
-Property.create({
-  address: "addy",
-  available: true,
-  neighborhood_id: 1,
-  price: "",
-  num_bedrooms: 2,
-  geolocation: "adsf"
-  })
-Property.create({
-  address: "addy",
-  available: true,
-  neighborhood_id: 1,
-  price: "",
-  num_bedrooms: 2,
-  geolocation: "adsf"
-  })
-Property.create({
-  address: "addy",
-  available: true,
-  neighborhood_id: 1,
-  price: "",
-  num_bedrooms: 2,
-  geolocation: "adsf"
-  })
-Property.create({
-  address: "addy",
-  available: true,
-  neighborhood_id: 1,
-  price: "",
-  num_bedrooms: 2,
-  geolocation: "adsf"
+  lat: 40.752161,
+  lng: -73.972835
   })
