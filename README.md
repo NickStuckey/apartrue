@@ -21,11 +21,12 @@
     - create Properties model √
     - create Neighborhood model √
     - seed database with Neighborhoods √
-    - seed database with a few properties
+
     - CRUD API for Properties
-    - JBuilder for Properties
+    - set up google map api to view properties
+    - add properties with google map api
+    
     - create all properties forms and components, set up FLUX
-    - seed database with neighborhoods
     - set up neighborhood browse view
     - CSS style new components
 

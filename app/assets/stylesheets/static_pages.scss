@@ -2,7 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-html, body, p, ul, li, input, button, a { margin: 0px; padding: 0px; border: 0px; }
+html, body, p, ul, li, input, button, a {
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  list-style: none;
+}
 
 body {
   background: image-url("skyline.jpg");
@@ -22,6 +27,25 @@ body {
   font-size: 20px;
   margin: auto;
   display: block;
+}
+
+// .error-list {
+//   top: -40px;
+// }
+
+.error-list-item {
+  top: -20px;
+  text-decoration-style: none;
+  color: red;
+  width: 300px;
+}
+
+.error-list-place-holder {
+  position: relative;
+  display: block;
+  margin: auto;
+  text-align: center;
+  min-height: 20px;
 }
 
 .foot-note {
@@ -64,7 +88,7 @@ body {
   color: #7b7a7a;
   width: 300px;
   text-align: center;
-  padding: 20px;
+  padding-top: 20px;
   margin: auto;
 }
 
@@ -89,24 +113,37 @@ body {
 
 .login-form {
   display: block;
-  width: 254px;
+  width: 300px;
   margin: auto;
-
 }
 
 .login-form-input-field {
+  display: block;
   padding: 5px 0 5px 0;
-  margin: 20px 0 20px 0;
   height: 40px;
   width: 250px;
-  float:left;
   border: 2px #7b7a7a solid;
   text-align: center;
   font-size: 20px;
+  margin: auto;
+}
+
+.login-form-username-feild {
+
+}
+
+.login-form-password-feild {
+
 }
 
 .login-form-input-label {
   padding: 20px
+}
+
+.logout-button {
+  height: 100px;
+  width: 100px;
+  background-color: blue;
 }
 
 .login-spacer-box {
@@ -120,6 +157,13 @@ body {
   color: white;
 }
 
+// .password-error {
+//   min-height: 40px;
+// }
+//
+// .username-error {
+// }
+
 .user-login-box {
   float:left;
 }
@@ -130,7 +174,12 @@ body {
 }
 
 .sign-in-navLink {
+  padding-top: 15px;
+  display: block;
+  text-align: center;
   color: grey;
+  margin: auto;
+  width: 100px;
 }
 
 .transparent-backing-box {

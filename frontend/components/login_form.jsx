@@ -21,10 +21,10 @@ const LoginForm = React.createClass({
     if (!errors[field]) { return; }
 
     const messages = errors[field].map( (errorMsg, i) => {
-      return <li key={ i }>{ errorMsg }</li>;
+      return <li className="error-list-item" key={ i }>{ errorMsg }</li>;
     });
 
-    return <ul>{ messages }</ul>;
+    return <ul className="error-list">{ messages }</ul>;
   },
 
   formType() {
@@ -36,7 +36,7 @@ const LoginForm = React.createClass({
   },
 
   guestLogin () {
-    console.log('log in guest');
+    SessionActions.logIn({username: 'GuestUser', password: 'password'});
   },
 
   handleSubmit (e) {
@@ -68,12 +68,16 @@ const LoginForm = React.createClass({
   },
 
   render () {
-    let navLink, navHeader, button;
+    let navLink, navHeader, button, linkText, route;
     if (this.formType() === "login") {
+      linkText = "Sign Up";
+      route = "/signup";
       navLink = <Link className="sign-in-navLink" to="/signup">create new account</Link>;
       button = "Log In";
       navHeader = "Login to your account";
     } else {
+      linkText = "Sign In";
+      route = "/login";
       navLink = <Link className="sign-in-navLink" to="/login">login</Link>;
       button = "Sign Up";
       navHeader = "Create a new account";
@@ -99,31 +103,44 @@ const LoginForm = React.createClass({
 
           <div className="login-box user-login-box">
             <h1 className="login-box-header">{ navHeader }</h1>
-            { this.showErrors(this.formType()) }
-            <form onSubmit={this.handleSubmit} className="login-form">
-              { this.showErrors('username') }
 
-              <input
-                type="text"
-                value={this.props.username}
-                onChange={this.updateUsernameFeild}
-                className="login-form-input-field"
-                placeholder="username"
-                />
-              <br></br>
-            { this.showErrors('password') }
-              <input
-                type="password"
-                value={this.props.username}
-                onChange={this.updatePasswordFeild}
-                className="login-form-input-field"
-                placeholder="password"
-                />
-              <br></br>
+
+            <form onSubmit={this.handleSubmit} className="login-form">
+
+              <div className="login-field-wrapper">
+                <div className="error-list-place-holder username-error">
+
+                  { this.showErrors(this.formType()) }
+                  { this.showErrors('username') }
+                </div>
+                <input
+                  type="text"
+                  value={this.props.username}
+                  onChange={this.updateUsernameFeild}
+                  className="login-form-input-field login-form-username-feild"
+                  placeholder="username"
+                  />
+              </div>
+
+
+              <div className="login-field-wrapper">
+                <div className="error-list-place-holder password-error">
+
+                  { this.showErrors('password') }
+                </div>
+                <input
+                  type="password"
+                  value={this.props.username}
+                  onChange={this.updatePasswordFeild}
+                  className="login-form-input-field login-form-password-feild"
+                  placeholder="password"
+                  />
+              </div>
+
 
               <input className="sign-in-button button" type="submit" value={button}/>
             </form>
-            { navLink }
+            <Link className="sign-in-navLink" to={route}>{linkText}</Link>
           </div>
         </div>
       </div>
@@ -131,5 +148,6 @@ const LoginForm = React.createClass({
   }
 
 });
+// <div className="sign-log-in-link-wrapper">{ navLink }</div>
 
 module.exports = LoginForm;
