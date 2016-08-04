@@ -21,18 +21,7 @@ body {
   color: #7b7a7a;;
   font-size: 20px;
   margin: auto;
-}
-
-.centering-page-wrapper {
-  display: table;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-}
-
-.centering-mid-box {
-  display: table-cell;
-  vertical-align: middle;
+  display: block;
 }
 
 .foot-note {
@@ -53,7 +42,6 @@ body {
   background-color: grey;
   opacity: 0.5;
   color: blue;
-
 }
 
 .highlighted-phrase {
@@ -81,19 +69,34 @@ body {
 }
 
 .login-box-wrapper {
-  height: 400px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 50%;
   width: 920px;
-  margin-left: auto;
-  margin-right: auto;
+}
+
+@media(max-width:920px) {
+  .login-box-wrapper {
+    width: auto;
+    top: 50%;
+  }
+
+  .login-spacer-box {
+    height: 10px;
+  }
 }
 
 .login-form {
+  display: block;
   width: 254px;
+  margin: auto;
+
 }
 
 .login-form-input-field {
   padding: 5px 0 5px 0;
-  margin-top: 20px;
+  margin: 20px 0 20px 0;
   height: 40px;
   width: 250px;
   float:left;
@@ -104,15 +107,6 @@ body {
 
 .login-form-input-label {
   padding: 20px
-}
-
-.login-inputs-wrapper {
-  width: 254px;
-  height: 200px;
-  margin: auto;
-  position: relative;
-  top: 20%;
-  transform: translateY(-50%);
 }
 
 .login-spacer-box {
@@ -135,9 +129,8 @@ body {
   margin-top: 20px;
 }
 
-.sign-in-button-wrapper {
-  width: 150px;
-  margin: auto;
+.sign-in-navLink {
+  color: grey;
 }
 
 .transparent-backing-box {
@@ -150,9 +143,4 @@ body {
 
 .welcome-button {
   width: 200px;
-}
-
-.welcome-button-wrapper {
-  width: 200px;
-  margin: auto;
 }
