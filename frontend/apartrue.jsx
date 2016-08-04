@@ -19,9 +19,6 @@ const App = React.createClass ({
   render () {
     return (
       <div className="app-wrapper">
-        <div className="test">
-          hello
-        </div>
         { this.logOutButton() }
         {this.props.children}
       </div>
