@@ -34,7 +34,6 @@ const SessionActions = {
   },
 
   receiveCurrentUser(currentUser) {
-    console.log(currentUser);
     AppDispatcher.dispatch({
       actionType: SessionConstants.LOGIN,
       currentUser: currentUser

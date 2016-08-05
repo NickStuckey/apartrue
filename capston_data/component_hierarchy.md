@@ -1,34 +1,60 @@
 # Component hierarchy
 
+NavBar
+  - NavBar search?
+
+SearchPage
+  - map
+  - searchFrom
+AddPropertyPage
+  - map
+  - addPropertyForm
+
+welcomePage
+  - searchFrom
+
+profile page
+  - addPropertyForm
+  - reviews (filtered by user reviews)
+  - map of my favorites (bonus)
+
+propertyShow
+  - map
+  - leaveReviewForm
+  - reviews (filtered by property)
+
+LoginFrom √
+
+
 + App (landing page)
-  - nav bar
+  + NAV BAR
+    - link to profile or login
+    - logo
+    - search fields ()
   - search form
-  - link to browse by neighborhood
-  - link to add add new property page (or redirect to login)
+  - local real estate news feed (bonus)
   + LOGIN
     - guest login button (form to generate session)
     - create account (form to save user credentials and generate session)
-    - ominauth buttons
-  + BROWSE/NEIGHBORHOOD
+    - ominauth buttons (bonus)
+  + BROWSE/NEIGHBORHOOD (search results)
     - list of local apartments (links that redirect to single address show page)
     - filter by available button (filters shown listings to ones with property 'available')
     - google map view
       - pins should highlight on associated review hover, and clicking them will
         redirect to listing show page.
   + SINGLE PROPERTY PAGE
-    - basic info
     - reviews (click to link to user profile)
     - claim as owner button (joins user email to property for feedback)
     - write a review button (link to review page)
-      + SUBMIT NEW REVIEW
-        - property stats (if property exists in database)
-        - review form
-        - star rating (implemented with click handlers)
-        - review body (text)
-        - submit buttons
-        - save post to site (submit)
-        - send feedback to property owner (will send email to associated address)
-#       - add photos form (upload or drag and drop)
+    + REVIEW FORM
+      - property stats (if property exists in database
+      - star rating (implemented with click handlers)
+      - review body (text)
+      - submit buttons
+      - save post to site (submit)
+      - send feedback to property owner (will send email to associated address)
+      - upload photos
   + NEW PROPERTY PAGE
     - a form to create a new property and save it to the database
   + USER PROFILE
@@ -42,22 +68,24 @@
         - info form (pre-filled with old stats and info)
         - submit button (sends post request and redirects to user profile)
         - photo upload
+    + MAP
+      - filter by user
+      - filter by search credentials
+      - included on search page, propertyPage, addProperty page
 
 # Routes
   - component: App // Path: "/"
 
-    - component: User // Path: "/users" (routes to signIn)
-      - component: NewUser // Path: "users/new"
-      - component: Login // Path: "/users/signIn"
+      - component: NewUser // Path: "users/signup"
+      - component: Login // Path: "/users/login"
       - component: UserProfile // Path: "/users/userId"
 
-    - component: Browse // Path: "/browse/neighborhood-name" (possible do away with 'browse' and just have a store of neighborhood names
-        that are possible routes, and just pick a default)
+    - component: Search // Path: "/browse/search"
 
     - component: Property // Path "/properties" (routes to index)
-      - component: SingleProperty // Path: "/properties/123-some-address"
+      - component: SingleProperty // Path: "/properties/propertyId"
       - component: CreateNewPropery // Path: "/properties/new"
-      - component: UpdateProperty // Path: "/properties/propertyID"      
+      - component: UpdateProperty // Path: "/properties/propertyId"      
 
     - component: Review // Path: "/reviews"
       - component: NewReveiw // Path: "/reviews/new"
