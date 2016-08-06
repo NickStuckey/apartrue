@@ -11,6 +11,7 @@ class Api::PropertiesController < ApplicationController
   def create
     @property = Property.new(property_params)
     @property.owner_id = current_user.id if is_owner?
+    @property.neighborhood_id = neighborhood
 
     if @property.save
       render "api/properties/show"
@@ -27,11 +28,15 @@ class Api::PropertiesController < ApplicationController
     params[:is_owner]
   end
 
+  def neighborhood
+    Neighborhood.find_by_name(params[:city])
+  end
+
   def property_params
     params.require(:property).permit(
       :address,
       :is_owner,
-      :neighborhood_id,
+      :neighborhood,
       :price,
       :num_bedrooms,
       :available,

@@ -1,3 +1,4 @@
+
 module.exports = {
   fetchAllProperties (bounds, cb) {
     $.ajax({
@@ -23,7 +24,6 @@ module.exports = {
           available: property.available,
           lat: property.lat,
           lng: property.lng,
-          neighborhood_id: property.neighborhoodId,
           city: property.city,
           is_owner: property.isOwner
           }

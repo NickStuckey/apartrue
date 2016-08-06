@@ -1,11 +1,13 @@
 class Property < ActiveRecord::Base
   validates :address, :available, :lat, :lng, presence: true
 
+  belongs_to :neighborhood
+
   belongs_to(
     :owner,
     class_name: :User,
-    primary_key: :user_id,
-    foreign_key: :id
+    primary_key: :id,
+    foreign_key: :owner_id
   )
 
   def self.in_bounds?(bounds)

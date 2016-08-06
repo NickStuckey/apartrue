@@ -12,7 +12,6 @@ const PropertyFrom = React.createClass ({
       numBedRooms: "",
       available: "",
       isOwner: false,
-      neighborhoodId: "",
       lat: null,
       lng: null
     });
@@ -23,20 +22,21 @@ const PropertyFrom = React.createClass ({
   },
 
   _findLocation () {
-    // google magic
-    // set neighborhoodId
-    // city
-    // lat
-    // lng 
+    const location = new google.maps.Geocoder.geocode(this.props.address);
+    const lat = location.geometry.location.lat;
+    const lng = location.geometry.location.lng;
+
+    this.setState({city: location.address_components[1]}); // untested, should return city name
+    this.setState({lat: lat, lng: lng});
   },
 
   handleSubmit () {
-    _findLocation();
+    this._findLocation();
     PropertyActions.createProperty(this._onChange);
   },
 
   _onChange () {
-    hashHistory.push("/properties/");  //NOTE how can i make this go to the property show page?
+    hashHistory.push("/");  //NOTE how can i make this go to the property show page?
   },
 
   updateAddress (e) {
