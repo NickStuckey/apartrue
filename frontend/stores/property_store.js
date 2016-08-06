@@ -8,8 +8,11 @@ let _properties = {};
 
 const resetProperties = function (properties) {
   _properties = properties;
-  console.log("Store: ");
-  console.log(PropertyStore.all());
+  PropertyStore.__emitChange();
+};
+
+const addProperty = function (property) {
+  _properties[property.id] = property;
   PropertyStore.__emitChange();
 };
 
@@ -25,7 +28,6 @@ PropertyStore.find = function(id){
 PropertyStore.__onDispatch = (payload) => {
   switch (payload.actionType) {
     case PropertyConstants.PROPERTIES_RECEIVED:
-
       resetProperties(payload.properties);
       break;
     case PropertyConstants.PROPERTY_RECEIVED:

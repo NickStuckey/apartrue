@@ -11,7 +11,8 @@ const ReactDOM = require('react-dom'),
 
 //testing only
 let PropertyApiUtil = require('./util/property_api_util'),
-    PropertyIndex = require('./components/property_index');
+    PropertyIndex = require('./components/property_index'),
+    PropertyForm = require('./components/property_form');
 
 const App = React.createClass ({
   logOutButton() {
@@ -45,14 +46,17 @@ const routes = (
       <Route path="signup" component={ LogInForm }/>
       <Route path="map" component={ PropertyMap }/>
       <Route path="search" component={ Search }/>
-      <Route path="index" component={ PropertyIndex }/> //NOTE testing only
+
+      //NOTE testing only NOTE NB NOTE testing only NOTE
+      <Route path="index" component={ PropertyIndex }/>
+      <Route path="newprop" component={ PropertyForm } />
     </Route>
   </Router>
 );
 
 document.addEventListener("DOMContentLoaded", () => {
   let root = document.getElementById('content');
-  // debugger
+
   if (window.currentUser) {
     SessionActions.receiveCurrentUser(window.currentUser);
   } else {

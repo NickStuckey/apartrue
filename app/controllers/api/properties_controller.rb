@@ -9,10 +9,36 @@ class Api::PropertiesController < ApplicationController
   end
 
   def create
+    @property = Property.new(property_params)
+    @property.owner_id = current_user.id if is_owner?
 
+    if @property.save
+      render "api/properties/show"
+    else
+      render json: @property.errors
+    end
   end
 
   def bounds
     params[:bounds]
+  end
+
+  def is_owner?
+    params[:is_owner]
+  end
+
+  def property_params
+    params.require(:property).permit(
+      :address,
+      :is_owner,
+      :neighborhood_id,
+      :price,
+      :num_bedrooms,
+      :available,
+      :lat,
+      :lng,
+      :zipcode,
+      :city
+    )
   end
 end

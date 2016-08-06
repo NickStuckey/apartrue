@@ -30,75 +30,87 @@
 # Neighborhood.create({name: 'Staten Island'})
 
 # Manhattan
+# Property.create({
+#   address: "188 E 64th St",
+#   geolocation: "40.764593,-73.964821",
+#   city: "Manhattan",
+#   zipcode: 10065,
+#   available: true,
+#   neighborhood_id: 1,
+#   price: 4000,
+#   num_bedrooms: 2,
+#   lat: 40.764593,
+#   lng: -73.964821
+#   })
+# Property.create({
+#   address: "583 Park Ave",
+#   geolocation: "40.76545,-73.967453",
+#   city: "Manhattan",
+#   zipcode: 10065,
+#   available: true,
+#   neighborhood_id: 1,
+#   price: 4000,
+#   num_bedrooms: 2,
+#   lat: 40.76545,
+#   lng: -73.967453
+#   })
+# Property.create({
+#   address: "115 E 57th St",
+#   geolocation: "40.761653,-73.97007",
+#   city: "Manhattan",
+#   zipcode: 10022,
+#   available: true,
+#   neighborhood_id: 1,
+#   price: 4000,
+#   num_bedrooms: 2,
+#   lat: 40.761653,
+#   lng: -73.97007
+#   })
+# Property.create({
+#   address: "453 E 60th St",
+#   geolocation: "40.759568,-73.959888",
+#   city: "Manhattan",
+#   zipcode: 10022,
+#   available: true,
+#   neighborhood_id: 1,
+#   price: 4000,
+#   num_bedrooms: 2,
+#   lat: 40.759568,
+#   lng: -73.959888
+#   })
+# Property.create({
+#   address: "321 E 52nd St",
+#   geolocation: "40.755885,-73.966449",
+#   city: "Manhattan",
+#   zipcode: 10022,
+#   available: true,
+#   neighborhood_id: 1,
+#   price: 4000,
+#   num_bedrooms: 2,
+#   lat: 40.755885,
+#   lng: -73.966449
+#   })
+# Property.create({
+#   address: "711 3rd Ave",
+#   geolocation: "40.752161,-73.972835",
+#   city: "Manhattan",
+#   zipcode: 10017,
+#   available: true,
+#   neighborhood_id: 1,
+#   price: 4000,
+#   num_bedrooms: 2,
+#   lat: 40.752161,
+#   lng: -73.972835
+#   })
 Property.create({
-  address: "188 E 64th St",
-  geolocation: "40.764593,-73.964821",
-  city: "Manhattan",
-  zipcode: 10065,
-  available: true,
-  neighborhood_id: 1,
-  price: 4000,
-  num_bedrooms: 2,
-  lat: 40.764593,
-  lng: -73.964821
-  })
-Property.create({
-  address: "583 Park Ave",
-  geolocation: "40.76545,-73.967453",
-  city: "Manhattan",
-  zipcode: 10065,
-  available: true,
-  neighborhood_id: 1,
-  price: 4000,
-  num_bedrooms: 2,
-  lat: 40.76545,
-  lng: -73.967453
-  })
-Property.create({
-  address: "115 E 57th St",
-  geolocation: "40.761653,-73.97007",
-  city: "Manhattan",
-  zipcode: 10022,
-  available: true,
-  neighborhood_id: 1,
-  price: 4000,
-  num_bedrooms: 2,
-  lat: 40.761653,
-  lng: -73.97007
-  })
-Property.create({
-  address: "453 E 60th St",
-  geolocation: "40.759568,-73.959888",
-  city: "Manhattan",
-  zipcode: 10022,
-  available: true,
-  neighborhood_id: 1,
-  price: 4000,
-  num_bedrooms: 2,
-  lat: 40.759568,
-  lng: -73.959888
-  })
-Property.create({
-  address: "321 E 52nd St",
-  geolocation: "40.755885,-73.966449",
-  city: "Manhattan",
-  zipcode: 10022,
-  available: true,
-  neighborhood_id: 1,
-  price: 4000,
-  num_bedrooms: 2,
-  lat: 40.755885,
-  lng: -73.966449
-  })
-Property.create({
-  address: "711 3rd Ave",
+  address: "241 E 75th St",
   geolocation: "40.752161,-73.972835",
   city: "Manhattan",
-  zipcode: 10017,
+  zipcode: 10021,
   available: true,
   neighborhood_id: 1,
-  price: 4000,
-  num_bedrooms: 2,
-  lat: 40.752161,
-  lng: -73.972835
+  price: 5500,
+  num_bedrooms: 3,
+  lat: 40.771117,
+  lng: -73.957472
   })

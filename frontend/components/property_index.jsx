@@ -14,8 +14,6 @@ const PropertyIndex = React.createClass ({
   },
 
   _onChange () {
-    console.log("index: ");
-    console.log(PropertyStore.all());
     this.setState({properties: PropertyStore.all()});
   },
 

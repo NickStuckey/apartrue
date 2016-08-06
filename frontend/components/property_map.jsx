@@ -32,21 +32,20 @@ const PropertyMap = React.createClass ({
     PropertyStore.addListener(this._onChange);
     this.addMapListeners();
     this.markers = [];
-
   },
 
   createMarker (property) {
+    let that = this;
     const latLng = new google.maps.LatLng(property.lat, property.lng);
     const marker = new google.maps.Marker({
       postition: latLng,
-      map: this.map,
+      map: that.map,
       propertyId: property.id,
       visible: true
     });
     marker.addListener('click', () => {
       hashHistory.push(`properties/${property.id}`);
     });
-    marker.setMap(this.map);
     this.markers.push(marker);
   },
 
@@ -55,26 +54,17 @@ const PropertyMap = React.createClass ({
   },
 
   markersToRemove () {
-    return [];              // NOTE update with search filters
+    return [];              // NOTE update with search filters NOTE
   },
 
   _onChange () {
     this.propertiesToAdd().forEach(this.createMarker);
     this.markersToRemove().forEach(this.removeMarker);
-    // const latLng = new google.maps.LatLng(40.771117, -73.957472);
-    // debugger
-    // const marker = new google.maps.Marker({
-      // postition: latLng,
-      // map: this.map,
-    // });
-    // marker.setMap(this.map);
-    // debugger
   },
 
   propertiesToAdd () {
     const currentPropertyIds = this.markers.map((marker) => marker.propertyId);
     const newProperties = PropertyStore.all();
-    // debugger
     const newPropertyIds = Object.keys(newProperties);
 
     let properties = [];
@@ -94,9 +84,7 @@ const PropertyMap = React.createClass ({
 
   render () {
     return (
-      <div className="map" ref={(map) => this.mapContainer = map}>
-        nothing here
-      </div>
+      <div className="map" ref={(map) => this.mapContainer = map}></div>
     );
   }
 });
