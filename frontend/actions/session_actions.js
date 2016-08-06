@@ -29,7 +29,7 @@ const SessionActions = {
   fetchCurrentUser() {
     SessionApiUtil.fetchCurrentUser(
       this.receiveCurrentUser,
-      complete
+      ErrorActions.setErrors
     );
   },
 

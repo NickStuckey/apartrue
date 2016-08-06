@@ -7,19 +7,20 @@ let _currentUser = {};
 let _currentUserHasBeenFetched = false;
 
 const _login = function(currentUser) {
-  // debugger
   _currentUser = currentUser;
   _currentUserHasBeenFetched = true;
 };
 
 const _logout = function() {
-  // debugger
   _currentUser = {};
   _currentUserHasBeenFetched = true;
 };
 
+SessionStore.userId = function() {
+  return _currentUser.id;
+};
+
 SessionStore.isUserLoggedIn = function() {
-  // debugger
   return !!_currentUser.id;
 };
 

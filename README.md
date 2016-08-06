@@ -22,10 +22,10 @@
     - create Neighborhood model √
     - seed database with Neighborhoods √
 
-    - CRUD API for Properties
-    - set up google map api to view properties
-    - add properties with google map api
-    
+    - CRUD API for Properties √
+    - set up google map api to view properties √
+    - add properties with google map api √
+
     - create all properties forms and components, set up FLUX
     - set up neighborhood browse view
     - CSS style new components

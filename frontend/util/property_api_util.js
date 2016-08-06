@@ -1,17 +1,7 @@
 
 module.exports = {
-  fetchAllProperties (bounds, cb) {
-    $.ajax({
-    url: "api/properties",
-    type: "GET",
-    data: {bounds: bounds},
-    success: function (data) {
-      cb(data);
-      }
-    });
-  },
 
-  createProperty (property, cb) {
+  createProperty (property, success, error) {
     $.ajax({
       url: "api/properties",
       type: "POST",
@@ -25,14 +15,45 @@ module.exports = {
           lat: property.lat,
           lng: property.lng,
           city: property.city,
-          is_owner: property.isOwner
+          owner_id: property.ownerId
           }
         },
-      success: function (data) {
-        cb(data);
+      success,
+      error: function (xhr) {
+        const errors = xhr.responseJSON;
+        // not yet saving to error store
+        console.log("createProperty", errors);
+      }
+    });
+  },
+
+  fetchAllProperties (bounds, success, error) {
+    $.ajax({
+      url: "api/properties",
+      type: "GET",
+      data: {bounds: bounds},
+      success,
+      error: function (xhr) {
+        const errors = xhr.responseJSON;
+        // not yet saving to error store
+        console.log("fetch all properties", errors);
+      }
+    });
+  },
+
+  fetchProperty (id, success, error) {
+    $.ajax({
+      url: `api/property/${id}`,
+      type: "GET",
+      success,
+      error: function (xhr) {
+        const errors = xhr.responseJSON;
+        // not yet saving to error store
+        console.log("fetch property", errors);
       }
     });
   }
+
 
 
 };

@@ -23,11 +23,11 @@
 # User.create({username: 'MrBobBobbington', password: 'password', hometown: 'Staten Island'})
 
 
-# Neighborhood.create({name: 'Manhattan'})
-# Neighborhood.create({name: 'Brooklyn'})
-# Neighborhood.create({name: 'Queens'})
-# Neighborhood.create({name: 'Bronx'})
-# Neighborhood.create({name: 'Staten Island'})
+# Neighborhood.create({name: 'manhattan'})
+# Neighborhood.create({name: 'brooklyn'})
+# Neighborhood.create({name: 'queens'})
+# Neighborhood.create({name: 'bronx'})
+# Neighborhood.create({name: 'staten island'})
 
 # Manhattan
 # Property.create({
@@ -102,15 +102,15 @@
 #   lat: 40.752161,
 #   lng: -73.972835
 #   })
-Property.create({
-  address: "241 E 75th St",
-  geolocation: "40.752161,-73.972835",
-  city: "Manhattan",
-  zipcode: 10021,
-  available: true,
-  neighborhood_id: 1,
-  price: 5500,
-  num_bedrooms: 3,
-  lat: 40.771117,
-  lng: -73.957472
-  })
+# Property.create({
+#   address: "241 E 75th St",
+#   geolocation: "40.752161,-73.972835",
+#   city: "Manhattan",
+#   zipcode: 10021,
+#   available: true,
+#   neighborhood_id: 1,
+#   price: 5500,
+#   num_bedrooms: 3,
+#   lat: 40.771117,
+#   lng: -73.957472
+#   })
