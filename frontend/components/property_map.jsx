@@ -20,6 +20,7 @@ const PropertyMap = React.createClass ({
         southWest: {lat: sw.lat(), lng: sw.lng()}
       };
       PropertyActions.fetchAllProperties(bounds);
+      console.log(PropertyStore.all());
     });
     google.maps.event.addListener(this.map, 'click', event => {
       const coords = { lat: event.latLng.lat(), lng: event.latLng.lng() };
@@ -28,8 +29,8 @@ const PropertyMap = React.createClass ({
   },
 
   componentDidMount () {
-    this.map = new google.maps.Map(this.mapContainer, mapOptions);
     PropertyStore.addListener(this._onChange);
+    this.map = new google.maps.Map(this.mapContainer, mapOptions);
     this.addMapListeners();
     this.markers = [];
   },

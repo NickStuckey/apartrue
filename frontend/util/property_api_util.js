@@ -43,7 +43,7 @@ module.exports = {
 
   fetchProperty (id, success, error) {
     $.ajax({
-      url: `api/property/${id}`,
+      url: `api/properties/${id}`,
       type: "GET",
       success,
       error: function (xhr) {

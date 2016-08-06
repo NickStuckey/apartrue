@@ -8,6 +8,16 @@ class Api::PropertiesController < ApplicationController
     end
   end
 
+  def show
+    @property = Property.find(params[:id])
+
+    if @property
+      render "api/properties/show"
+    else
+      render json: ["property not found"], status: 400
+    end
+  end
+
   def create
     @property = Property.new(property_params)
     # find Neighborhood ID using provided city name
@@ -20,6 +30,8 @@ class Api::PropertiesController < ApplicationController
     end
   end
 
+
+  private
   def bounds
     params[:bounds]
   end
@@ -34,17 +46,8 @@ class Api::PropertiesController < ApplicationController
 
   def property_params
     form_params = params.require(:property).permit(
-      :address,
-      :owner_id,
-      :price,
-      :num_bedrooms,
-      :available,
-      :lat,
-      :lng,
-      :zipcode,
-      :city
+      :address, :owner_id, :price, :num_bedrooms,
+      :available, :lat, :lng, :zipcode, :city
     )
-
-
   end
 end

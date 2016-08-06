@@ -17,7 +17,6 @@ const addProperty = function (property) {
 };
 
 PropertyStore.all = () => {
-
   return Object.assign({}, _properties);
 };
 

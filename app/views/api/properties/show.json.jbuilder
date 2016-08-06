@@ -1,1 +1,1 @@
-json.partial! "api/properties/property", properties: @properties
+json.partial! "api/properties/property", property: @property
