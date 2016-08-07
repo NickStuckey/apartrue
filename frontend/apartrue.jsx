@@ -7,13 +7,15 @@ const ReactDOM = require('react-dom'),
       SessionActions = require('./actions/session_actions'),
       SessionStore = require('./stores/session_store'),
       PropertyMap = require('./components/property_map'),
-      Search = require('./components/search'),
+      SearchResults = require('./components/search_results'),
       ShowProperty = require('./components/show_property'),
       UserProfile = require('./components/user_profile');
 
 //testing only
 let PropertyApiUtil = require('./util/property_api_util'),
     PropertyIndex = require('./components/property_index'),
+    SearchForm = require('./components/search_form'),
+    AddressFinder = require('./components/address_finder'),
     PropertyForm = require('./components/property_form');
 
 const App = React.createClass ({
@@ -44,15 +46,17 @@ const routes = (
   <Router history={ hashHistory }>
     <Route path="/" component={ App } >
       <IndexRoute component={ LogInForm } />
+      <Route path="searchform" component={ SearchForm } />
       <Route path="login" component={ LogInForm }/>
       <Route path="signup" component={ LogInForm }/>
-      <Route path="map" component={ PropertyMap }/>
-      <Route path="search" component={ Search }/>
+      <Route path="results" component={ SearchResults }/>
       <Route path="properties/:propertyId" component={ ShowProperty } />
+      <Route path="properties/new" component={ PropertyForm } />
       // NOTE testing only NOTE NB NOTE testing only NOTE
+      <Route path="map" component={ PropertyMap }/>
       <Route path="index" component={ PropertyIndex }/>
-      <Route path="newprop" component={ PropertyForm } />
       <Route path="users/:userId" component={ UserProfile } />
+      <Route path="address" component={ AddressFinder } />
     </Route>
   </Router>
 );

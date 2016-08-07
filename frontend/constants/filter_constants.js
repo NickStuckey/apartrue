@@ -1,0 +1,4 @@
+module.exports = {
+  UPDATE_FILTERS: "UPDATE_FILTERS",
+  UPDATE_BOUNDS: "UPDATE_BOUNDS"
+};

@@ -7,9 +7,9 @@ const ApiUtil = require('../util/property_api_util'),
 
 
 const PropertyActions = {
-  fetchAllProperties (bounds) {
+  fetchAllProperties (filters) {
     ApiUtil.fetchAllProperties(
-      bounds,
+      filters,
       this.receiveAllProperties,
       ErrorActions.setErrors
     );
@@ -22,6 +22,7 @@ const PropertyActions = {
       ErrorActions.setErrors
     );
   },
+
 
   fetchProperty (id) {
     ApiUtil.fetchProperty(
@@ -41,6 +42,13 @@ const PropertyActions = {
   receiveProperty (property) {
     AppDispatcher.dispatch({
       actionType: PropertyConstants.PROPERTY_RECEIVED,
+      property: property
+    });
+  },
+
+  stageProperty (property) {
+    AppDispatcher.dispatch({
+      actionType: PropertyConstants.STAGE_PROPERTY,
       property: property
     });
   }

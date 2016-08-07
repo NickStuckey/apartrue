@@ -1,10 +1,11 @@
 const React = require('react'),
       ReactDOM = require('react-dom'),
       PropertyActions = require('../actions/property_actions'),
-      PropertyStore = require('../stores/property_store');
+      PropertyStore = require('../stores/property_store'),
+      FilterStore = require('../stores/filter_store');
 
 const mapOptions = {
-  center: {lat: 40.771117, lng: -73.957472},
+  center: FilterStore.mapCenter(),
   zoom: 13
 };
 
@@ -19,6 +20,8 @@ const PropertyMap = React.createClass ({
         northEast: {lat: ne.lat(), lng: ne.lng()},
         southWest: {lat: sw.lat(), lng: sw.lng()}
       };
+
+
       PropertyActions.fetchAllProperties(bounds);
       console.log(PropertyStore.all());
     });

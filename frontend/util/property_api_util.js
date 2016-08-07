@@ -27,11 +27,17 @@ module.exports = {
     });
   },
 
-  fetchAllProperties (bounds, success, error) {
+  fetchAllProperties (filters, success, error) {
     $.ajax({
       url: "api/properties",
       type: "GET",
-      data: {bounds: bounds},
+      data: {
+        property: {
+          price: property.price,
+          num_bedrooms: property.numBedRooms,
+          neighborhood_id: property.neighborhoodId,
+          }
+        },
       success,
       error: function (xhr) {
         const errors = xhr.responseJSON;
@@ -53,7 +59,5 @@ module.exports = {
       }
     });
   }
-
-
 
 };

@@ -2,6 +2,7 @@ const React = require('react'),
       PropertyStore = require('../stores/property_store'),
       PropertyActions = require('../actions/property_actions'),
       SessionStore = require('../stores/session_store'),
+      StagingStore = require('../stores/staging_store'),
       hashHistory = require('react-router').hashHistory;
 
 const geocoder = new google.maps.Geocoder();
@@ -13,12 +14,21 @@ let isOwner = false;
 
 const PropertyFrom = React.createClass ({
   getInitialState() {
+    const property = StagingStore.getStagedProperty();
+    let address, city, numBedRooms;
+
+    if (property) {
+      address = property.address;
+      city = property.city;
+      zipcode = property.zipcode;
+    }
+
     return ({
-      address: "",
-      zipcode: null,
-      city: "",
+      address: address || "",
+      city: city || "",
+      zipcode: zipcode,
       price: null,
-      numBedRooms: "",
+      numBedRooms: "", // change to dropdown
       available: false,
       ownerId: null,
       lat: null,
@@ -97,7 +107,7 @@ const PropertyFrom = React.createClass ({
     this.setState({price: parseInt(e.target.value)});
   },
 
-  updateNumBedRooms (e) {
+  updateNumBedRooms (e) { // NOTE change to dropdown
     this.setState({numBed: parseInt(e.target.value)});
   },
 
@@ -148,7 +158,7 @@ const PropertyFrom = React.createClass ({
               value={this.props.address}
               />
           </label>
-          <label>Number of Bedrooms
+          <label>Number of Bedrooms // NOTE change to dropdown
             <input
               type="text"
               className="property-form-input-field"
