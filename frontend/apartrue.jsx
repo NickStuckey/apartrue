@@ -8,7 +8,8 @@ const ReactDOM = require('react-dom'),
       SessionStore = require('./stores/session_store'),
       PropertyMap = require('./components/property_map'),
       Search = require('./components/search'),
-      ShowProperty = require('./components/show_property');
+      ShowProperty = require('./components/show_property'),
+      UserProfile = require('./components/user_profile');
 
 //testing only
 let PropertyApiUtil = require('./util/property_api_util'),
@@ -51,6 +52,7 @@ const routes = (
       // NOTE testing only NOTE NB NOTE testing only NOTE
       <Route path="index" component={ PropertyIndex }/>
       <Route path="newprop" component={ PropertyForm } />
+      <Route path="users/:userId" component={ UserProfile } />
     </Route>
   </Router>
 );
