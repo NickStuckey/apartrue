@@ -39,7 +39,7 @@ const PropertyMap = React.createClass ({
     let that = this;
     const latLng = new google.maps.LatLng(property.lat, property.lng);
     const marker = new google.maps.Marker({
-      postition: latLng,
+      position: latLng,
       map: that.map,
       propertyId: property.id,
       visible: true

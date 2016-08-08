@@ -95,7 +95,7 @@ const SearchFeilds = React.createClass({
           <option className="search-feild-list-item" value="99999999999">none</option>
         </select>
 
-        <p>{ neighborhoodIdError } </p>
+        <p>{ neighborhoodIdError }</p>
         <select
           className="search-feild-list"
           onChange={this.updateNeighborhoodId}>

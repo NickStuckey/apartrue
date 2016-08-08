@@ -2,7 +2,7 @@ const React = require('react'),
       PropertyStore = require('../stores/property_store'),
       PropertyActions = require('../actions/property_actions'),
       SessionStore = require('../stores/session_store'),
-      StagingStore = require('../stores/staging_store'),
+      // StagingStore = require('../stores/staging_store'),
       hashHistory = require('react-router').hashHistory;
 
 const geocoder = new google.maps.Geocoder();
@@ -14,19 +14,19 @@ let isOwner = false;
 
 const PropertyFrom = React.createClass ({
   getInitialState() {
-    const property = StagingStore.getStagedProperty();
+    // const property = StagingStore.getStagedProperty();
     let address, city, numBedRooms;
 
-    if (property) {
-      address = property.address;
-      city = property.city;
-      zipcode = property.zipcode;
-    }
+    // if (property) {
+    //   address = property;
+    //   city = null;
+    //   zipcode = null;
+    // }
 
     return ({
-      address: address || "",
-      city: city || "",
-      zipcode: zipcode,
+      address: "",
+      city: null,
+      zipcode: "",
       price: null,
       numBedRooms: "", // change to dropdown
       available: false,
@@ -71,8 +71,8 @@ const PropertyFrom = React.createClass ({
   },
 
   _onChange () {
-    console.log('something changed');
-    // hashHistory.push("/");  //NOTE how can i make this go to the property show page?
+    const newProperty = PropertyStore.all();
+    hashHistory.push(`properties/${newProperty.id}`);
   },
 
   _placeError (status) {
@@ -89,6 +89,10 @@ const PropertyFrom = React.createClass ({
       ownerId: ownerId
     });
     PropertyActions.createProperty(this.state);
+  },
+
+  showErrors () {
+    PropertyStore.errors();
   },
 
   updateAddress (e) {

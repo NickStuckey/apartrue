@@ -21,7 +21,6 @@ module.exports = {
       success,
       error: function (xhr) {
         const errors = xhr.responseJSON;
-        // not yet saving to error store
         console.log("createProperty", errors);
       }
     });
@@ -42,7 +41,6 @@ module.exports = {
       success,
       error: function (xhr) {
         const errors = xhr.responseJSON;
-        // not yet saving to error store
         console.log("fetch all properties with params", errors);
       }
     });
@@ -52,11 +50,10 @@ module.exports = {
     $.ajax({
       url: "api/properties",
       type: "GET",
-      data: {property: {}},
+      data: {property: {address:"dummy"}},
       success,
       error: function (xhr) {
         const errors = xhr.responseJSON;
-        // not yet saving to error store
         console.log("fetch all properties", errors);
       }
     });
@@ -69,7 +66,6 @@ module.exports = {
       success,
       error: function (xhr) {
         const errors = xhr.responseJSON;
-        // not yet saving to error store
         console.log("fetch property", errors);
       }
     });

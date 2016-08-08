@@ -15,6 +15,7 @@ const SessionActions = {
   },
 
   logIn(formData) {
+    debugger
     SessionApiUtil.logIn(
       formData,
       this.receiveCurrentUser,

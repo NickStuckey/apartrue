@@ -15,6 +15,10 @@ const LoginForm = React.createClass({
     this.sessionListener = SessionStore.addListener(this.redirectIfLoggedIn);
   },
 
+  errors () {
+
+  },
+
   showErrors(field) {
     const errors = ErrorStore.formErrors(this.formType());
 
@@ -86,11 +90,11 @@ const LoginForm = React.createClass({
     return (
       <div className="centering-page-wrapper">
         <div className="login-box-wrapper">
-
+          <p className="errors">{ this.errors }</p>
           <div className="login-box guest-login-box">
             <div className="guest-login-content-wrapper">
               <h1 className="login-box-header guest-boxheader">
-                Have a look around with a <span className="highlighted-phrase">Guest Acount</span>
+                Have a look around with a <span className="highlighted-phrase">Guest Account</span>
               </h1>
 
               <h6 className="foot-note">No sign-up required, just click here to get started!</h6>

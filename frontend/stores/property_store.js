@@ -11,6 +11,16 @@ const resetProperties = function (properties) {
   PropertyStore.__emitChange();
 };
 
+PropertyStore.findByStreetAddress = function (streetAddress) {
+  let propertyId;
+  Object.keys(_properties).forEach((propId) => {
+    if (_properties[propId].address === streetAddress) {
+        propertyId = propId;
+    }
+  });
+  return propertyId;
+};
+
 const addProperty = function (property) {
   _properties[property.id] = property;
   PropertyStore.__emitChange();

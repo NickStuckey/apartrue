@@ -50,8 +50,8 @@ const routes = (
       <Route path="login" component={ LogInForm }/>
       <Route path="signup" component={ LogInForm }/>
       <Route path="results" component={ SearchResults }/>
-      <Route path="properties/:propertyId" component={ ShowProperty } />
       <Route path="properties/new" component={ PropertyForm } />
+      <Route path="properties/:propertyId" component={ ShowProperty } />
       // NOTE testing only NOTE NB NOTE testing only NOTE
       <Route path="map" component={ PropertyMap }/>
       <Route path="index" component={ PropertyIndex }/>

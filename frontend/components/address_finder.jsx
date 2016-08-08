@@ -3,7 +3,9 @@ const React = require('react'),
       FilterStore = require('../stores/filter_store'),
       SearchFeilds = require('./search_feilds'),
       PropertyActions = require('../actions/property_actions'),
+      hashHistory = require('react-router').hashHistory,
       SessionStore = require('../stores/session_store');
+
 
 const AddressFinder = React.createClass({
   getInitialState () {
@@ -20,7 +22,7 @@ const AddressFinder = React.createClass({
     this.boxListener = this.searchBox.addListener(
       'places_changed', this.placesChanged
     );
-    PropertyActions.fetchAllProperties();
+    PropertyActions.fetchAllProperties({properties: {}});
   },
 
   componentWillUnmount() {
@@ -28,24 +30,22 @@ const AddressFinder = React.createClass({
     this.boxListener.remove();
   },
 
-  handleSubmit() { // fix incomming address NOTE
-    const address = this.state.places[0];
-    // make addres a processable entity here !!!NOTE
-    const propertyId = AddressStore.getPropertyId(address);
-    if (propertyId) {
+  handleSubmit(e) {
+    e.preventDefault();
+    const address = this.state.places[0].name;
+    const streetAddress = address.split(', ')[0];
+    const propertyId = PropertyStore.findByStreetAddress(streetAddress);
+    if (!!propertyId) {
       hashHistory.push(`properties/${propertyId}`);
     } else {
-      PropertyActions.stageProperty(property);
-      // save message to errors to be displayed on redirect
+      // PropertyActions.stageProperty(streetAddress);
       hashHistory.push("properties/new");
     }
   },
 
   placesChanged () {
-    const that = this;
     const places = this.searchBox.getPlaces();
-    that.setState({places: places});
-    if (places.length === 0) { return; }
+    this.setState({places: places, address: places[0]});
   },
 
   _onPropertyChange () {
@@ -67,7 +67,6 @@ const AddressFinder = React.createClass({
         <input
           type="text"
           className="fuzzy-finder"
-          value={this.state.address}
           onChange={this.updateAddress}
           ref={(input) => this.searchBoxInput = input}
         />

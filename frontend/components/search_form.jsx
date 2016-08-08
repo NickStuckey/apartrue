@@ -21,7 +21,6 @@ const SearchForm = React.createClass({
 
   componentWillUnmount () {
     this.filterListener.remove();
-    this.boxListener.remove();
   },
 
   currentPath () {

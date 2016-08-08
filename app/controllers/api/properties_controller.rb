@@ -1,6 +1,6 @@
 class Api::PropertiesController < ApplicationController
   def index
-    if property_params
+    if property_params[:address] != "dummy"
       @properties = Property.satisfy_params(property_params)
     else
       @properties = Property.all

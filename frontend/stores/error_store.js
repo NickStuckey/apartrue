@@ -30,6 +30,10 @@ ErrorStore.__onDispatch = function (payload) {
   }
 };
 
+ErrorStore.errors = function () {
+  return Object.assign({}, errors);
+};
+
 ErrorStore.formErrors = function (form) {
   if (form !== _form) {
     return {};
