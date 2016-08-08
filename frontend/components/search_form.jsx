@@ -1,95 +1,54 @@
 const React = require('react'),
       PropertyStore = require('../stores/property_store'),
+      hashHistory = require('react-router').hashHistory,
       FilterStore = require('../stores/filter_store'),
       SearchFeilds = require('./search_feilds'),
       PropertyActions = require('../actions/property_actions'),
       SessionStore = require('../stores/session_store');
 
+let results;
+
 const SearchForm = React.createClass({
   getInitialState () {
-    return ({
-      // properties: PropertyStore.all(),
-      // filterParams: FilterStore.filters(),
-      // address: "",
-      // places: []
-    });
+    return ({mapCenter: {lat: 40.75662, lng: -73.985367}});
   },
 
   componentDidMount () {
-    // this.searchBox = new google.maps.places.SearchBox(this.searchBoxInput);
-    this.propertyListener = PropertyStore.addListener(this._onPropertyChange);
     this.filterListener = FilterStore.addListener(this._onFilterChange);
-    this.boxListener = this.searchBox.addListener(
-      'places_changed',
-      this.places_changed
-    );
     PropertyActions.fetchAllProperties();
   },
 
-  componentWillUnmount() {
-    this.propertyListener.remove();
+  componentWillUnmount () {
     this.filterListener.remove();
     this.boxListener.remove();
   },
 
-  // handleSubmit() {
-  //   const address = this.state.address;
-  //   if (address) {
-  //     console.log('this seems to work');
-  //     // push to the property store and render results
-  //   }
-  // },
-
-  placesChanged () {
-    const that = this;
-    const places = searchBox.getPlaces();
-    that.setState({places: places});
-    if (places.length === 0) { return; }
+  currentPath () {
+    return (hashHistory[-1] === "/") ? "welcome" : "navbar"; // NOTE figure out how to get current path
   },
 
   _onFilterChange () {
     const newFilters = FilterStore.filters();
     this.setState({filterParams: newFilters});
     PropertyActions.fetchAllProperties(newFilters);
+    searchResults = <PropertyMap mapCenter={ setMap } format={ currentPath }/>;
   },
 
-  _onPropertyChange () {
-    const properties = PropertyStore.all();
-    setState({properties: properties});
+  setMap (newCenter) {
+    this.setState({mapCenter: newCenter});
   },
-
-  // selectLocation () {
-  //   console.log();
-  // },
-
-  // updateAddress (e) {
-  //   this.setState({address: e.target.value});
-  // },
 
   render () {
-    // debugger
+
     return (
       <div className="search-form-wrapper">
         <h2>SOME STUFF</h2>
         <AddressFinder />
-        <SearchFeilds
-          properties={this.state.properties}
-          filterParams={this.state.filterParams}
-        />
+        <SearchFeilds update={showResults} />
+        { results }
     </div>
     );
   }
 });
-// <form onSubmit={this.handleSubmit}>
-// <input
-//   type="text"
-//   className="fuzzy-finder"
-//   value={this.state.address}
-//   onChange={this.updateAddress}
-//   ref={(input) => this.searchBoxInput = input}
-//   >
-// </input>
-// <input type="submit" value="find" />
-// </form>
 
 module.exports = SearchForm;

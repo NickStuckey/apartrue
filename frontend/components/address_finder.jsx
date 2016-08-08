@@ -9,7 +9,6 @@ const AddressFinder = React.createClass({
   getInitialState () {
     return ({
       properties: PropertyStore.all(),
-      // filterParams: FilterStore.filters(),
       address: "",
       places: []
     });
@@ -38,7 +37,7 @@ const AddressFinder = React.createClass({
     } else {
       PropertyActions.stageProperty(property);
       // save message to errors to be displayed on redirect
-      hashHistory.push("properties/new"); 
+      hashHistory.push("properties/new");
     }
   },
 
@@ -71,8 +70,7 @@ const AddressFinder = React.createClass({
           value={this.state.address}
           onChange={this.updateAddress}
           ref={(input) => this.searchBoxInput = input}
-          >
-        </input>
+        />
         <input type="submit" value="find" />
       </form>
     );
