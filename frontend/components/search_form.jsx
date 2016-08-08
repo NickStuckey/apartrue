@@ -1,9 +1,11 @@
 const React = require('react'),
-      PropertyStore = require('../stores/property_store'),
+      AddressFinder = require('./address_finder'),
+      // PropertyStore = require('../stores/property_store'),
       hashHistory = require('react-router').hashHistory,
       FilterStore = require('../stores/filter_store'),
       SearchFeilds = require('./search_feilds'),
-      PropertyActions = require('../actions/property_actions'),
+      // PropertyActions = require('../actions/property_actions'),
+      SearchResults = require('./search_results'),
       SessionStore = require('../stores/session_store');
 
 let results;
@@ -15,7 +17,6 @@ const SearchForm = React.createClass({
 
   componentDidMount () {
     this.filterListener = FilterStore.addListener(this._onFilterChange);
-    PropertyActions.fetchAllProperties();
   },
 
   componentWillUnmount () {
@@ -28,10 +29,8 @@ const SearchForm = React.createClass({
   },
 
   _onFilterChange () {
-    const newFilters = FilterStore.filters();
-    this.setState({filterParams: newFilters});
-    PropertyActions.fetchAllProperties(newFilters);
-    searchResults = <PropertyMap mapCenter={ setMap } format={ currentPath }/>;
+    results = <SearchResults mapCenter={ this.state.mapCenter } format={ this.currentPath }/>; // format is for css styling of the result element
+    this.forceUpdate();
   },
 
   setMap (newCenter) {
@@ -39,12 +38,12 @@ const SearchForm = React.createClass({
   },
 
   render () {
-
+    // debugger
     return (
       <div className="search-form-wrapper">
         <h2>SOME STUFF</h2>
         <AddressFinder />
-        <SearchFeilds update={showResults} />
+        <SearchFeilds setMap={this.setMap}/>
         { results }
     </div>
     );

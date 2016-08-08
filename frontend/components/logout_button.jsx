@@ -7,6 +7,7 @@ const LogOutButton = React.createClass({
 
   handleLogout () {
     SessionActions.logOut();
+    // check current route and redirect if on a sensitive page
   },
 
   render () {

@@ -1,11 +1,9 @@
 class Api::PropertiesController < ApplicationController
   def index
-    @properties = bounds ? Property.in_bounds?(bounds) : {}
-
-    @properties = @properties.select do |property|
-      property.price <= params[:price] &&
-      property.num_bedrooms == params[:num_bedrooms] &&
-      property.neighborhood_id == params[:neighborhood_id]
+    if property_params
+      @properties = Property.satisfy_params(property_params)
+    else
+      @properties = Property.all
     end
 
     if @properties
@@ -40,10 +38,6 @@ class Api::PropertiesController < ApplicationController
 
 
   private
-  def bounds
-    params[:bounds]
-  end
-
   def is_owner?
     params[:is_owner]
   end
@@ -54,8 +48,9 @@ class Api::PropertiesController < ApplicationController
 
   def property_params
     form_params = params.require(:property).permit(
-      :address, :owner_id, :price, :num_bedrooms,
-      :available, :lat, :lng, :zipcode, :city, :neighborhood_id
+      :address, :owner_id, :price, :num_bedrooms, :available,
+      :lat, :lng, :zipcode, :city, :neighborhood_id,
+      bounds: [northEast: [:lat, :lng], southWest: [:lat, :lng]]
     )
   end
 end

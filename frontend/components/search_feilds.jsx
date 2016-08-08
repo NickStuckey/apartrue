@@ -1,6 +1,5 @@
 const React = require('react'),
       FilterActions = require('../actions/filter_actions'),
-      PropertyStore = require('../stores/property_store'),
       PropertyMap = require('./property_map'),
       PropertyActions = require('../actions/property_actions');
 
@@ -12,31 +11,22 @@ let propertyMap;
 const SearchFeilds = React.createClass({
   getInitialState() {
     return ({
-      filters: {bedrooms: 0, priceLimit: 0, neighborhoodId: 0}
+      bedrooms: 0, priceLimit: 0, neighborhoodId: 0
     });
-  },
-
-  componentDidMount () {
-    this.propertyListener = PropertyStore.addListener(this._onPropertyChange);
-  },
-
-  componentWillUnmount () {
-    this.propertyListener.remove();
   },
 
   handleSubmit (e) {
     e.preventDefault();
 
-    const bedrooms = this.state.filters.bedrooms,
-          priceLimit = this.state.filters.priceLimit,
-          neighborhoodId = this.state.filters.neighborhoodId;
+    const bedrooms = this.state.bedrooms,
+          priceLimit = this.state.priceLimit,
+          neighborhoodId = this.state.neighborhoodId;
 
-    if (bedrooms && priceLimit && neighborhoodId) {
-      FilterActions.updateFilters(this.state.filters);
-      path = "search";
+    if (!!bedrooms && !!priceLimit && !!neighborhoodId) {
+      FilterActions.updateFilters(this.state);
     } else {
       bedroomsError = bedrooms ? "" : fieldErrorMsg;
-      priceLimitError = price ? "" : fieldErrorMsg;
+      priceLimitError = priceLimit ? "" : fieldErrorMsg;
       neighborhoodIdError = neighborhoodIdError ? "" : fieldErrorMsg;
     }
   },
@@ -51,7 +41,7 @@ const SearchFeilds = React.createClass({
 
   updateMapCenter (id) {
     let center;
-    switch (id) {
+    switch (parseInt(id)) {
       case 1: // Manhattan
         center = {lat: 40.75662, lng: -73.985367};
         break;
@@ -80,11 +70,11 @@ const SearchFeilds = React.createClass({
   render () {
     let format = this.props.format;
     return (
-      <form className={ format } onSubmit={ handleSubmit }>
+      <form className={ format } onSubmit={ this.handleSubmit }>
         <p>{ bedroomsError } </p>
         <select
           className="search-feild-list"
-          onChange={this.updateSize}>Bedrooms
+          onChange={this.updateSize}>
           <option className="search-feild-list-item" value="5">5</option>
           <option className="search-feild-list-item" value="4">4</option>
           <option className="search-feild-list-item" value="3">3</option>
@@ -93,10 +83,10 @@ const SearchFeilds = React.createClass({
           <option className="search-feild-list-item" value="0">0</option>
         </select>
 
-        <p>{ priceError } </p>
+        <p>{ priceLimitError } </p>
         <select
           className="search-feild-list"
-          onChange={this.updatePrice}>Price Limit
+          onChange={this.updatePrice}>
           <option className="search-feild-list-item" value="1500">1500</option>
           <option className="search-feild-list-item" value="2500">2500</option>
           <option className="search-feild-list-item" value="3500">3500</option>
@@ -105,10 +95,10 @@ const SearchFeilds = React.createClass({
           <option className="search-feild-list-item" value="99999999999">none</option>
         </select>
 
-        <p>{ neighborhoodError } </p>
+        <p>{ neighborhoodIdError } </p>
         <select
           className="search-feild-list"
-          onChange={this.updateNeighborhoodId}>Neighborhood
+          onChange={this.updateNeighborhoodId}>
           <option className="search-feild-list-item" value="1">Manhattan</option>
           <option className="search-feild-list-item" value="2">Brooklyn</option>
           <option className="search-feild-list-item" value="3">Queens</option>

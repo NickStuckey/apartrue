@@ -11,17 +11,6 @@ const resetProperties = function (properties) {
   PropertyStore.__emitChange();
 };
 
-// PropertyStore.queryProperty = function (property) {
-//   // const addressSubStrings = property.split(', ');
-//
-//   properties = PropertyStore.all();
-//   const addressess = Object.keys(properties).map((propKey) => {
-//     return properties[propkey].address;
-//   });
-//
-//
-// };
-
 const addProperty = function (property) {
   _properties[property.id] = property;
   PropertyStore.__emitChange();

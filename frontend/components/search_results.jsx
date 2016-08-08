@@ -4,15 +4,10 @@ const React = require('react'),
       PropertyIndex = require('./property_index');
 
 const SearchResults = React.createClass ({
-  getInitialState() {
-    return { properties: PropertyStore.all() };
-  },
-
   render () {
     return (
       <div>
         <PropertyMap
-          properties={this.state.properties}
           mapCenter={this.props.mapCenter}/>
         <PropertyIndex />
       </div>

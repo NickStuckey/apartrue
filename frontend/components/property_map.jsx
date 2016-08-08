@@ -2,12 +2,8 @@ const React = require('react'),
       ReactDOM = require('react-dom'),
       PropertyActions = require('../actions/property_actions'),
       PropertyStore = require('../stores/property_store'),
+      FilterActions = require('../actions/filter_actions'),
       FilterStore = require('../stores/filter_store');
-
-const mapOptions = {
-  center: FilterStore.mapCenter(),
-  zoom: 13
-};
 
 const PropertyMap = React.createClass ({
   addMapListeners() {
@@ -21,9 +17,9 @@ const PropertyMap = React.createClass ({
         southWest: {lat: sw.lat(), lng: sw.lng()}
       };
 
-
-      PropertyActions.fetchAllProperties(bounds);
-      console.log(PropertyStore.all());
+      FilterActions.updateBounds(bounds);
+      const testFilters = FilterStore.filters();
+      PropertyActions.fetchAllPropertiesWithParams(FilterStore.filters());
     });
     google.maps.event.addListener(this.map, 'click', event => {
       const coords = { lat: event.latLng.lat(), lng: event.latLng.lng() };
@@ -32,6 +28,7 @@ const PropertyMap = React.createClass ({
   },
 
   componentDidMount () {
+    const mapOptions = {center: this.props.mapCenter, zoom: 1};
     PropertyStore.addListener(this._onChange);
     this.map = new google.maps.Map(this.mapContainer, mapOptions);
     this.addMapListeners();

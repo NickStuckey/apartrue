@@ -18,7 +18,7 @@ const AddressFinder = React.createClass({
     this.searchBox = new google.maps.places.SearchBox(this.searchBoxInput);
     this.propertyListener = PropertyStore.addListener(this._onPropertyChange);
     this.boxListener = this.searchBox.addListener(
-      'places_changed', this.places_changed
+      'places_changed', this.placesChanged
     );
     PropertyActions.fetchAllProperties();
   },
@@ -43,14 +43,14 @@ const AddressFinder = React.createClass({
 
   placesChanged () {
     const that = this;
-    const places = searchBox.getPlaces();
+    const places = this.searchBox.getPlaces();
     that.setState({places: places});
     if (places.length === 0) { return; }
   },
 
   _onPropertyChange () {
     const properties = PropertyStore.all();
-    setState({properties: properties});
+    this.setState({properties: properties});
   },
 
   updateAddress (e) {

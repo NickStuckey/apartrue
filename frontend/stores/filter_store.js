@@ -5,8 +5,8 @@ const Store = require('flux/utils').Store,
 let _filters = {};
 const FilterStore = new Store(AppDispatcher);
 
-const setBounds = function (bounds) {
-  _filters[bounds] = bounds;
+const setBounds = function (newBounds) {
+  _filters.bounds = newBounds;
 };
 
 const setFilters = function (filters) {

@@ -1,4 +1,4 @@
-const Store = require('flux/utils'),
+const Store = require('flux/utils').Store,
       PropertyConstants = require('../constants/property_constants'),
       PropertyStore = require('../stores/property_store'),
       AppDispatcher = require('../dispatcher/dispatcher');

@@ -7,9 +7,16 @@ const ApiUtil = require('../util/property_api_util'),
 
 
 const PropertyActions = {
-  fetchAllProperties (filters) {
-    ApiUtil.fetchAllProperties(
+  fetchAllPropertiesWithParams (filters) {
+    ApiUtil.fetchAllPropertiesWithParams(
       filters,
+      this.receiveAllProperties,
+      ErrorActions.setErrors
+    );
+  },
+
+  fetchAllProperties () {
+    ApiUtil.fetchAllProperties(
       this.receiveAllProperties,
       ErrorActions.setErrors
     );

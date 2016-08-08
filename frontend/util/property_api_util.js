@@ -27,17 +27,32 @@ module.exports = {
     });
   },
 
-  fetchAllProperties (filters, success, error) {
+  fetchAllPropertiesWithParams (filters, success, error) {
     $.ajax({
       url: "api/properties",
       type: "GET",
       data: {
         property: {
-          price: property.price,
-          num_bedrooms: property.numBedRooms,
-          neighborhood_id: property.neighborhoodId,
+          bounds: filters.bounds,
+          price: filters.priceLimit,
+          num_bedrooms: filters.bedrooms,
+          neighborhood_id: filters.neighborhoodId,
           }
         },
+      success,
+      error: function (xhr) {
+        const errors = xhr.responseJSON;
+        // not yet saving to error store
+        console.log("fetch all properties with params", errors);
+      }
+    });
+  },
+
+  fetchAllProperties (success, error) {
+    $.ajax({
+      url: "api/properties",
+      type: "GET",
+      data: {property: {}},
       success,
       error: function (xhr) {
         const errors = xhr.responseJSON;
