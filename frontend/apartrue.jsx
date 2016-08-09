@@ -3,7 +3,6 @@ import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router';
 const ReactDOM = require('react-dom'),
       React = require('react'),
       LogInForm = require('./components/login_form'),
-      LogOutButton = require('./components/logout_button'),
       SessionActions = require('./actions/session_actions'),
       SessionStore = require('./stores/session_store'),
       PropertyMap = require('./components/property_map'),
@@ -18,22 +17,14 @@ let PropertyApiUtil = require('./util/property_api_util'),
     AddressFinder = require('./components/address_finder'),
     PropertyForm = require('./components/property_form');
 
+    // <div className="header"></div>
 const App = React.createClass ({
-  logOutButton() {
-    let button;
-    if (SessionStore.isUserLoggedIn()) {
-      button = <LogOutButton/>;
-    }
-    return button;
-  },
+
 
   render () {
 
     return (
       <div className="app-wrapper">
-
-        <div className="header"></div>
-        { this.logOutButton() }
         {this.props.children}
       </div>
     );
@@ -45,7 +36,7 @@ window.PropertyApiUtil = PropertyApiUtil;
 const routes = (
   <Router history={ hashHistory }>
     <Route path="/" component={ App } >
-      <IndexRoute component={ LogInForm } />
+      <IndexRoute component={ SearchForm } />
       <Route path="searchform" component={ SearchForm } />
       <Route path="login" component={ LogInForm }/>
       <Route path="signup" component={ LogInForm }/>

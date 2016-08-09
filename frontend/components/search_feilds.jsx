@@ -8,7 +8,7 @@ let bedroomsError, priceLimitError, neighborhoodIdError;
 let mapCenter;
 let propertyMap;
 
-const SearchFeilds = React.createClass({
+const SearchFields = React.createClass({
   getInitialState() {
     return ({
       bedrooms: 0, priceLimit: 0, neighborhoodId: 0
@@ -113,4 +113,4 @@ const SearchFeilds = React.createClass({
 });
 
 
-module.exports = SearchFeilds;
+module.exports = SearchFields;

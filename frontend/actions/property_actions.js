@@ -54,7 +54,6 @@ const PropertyActions = {
   },
 
   stageProperty (property) {
-    debugger
     AppDispatcher.dispatch({
       actionType: PropertyConstants.STAGE_PROPERTY,
       property: property

@@ -3,7 +3,8 @@ const React = require('react'),
       // PropertyStore = require('../stores/property_store'),
       hashHistory = require('react-router').hashHistory,
       FilterStore = require('../stores/filter_store'),
-      SearchFeilds = require('./search_feilds'),
+      NavBar = require('./nav_bar'),
+      SearchFields = require('./search_feilds'),
       // PropertyActions = require('../actions/property_actions'),
       SearchResults = require('./search_results'),
       SessionStore = require('../stores/session_store');
@@ -39,12 +40,15 @@ const SearchForm = React.createClass({
   render () {
     // debugger
     return (
-      <div className="search-form-wrapper">
-        <h2>SOME STUFF</h2>
-        <AddressFinder />
-        <SearchFeilds setMap={this.setMap}/>
-        { results }
-    </div>
+      <div className="page-wrapper">
+        <NavBar/>
+        <div className="search-form-wrapper">
+          <h2>SOME STUFF</h2>
+          <AddressFinder />
+          <SearchFields setMap={this.setMap}/>
+          { results }
+        </div>
+      </div>
     );
   }
 });

@@ -1,5 +1,12 @@
 **Implementation Timeline**
 
+  *current bugs to fix*
+    - can't submit a new property with 'false' value for available
+    - complete numBedRooms dropdown in property form
+    - debug property form auto fill from store
+    - extract zipcode and neighborhood from google address object
+
+
   *Phase 1: backend and authentication* (2 days, W1 tuesday, wednesday) √
     - create new project √
     - create User model √
@@ -27,7 +34,6 @@
     - add properties with google map api √
 
     - create all properties forms and components, set up FLUX
-    - set up neighborhood browse view
     - CSS style new components
 
   *Phase 3: Reviews, User profiles* (2 days, w2 monday, tuesday)
@@ -45,12 +51,13 @@
     - CSS style sign up, sign in forms
 
   *Phase 4: search and fuzzy finders* (1 day, w2 wednesday)
-    - implement auto complete search for properties
-    - implement auto complete search for neighborhoods
+    - implement auto complete search for properties √
+    - add fuzzy finder to add property form
+
     - CSS style submit property, review property forms
 
   *Phase 5: google maps* (1 day, w2 thursday)
-    - implement google map api on browse neighborhood page
+    - implement google map api on browse neighborhood page √
     - CSS style browse neighborhoods page, homepage
 
     http://apartrue.herokuapp.com/#/?_k=ev3yd2

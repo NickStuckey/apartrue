@@ -1,44 +1,35 @@
 const React = require('react'),
-      LogInButton = require('components/login_button'),
       hashHistory = require('react-router').hashHistory,
+      SearchFields = require('./search_feilds'),
+      SessionActions = require('../actions/session_actions'),
       SessionStore = require('../stores/session_store');
 
 const NavBar = React.createClass ({
-  getInitialState() {
-    return({
-      searchFeilds: null,
-    });
+  handleLogout () {
+    SessionActions.logOut();
+    hashHistory.push("/searchform");
   },
 
-  componentDidMount () {
-    this.sessionListener = SessionStore.addListener(this.toggleSession);
-  },
-
-  _checkLoggedIn () {
-    if (sessionStore.isUserLoggedIn) {
-      return <button onClick={this.handleLogout}>Log Out</button>;
+  sessionOption () {
+    if (SessionStore.isUserLoggedIn) {
+      return <button className="session-button" onClick={ this.handleLogout }>Log Out</button>;
     } else {
-      return <LogInButton />;
+      return <Link to="/login" activeClassName="nav-link">Log In</Link>;
     }
   },
 
-  handleLogout () {
-    SessionActions.logOut();
-    // check current route and redirect if on a sensitive page
-  },
-
   render () {
-    const sessionOption = _checkLoggedIn();
     return (
-        <div>
-          <Link to="/"></Link>
-          { searchFeilds }
-          <ul>
-            <li><Link to="/">Search</Link></li>
-            <li>{ sessionOption }</li>
-          </ul>
-
-        </div>
+      <header className="nav-bar-wrapper">
+        <nav className="nav-bar"></nav>
+          <a hreg="/" className="home-button"><Image source={require('./my-icon.png')} />
+          { SearchFields }
+        <ul className="nav-buttons">
+          { this.sessionOption() }
+        </ul>
+      </header>
     );
   }
 });
+
+module.exports = NavBar;

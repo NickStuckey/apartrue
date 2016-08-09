@@ -2,7 +2,7 @@ const React = require('react'),
       PropertyStore = require('../stores/property_store'),
       PropertyActions = require('../actions/property_actions'),
       SessionStore = require('../stores/session_store'),
-      // StagingStore = require('../stores/staging_store'),
+      StagingStore = require('../stores/staging_store'),
       hashHistory = require('react-router').hashHistory;
 
 const geocoder = new google.maps.Geocoder();
@@ -14,19 +14,24 @@ let isOwner = false;
 
 const PropertyFrom = React.createClass ({
   getInitialState() {
+    //get property from stage store
     // const property = StagingStore.getStagedProperty();
     let address, city, numBedRooms;
 
-    // if (property) {
-    //   address = property;
-    //   city = null;
-    //   zipcode = null;
+    //if it's not an empty object then set things
+    // if (!!property.address) {
+    //   address = property.address;
+    //   zipcode = property.zipcode;
+    //   city = property.city;
     // }
 
     return ({
+      // address: address || "",
+      // city: city || "",
+      // zipcode: zipcode || "",
       address: "",
       city: null,
-      zipcode: "",
+      zipcode,
       price: null,
       numBedRooms: "", // change to dropdown
       available: false,
@@ -162,6 +167,7 @@ const PropertyFrom = React.createClass ({
               value={this.props.address}
               />
           </label>
+
           <label>Number of Bedrooms // NOTE change to dropdown
             <input
               type="text"
@@ -190,5 +196,11 @@ const PropertyFrom = React.createClass ({
     );
   }
 });
+
+// <select
+//   className="dropdown bedrooms-field"
+//   onChange={this.updateNumBedRooms}
+//   value={ this.state.numBedRooms }>
+// </selct>
 
 module.exports = PropertyFrom;

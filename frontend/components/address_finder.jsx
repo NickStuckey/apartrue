@@ -1,7 +1,6 @@
 const React = require('react'),
       PropertyStore = require('../stores/property_store'),
       FilterStore = require('../stores/filter_store'),
-      SearchFeilds = require('./search_feilds'),
       PropertyActions = require('../actions/property_actions'),
       hashHistory = require('react-router').hashHistory,
       SessionStore = require('../stores/session_store');
@@ -32,14 +31,20 @@ const AddressFinder = React.createClass({
 
   handleSubmit(e) {
     e.preventDefault();
-    // if (this.state.places.length === 0) { return; }
     const address = this.state.places[0].name;
-    const streetAddress = address.split(', ')[0];
+    const addressComponents = address.split(', ');
+    const streetAddress = addressComponents[0];
+    // const zipcode = ;//something
+    // const city = ;// something
     const propertyId = PropertyStore.findByStreetAddress(streetAddress);
     if (!!propertyId) {
+      PropertyActions.stageProperty({
+        streetAddress: streetAddress,
+        // zipcode: zipcode,
+        // city: city
+      });
       hashHistory.push(`properties/${propertyId}`);
     } else {
-      // PropertyActions.stageProperty(streetAddress);
       hashHistory.push("properties/new");
     }
   },
