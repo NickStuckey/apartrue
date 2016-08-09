@@ -69,7 +69,6 @@ const AddressFinder = React.createClass({
         <input
           type="text"
           className="input-field"
-          placehoder="Or search by address..."
           onChange={this.updateAddress}
           ref={(input) => this.searchBoxInput = input}
         />

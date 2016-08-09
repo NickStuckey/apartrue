@@ -31,7 +31,7 @@ const PropertyFrom = React.createClass ({
       // zipcode: zipcode || "",
       address: "",
       city: null,
-      zipcode,
+      zipcode: null,
       price: null,
       numBedRooms: "", // change to dropdown
       available: false,

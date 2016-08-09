@@ -74,7 +74,7 @@ const SearchFields = React.createClass({
         <select
           className="search-feild-list input-field"
           onChange={this.updateSize}>
-          <option className="default" value="" disable selected hidden>bedrooms</option>
+          <option className="default" value="" hidden>bedrooms</option>
           <option value="5">5</option>
           <option value="4">4</option>
           <option value="3">3</option>
@@ -87,7 +87,7 @@ const SearchFields = React.createClass({
         <select
           className="search-feild-list input-field"
           onChange={this.updatePrice}>
-          <option className="default" value="" disable selected hidden>Price Limit</option>
+          <option className="default" value="" hidden>Price Limit</option>
           <option value="1500">1500</option>
           <option value="2500">2500</option>
           <option value="3500">3500</option>
@@ -100,7 +100,7 @@ const SearchFields = React.createClass({
         <select
           className="search-feild-list input-field"
           onChange={this.updateNeighborhoodId}>
-          <option className="default" value="" disable selected hidden>Neighborhood</option>
+          <option className="default" value="" hidden>Neighborhood</option>
           <option value="1">Manhattan</option>
           <option value="2">Brooklyn</option>
           <option value="3">Queens</option>

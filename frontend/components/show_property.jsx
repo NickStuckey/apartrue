@@ -1,28 +1,19 @@
 const React = require('react'),
       PropertyStore = require('../stores/property_store'),
+      SinglePropertyMap = require('./single_property_map'),
       PropertyActions = require('../actions/property_actions');
 
 const ShowProperty = React.createClass({
   getInitialState () {
-    const propId = parseInt(this.props.params.propertyId);
-    const property = PropertyStore.find(propId) || {};
-    return { property };
+    const propId = this.props.params.propertyId;
+    const property = PropertyStore.find(propId);
+    return {
+      property: property
+     };
   },
 
   componentDidMount() {
-    const propId = parseInt(this.props.params.propertyId);
-    this.propertyListener = PropertyStore.addListener(this._onChange);
-    PropertyActions.fetchProperty(propId);
-  },
-
-  componentWillUnmount() {
-    this.propertyListener.remove();
-  },
-
-  _onChange () {
-    const propId = parseInt(this.props.params.propertyId);
-    const property = PropertyStore.find(propId);
-    this.setState({ property });
+    PropertyActions.fetchProperty(this.state.property.id);
   },
 
   render () {
@@ -31,11 +22,15 @@ const ShowProperty = React.createClass({
       return <li key={i} className="property-stat">{property[stat]}</li>;
     });
     return (
-      <div>
+      <div className="show-property-wrapper">
         <h1>{property.address}</h1>
         <ul className="property-info">
           { propertyStats }
         </ul>
+        <SinglePropertyMap
+          mapCenter={{lat: property.lat, lng: property.lng}}
+          property={property}
+        />
       </div>
     );
   }
