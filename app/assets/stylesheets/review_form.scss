@@ -1,0 +1,29 @@
+.landlord-rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+.landlord-rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+.landlord-rating > span:hover:before,
+.landlord-rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+}
+
+.property-rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+.property-rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+.property-rating > span:hover:before,
+.property-rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+}

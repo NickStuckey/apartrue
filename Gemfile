@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'bcrypt'
 gem 'paperclip', '~> 5.0.0.beta1'
 
-group :prodution do
+group :production do
   gem 'rails_12factor'
 end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

@@ -114,3 +114,12 @@
 #   lat: 40.771117,
 #   lng: -73.957472
 #   })
+
+Review.create({
+  title: "Best apartment ever!",
+  body: "The landlord used to come over and bring me pizza and give me foot rubs.  What a nice guy!",
+  property_rating: 5,
+  landlord_rating: 5,
+  author_id: 2,
+  property_id: 1
+  })
