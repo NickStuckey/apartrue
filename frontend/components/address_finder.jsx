@@ -32,6 +32,7 @@ const AddressFinder = React.createClass({
 
   handleSubmit(e) {
     e.preventDefault();
+    // if (this.state.places.length === 0) { return; }
     const address = this.state.places[0].name;
     const streetAddress = address.split(', ')[0];
     const propertyId = PropertyStore.findByStreetAddress(streetAddress);

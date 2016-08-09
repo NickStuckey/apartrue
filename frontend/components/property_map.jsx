@@ -28,7 +28,7 @@ const PropertyMap = React.createClass ({
   },
 
   componentDidMount () {
-    const mapOptions = {center: this.props.mapCenter, zoom: 1};
+    const mapOptions = {center: this.props.mapCenter, zoom: 13};
     PropertyStore.addListener(this._onChange);
     this.map = new google.maps.Map(this.mapContainer, mapOptions);
     this.addMapListeners();
