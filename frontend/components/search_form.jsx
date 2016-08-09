@@ -23,10 +23,10 @@ const SearchForm = React.createClass({
   componentWillUnmount () {
     this.filterListener.remove();
   },
-
-  currentPath () {
-    return (hashHistory[-1] === "/") ? "welcome" : "navbar"; // NOTE figure out how to get current path
-  },
+  //
+  // currentPath () {
+  //   return (hashHistory[-1] === "/") ? "welcome" : "navbar"; // NOTE figure out how to get current path
+  // },
 
   _onFilterChange () {
     results = <SearchResults mapCenter={ this.state.mapCenter } format={ this.currentPath }/>; // format is for css styling of the result element
@@ -40,12 +40,15 @@ const SearchForm = React.createClass({
   render () {
     // debugger
     return (
-      <div className="page-wrapper">
-        <NavBar/>
+      <div className="page-wrapper group">
+        <h2 className="search-header">You''re just a few steps from home.</h2>
+        <div className="backing-bar"></div>
+        <div className="search-form-background"></div>
         <div className="search-form-wrapper">
-          <h2>SOME STUFF</h2>
-          <AddressFinder />
-          <SearchFields setMap={this.setMap}/>
+          <h1>What are you looking for?</h1>
+          <SearchFields setMap={this.setMap} />
+          <h1>Or, search by address</h1>
+          <AddressFinder className="address-finder"/>
           { results }
         </div>
       </div>

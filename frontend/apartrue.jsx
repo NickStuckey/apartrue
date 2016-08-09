@@ -15,6 +15,7 @@ let PropertyApiUtil = require('./util/property_api_util'),
     PropertyIndex = require('./components/property_index'),
     SearchForm = require('./components/search_form'),
     AddressFinder = require('./components/address_finder'),
+    NavBar = require('./components/nav_bar'),
     PropertyForm = require('./components/property_form');
 
     // <div className="header"></div>
@@ -25,6 +26,7 @@ const App = React.createClass ({
 
     return (
       <div className="app-wrapper">
+        <NavBar/>
         {this.props.children}
       </div>
     );

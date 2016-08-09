@@ -12,21 +12,23 @@ const NavBar = React.createClass ({
 
   sessionOption () {
     if (SessionStore.isUserLoggedIn) {
-      return <button className="session-button" onClick={ this.handleLogout }>Log Out</button>;
+      return <button className="session-button nav-bar-link" onClick={ this.handleLogout }>Log Out</button>;
     } else {
-      return <Link to="/login" activeClassName="nav-link">Log In</Link>;
+      return <Link to="/login" activeClassName="nav-link nav-bar-link">Log In</Link>;
     }
   },
 
+  // <Image source={require('./my-icon.png')} /> use for home button icon
   render () {
     return (
       <header className="nav-bar-wrapper">
-        <nav className="nav-bar"></nav>
-          <a hreg="/" className="home-button"><Image source={require('./my-icon.png')} />
-          { SearchFields }
-        <ul className="nav-buttons">
-          { this.sessionOption() }
-        </ul>
+        <div className="nav-bar-background"></div>
+          <nav className="nav-bar ">
+            <a href="/" className="home-button nav-bar-link">aparTrue</a>
+            <ul className="nav-buttons">
+              { this.sessionOption() }
+            </ul>
+          </nav>
       </header>
     );
   }

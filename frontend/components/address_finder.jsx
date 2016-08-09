@@ -65,18 +65,15 @@ const AddressFinder = React.createClass({
 
   render () {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <h1>asdf</h1>
-        <h1>asdf</h1>
-        <h1>asdf</h1>
-        <h1>asdf</h1>
+      <form className="google-address-finder" onSubmit={this.handleSubmit}>
         <input
           type="text"
-          className="fuzzy-finder"
+          className="input-field"
+          placehoder="Or search by address..."
           onChange={this.updateAddress}
           ref={(input) => this.searchBoxInput = input}
         />
-        <input type="submit" value="find" />
+        <input type="submit" className="search-button button" value="find" />
       </form>
     );
   }

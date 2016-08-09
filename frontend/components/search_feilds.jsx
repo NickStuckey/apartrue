@@ -68,45 +68,47 @@ const SearchFields = React.createClass({
   },
 
   render () {
-    let format = this.props.format;
     return (
-      <form className={ format } onSubmit={ this.handleSubmit }>
+      <form className={"search-filter-inputs"} onSubmit={ this.handleSubmit }>
         <p>{ bedroomsError } </p>
         <select
-          className="search-feild-list"
+          className="search-feild-list input-field"
           onChange={this.updateSize}>
-          <option className="search-feild-list-item" value="5">5</option>
-          <option className="search-feild-list-item" value="4">4</option>
-          <option className="search-feild-list-item" value="3">3</option>
-          <option className="search-feild-list-item" value="2">2</option>
-          <option className="search-feild-list-item" value="1">1</option>
-          <option className="search-feild-list-item" value="0">0</option>
+          <option className="default" value="" disable selected hidden>bedrooms</option>
+          <option value="5">5</option>
+          <option value="4">4</option>
+          <option value="3">3</option>
+          <option value="2">2</option>
+          <option value="1">1</option>
+          <option value="0">0</option>
         </select>
 
         <p>{ priceLimitError } </p>
         <select
-          className="search-feild-list"
+          className="search-feild-list input-field"
           onChange={this.updatePrice}>
-          <option className="search-feild-list-item" value="1500">1500</option>
-          <option className="search-feild-list-item" value="2500">2500</option>
-          <option className="search-feild-list-item" value="3500">3500</option>
-          <option className="search-feild-list-item" value="4500">4500</option>
-          <option className="search-feild-list-item" value="5500">5500</option>
-          <option className="search-feild-list-item" value="99999999999">none</option>
+          <option className="default" value="" disable selected hidden>Price Limit</option>
+          <option value="1500">1500</option>
+          <option value="2500">2500</option>
+          <option value="3500">3500</option>
+          <option value="4500">4500</option>
+          <option value="5500">5500</option>
+          <option value="99999999999">none</option>
         </select>
 
         <p>{ neighborhoodIdError }</p>
         <select
-          className="search-feild-list"
+          className="search-feild-list input-field"
           onChange={this.updateNeighborhoodId}>
-          <option className="search-feild-list-item" value="1">Manhattan</option>
-          <option className="search-feild-list-item" value="2">Brooklyn</option>
-          <option className="search-feild-list-item" value="3">Queens</option>
-          <option className="search-feild-list-item" value="4">Bronx</option>
-          <option className="search-feild-list-item" value="5">Staten Island</option>
+          <option className="default" value="" disable selected hidden>Neighborhood</option>
+          <option value="1">Manhattan</option>
+          <option value="2">Brooklyn</option>
+          <option value="3">Queens</option>
+          <option value="4">Bronx</option>
+          <option value="5">Staten Island</option>
         </select>
 
-        <input type="submit" value="go!"/>
+        <input type="submit" className="search-button button" value="go!"/>
       </form>
     );
   }

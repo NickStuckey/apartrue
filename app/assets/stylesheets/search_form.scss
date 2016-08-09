@@ -1,8 +1,91 @@
 .search-form-wrapper {
+  display: block;
+  position: relative;
+  margin: auto;
+  width: 700px;
   height: 500px;
+  top: -400px;
+}
+
+.search-form-wrapper h1 {
+  color: #575757;
+  font-size: 36px;
+  text-align: center;
+  padding: 20px;
+}
+
+.backing-bar {
+  display: block;
+  float:left;
+  height: 500px;
+  width: 100%;
+  transform: translateY(25%);
+  background: #575757;
+  opacity: 0.5;
+}
+
+.search-header {
+  display: block;
+  float: none;
+  height: 0;
+  color: white;
+  text-align: center;
+  font-size: 50px;
+}
+
+.search-form-background {
+  height: 500px;
+  width: 700px;
+  border-radius: 20%;
+  position: relative;
+  margin: auto;
+  transform: translateY(25%);
+  background: #e1a0a0;
+  opacity: 0.9;
+}
+
+.google-address-finder {
+  display: block;
+  margin: auto;
   width: 500px;
-  top: 50%;
-  left: 50%;
-  transform: translate(50%, 50%);
+}
+
+.input-field {
+  box-sizing: border-box;
+  display: block;
+  padding: 5px 10px 5px 10px;
+  height: 45px;
+  width: 500px;
+  border: 2px #7b7a7a solid;
+  text-align: center;
+  font-size: 20px;
+  margin: 0 auto 30px auto;
   background: white;
+  color: #7b7a7a;
+}
+
+.search-button {
+  display: block;
+  padding: 10px 50px;
+  background: #d7eae0;
+  margin-top: 30px
+}
+
+.search-filter-inputs {
+  display: block;
+  width: 603px;
+  margin: auto;
+  height: 110px;
+
+}
+
+.search-filter-inputs select {
+  width: auto;
+  display: block;
+  float: left;
+  margin-left: 50px;
+}
+
+.default {
+  color: #7b7a7a;
 }
