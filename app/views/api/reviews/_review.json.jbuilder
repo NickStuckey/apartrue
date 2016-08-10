@@ -1,1 +1,1 @@
-json.extract! review, :title, :body, :property_rating, :landlord_rating
+json.extract! review, :title, :body, :property_rating, :landlord_rating, :id

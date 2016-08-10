@@ -1,7 +1,6 @@
 class Api::ReviewsController < ApplicationController
   def index
-    @reviews = Review.find_all_for_property(review_params[:property_id])
-
+    @reviews = Review.where(property_id: review_params[:property_id])
     if @reviews
       render "api/reviews/index"
     else
@@ -21,7 +20,9 @@ class Api::ReviewsController < ApplicationController
   end
 
   def destroy
-
+    @review = Review.find(params[:id])
+    @review.delete
+    render "api/reviews/show"
   end
 
   def review_params

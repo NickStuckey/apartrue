@@ -29,6 +29,18 @@ const ReviewApiUtil = {
         console.log('fetchPropertyReviews', error);
       }
     });
+  },
+
+  removeReview (id, success) {
+    $.ajax({
+      url: `api/reviews/${id}`,
+      type: `DELETE`,
+      success,
+      error: (xhr) => {
+        const error = xhr.responseJSON;
+        console.log('removeReview', error);
+      }
+    });
   }
 };
 

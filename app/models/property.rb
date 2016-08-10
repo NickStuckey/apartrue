@@ -4,6 +4,9 @@ class Property < ActiveRecord::Base
   belongs_to :neighborhood
   has_many :reviews
 
+  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "skyline.jpg"
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+
   belongs_to(
     :owner,
     class_name: :User,

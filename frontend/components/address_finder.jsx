@@ -32,18 +32,20 @@ const AddressFinder = React.createClass({
   handleSubmit(e) {
     e.preventDefault();
     if (!this.state.places[0]) { return; }
-    const address = this.state.places[0].name;
-    const addressComponents = address.split(', ');
-    const streetAddress = addressComponents[0];
-    // const zipcode = google magic
-    // const city =  google magic
+    const fullAddress = this.state.places[0];
+    const formatedAddress = fullAddress.formatted_address;
+    const addressParts = formatedAddress.split(', ');
+    const streetAddress = fullAddress.name;
+    const city =  addressParts[1];
+    const zipcode = addressParts[2].slice(3);
+
     const propertyId = PropertyStore.findByStreetAddress(streetAddress);
+    PropertyActions.stageProperty({
+      address: streetAddress,
+      zipcode: zipcode,
+      city: city
+    });
     if (!!propertyId) {
-      // PropertyActions.stageProperty({
-      //   streetAddress: streetAddress,
-      //   zipcode: zipcode,
-      //   city: city
-      // });
       hashHistory.push(`properties/${propertyId}`);
     } else {
       hashHistory.push("properties/new");

@@ -15,6 +15,11 @@ const resetReviews = function (reviews) {
   ReviewStore.__emitChange();
 };
 
+const removeReview = function (review) {
+  delete _reviews[review.id];
+  ReviewStore.__emitChange();
+};
+
 ReviewStore.all = function () {
   return Object.assign({}, _reviews);
 };
@@ -26,6 +31,9 @@ ReviewStore.__onDispatch = function (payload) {
       break;
     case ReviewConstants.RESET_REVIEWS:
       resetReviews(payload.reviews);
+      break;
+    case ReviewConstants.REMOVE_REVIEW:
+      removeReview(payload.review);
       break;
   }
 };

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160809200018) do
+ActiveRecord::Schema.define(version: 20160810172137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,19 +25,23 @@ ActiveRecord::Schema.define(version: 20160809200018) do
   add_index "neighborhoods", ["name"], name: "index_neighborhoods_on_name", unique: true, using: :btree
 
   create_table "properties", force: :cascade do |t|
-    t.string   "address",         null: false
+    t.string   "address",            null: false
     t.integer  "owner_id"
     t.integer  "neighborhood_id"
     t.integer  "price"
     t.integer  "num_bedrooms"
-    t.boolean  "available",       null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.boolean  "available",          null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.string   "geolocation"
     t.float    "lat"
     t.float    "lng"
-    t.integer  "zipcode",         null: false
+    t.integer  "zipcode",            null: false
     t.string   "city"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "properties", ["address"], name: "index_properties_on_address", unique: true, using: :btree

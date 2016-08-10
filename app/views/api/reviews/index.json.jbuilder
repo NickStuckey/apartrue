@@ -10,5 +10,8 @@ lord_sum = 0
 end
 
 num_reviews = @reviews.length
-json.avgPropertyRating (prop_sum / num_reviews)
-json.avgLandlordRating (lord_sum / num_reviews)
+
+if num_reviews > 0 
+  json.avgPropertyRating (prop_sum / num_reviews)
+  json.avgLandlordRating (lord_sum / num_reviews)
+end

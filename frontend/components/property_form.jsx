@@ -14,24 +14,21 @@ let isOwner = false;
 
 const PropertyFrom = React.createClass ({
   getInitialState() {
-    //get property from stage store
-    // const property = StagingStore.getStagedProperty();
-    let address, city, numBedRooms;
+    // get property from stage store
+    const property = StagingStore.getStagedProperty();
+    let address, city, zipcode;
 
-    //if it's not an empty object then set things
-    // if (!!property.address) {
-    //   address = property.address;
-    //   zipcode = property.zipcode;
-    //   city = property.city;
-    // }
+    // if it's not an empty object then set things
+    if (!!property.address) {
+      address = property.address;
+      zipcode = property.zipcode;
+      city = property.city;
+    }
 
     return ({
-      // address: address || "",
-      // city: city || "",
-      // zipcode: zipcode || "",
-      address: "",
-      city: null,
-      zipcode: null,
+      address: address,
+      city: city,
+      zipcode: zipcode,
       price: null,
       numBedRooms: "", // change to dropdown
       available: false,
@@ -52,7 +49,7 @@ const PropertyFrom = React.createClass ({
   codeAddress() {
     const that = this;
     const address = `${this.state.address}, ${this.state.city}, ${this.state.zipcode}`;
-    geocoder.geocode( { 'address': address}, function(results, status) { 
+    geocoder.geocode( { 'address': address}, function(results, status) {
       if (status == 'OK') {
         that.sendToAPI(results);
       } else {
@@ -142,7 +139,7 @@ const PropertyFrom = React.createClass ({
               type="text"
               className="property-form-input-field"
               onChange={this.updateAddress}
-              value={this.props.address}
+              value={this.state.address}
               />
           </label>
           <div className="form-feild-error">{ zipcodeError }</div>
@@ -151,7 +148,7 @@ const PropertyFrom = React.createClass ({
               type="text"
               className="property-form-input-field"
               onChange={this.updateZipcode}
-              value={this.props.zipcode}
+              value={this.state.zipcode}
               />
           </label>
           <div className="form-feild-error">{ cityError }</div>
@@ -160,7 +157,7 @@ const PropertyFrom = React.createClass ({
               type="text"
               className="property-form-input-field"
               onChange={this.updateCity}
-              value={this.props.city}
+              value={this.state.city}
               />
           </label>
           <label>Price
@@ -168,7 +165,7 @@ const PropertyFrom = React.createClass ({
               type="text"
               className="property-form-input-field"
               onChange={this.updatePrice}
-              value={this.props.address}
+              value={this.state.price}
               />
           </label>
 
@@ -177,7 +174,7 @@ const PropertyFrom = React.createClass ({
               type="text"
               className="property-form-input-field"
               onChange={this.updateNumBedRooms}
-              value={this.props.numBedRooms}
+              value={this.state.numBedRooms}
               />
           </label>
           <label>owner?

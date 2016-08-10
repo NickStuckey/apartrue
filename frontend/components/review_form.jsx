@@ -46,9 +46,12 @@ const ReviewForm = React.createClass({
     this.setState({body: e.target.value});
   },
 
-  handleSubmit () {
+  handleSubmit (e) {
+    e.preventDefault();
     ReviewActions.createReview(this.state);
   },
+
+
 
   selectedPropStar(star) {
     const rank = this.state.propertyRating;
@@ -75,11 +78,6 @@ const ReviewForm = React.createClass({
   },
 
   render () {
-    let deleteButton;
-    // if (SessionStore.currentUserId === this.review.author_id) {
-    //   deleteButton = <button onClick={this.deleteReview}>Delete</button>;
-    // }
-
     return (
       <div>
         <h1>REVIEW FORM</h1>
@@ -117,7 +115,6 @@ const ReviewForm = React.createClass({
             onClick={this.handleSubmit}
             />
         </form>
-        { deleteButton }
       </div>
     );
   }

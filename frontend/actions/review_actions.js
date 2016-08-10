@@ -7,6 +7,10 @@ const ReviewActions = {
     ReviewApiUtil.createReview(review, this.receiveReview);
   },
 
+  deleteReview (reviewId){
+    ReviewApiUtil.removeReview(reviewId, this.removeReview);
+  },
+
   fetchPropertyReviews (propId) {
     ReviewApiUtil.fetchPropertyReviews(propId, this.receiveAllReviews);
   },
@@ -21,6 +25,13 @@ const ReviewActions = {
   receiveReview (review) {
     AppDispatcher.dispatch({
       actionType: ReviewConstants.CREATE_REVIEW,
+      review: review
+    });
+  },
+
+  removeReview (review) {
+    AppDispatcher.dispatch({
+      actionType: ReviewConstants.REMOVE_REVIEW,
       review: review
     });
   }

@@ -1,6 +1,7 @@
 const React = require('react'),
       PropertyStore = require('../stores/property_store'),
       SinglePropertyMap = require('./single_property_map'),
+      SingleReview = require('./single_review'),
       ReviewActions = require('../actions/review_actions'),
       ReviewForm = require('./review_form'),
       ReviewStore = require('../stores/review_store'),
@@ -14,9 +15,6 @@ const ShowProperty = React.createClass({
     return {
       property: property,
       reviews: {},
-      propRatingSum: 0,
-      lordRatingSum: 0,
-      numRatings: 0
      };
   },
 
@@ -47,22 +45,12 @@ const ShowProperty = React.createClass({
   },
 
   showReviews () {
-    // debugger
     const reviewObject = this.state.reviews;
     const reviewsArray = Object.keys(reviewObject).map((revId) => {
       const review = reviewObject[revId];
-      this.state.numRatings ++;
-      this.state.propRatingSum += review.property_rating;
-      this.state.lordRatingSum += review.landlord_rating;
-      return (
-        <li key={revId} className="review-wrapper">
-          <h3 className="personal-rating">Property rating: { review.property_rating }</h3>
-          <h3 className="personal-rating">Landlord rating: { review.landlord_rating }</h3>
-          <h1 className="review-title">{ review.title }</h1>
-          <p className="review-body">{ review.body }</p>
-        </li>
-      );
+      return <SingleReview key={revId} review={review}/>;
     });
+
     return reviewsArray;
   },
 
@@ -94,6 +82,7 @@ const ShowProperty = React.createClass({
         <h4 className="address-details">{zipcode}</h4>
         <h2 className="stars">Property rating: {propRating}</h2>
         <h2 className="stars">Landlord rating: {lordRating}</h2>
+        <img src={property.image_url}/>
         { map }
       { reviews }
       <ReviewForm
