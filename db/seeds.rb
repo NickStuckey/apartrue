@@ -5,9 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
-
-
+#
+#
+#
 # User.create({username: 'GuestUser', password: 'password', hometown: 'Manhattan'})
 # User.create({username: 'ILovePizza', password: 'password', hometown: 'Manhattan'})
 # User.create({username: 'NickStuckey', password: 'password', hometown: 'Manhattan'})
@@ -21,14 +21,14 @@
 # User.create({username: 'DebbieHuang', password: 'password', hometown: 'Queens'})
 # User.create({username: 'ParaDoxox', password: 'password', hometown: 'Queens'})
 # User.create({username: 'MrBobBobbington', password: 'password', hometown: 'Staten Island'})
-
-
+#
+#
 # Neighborhood.create({name: 'manhattan'})
 # Neighborhood.create({name: 'brooklyn'})
 # Neighborhood.create({name: 'queens'})
 # Neighborhood.create({name: 'bronx'})
 # Neighborhood.create({name: 'staten island'})
-
+#
 # Manhattan
 # Property.create({
 #   address: "188 E 64th St",
@@ -115,11 +115,83 @@
 #   lng: -73.957472
 #   })
 
-Review.create({
-  title: "Best apartment ever!",
-  body: "The landlord used to come over and bring me pizza and give me foot rubs.  What a nice guy!",
-  property_rating: 5,
-  landlord_rating: 5,
-  author_id: 2,
-  property_id: 1
-  })
+# Review.create({
+#   title: "Best apartment ever!",
+#   body: "The landlord used to come over and bring me pizza and give me foot rubs.  What a nice guy!",
+#   property_rating: 5,
+#   landlord_rating: 5,
+#   author_id: 2,
+#   property_id: 1
+#   })
+# Review.create({
+#   title: "Not bad",
+#   body: "Clean, quiet, pretty good deal all around.",
+#   property_rating: 4,
+#   landlord_rating: 4,
+#   author_id: 2,
+#   property_id: 1
+#   })
+# Review.create({
+#   title: "Love it",
+#   body: "I used the olympic pool and helipad all the time, what a great value.",
+#   property_rating: 5,
+#   landlord_rating: 5,
+#   author_id: 7,
+#   property_id: 1
+#   })
+# Review.create({
+#   title: "Sick pad",
+#   body: "As in the contant smell of filth made me sick.",
+#   property_rating: 1,
+#   landlord_rating: 2,
+#   author_id: 4,
+#   property_id: 3
+#   })
+# Review.create({
+#   title: "Come see my band!",
+#   body: "I never lived here but come see my band play tonight at the bar across the street!!!",
+#   property_rating: 5,
+#   landlord_rating: 5,
+#   author_id: 2,
+#   property_id: 2
+#   })
+# Review.create({
+#   title: "Dirty",
+#   body: "Filthy, nasty, unkempt, dishevled... other stuff.",
+#   property_rating: 1,
+#   landlord_rating: 2,
+#   author_id: 2,
+#   property_id: 2
+#   })
+# Review.create({
+#   title: "Good deal",
+#   body: "Liked this place a lot.  Moved into another building owned by the same guy.",
+#   property_rating: 5,
+#   landlord_rating: 5,
+#   author_id: 5,
+#   property_id: 1
+#   })
+# Review.create({
+#   title: "Bedbugs",
+#   body: "What else do i need to say?",
+#   property_rating: 4,
+#   landlord_rating: 1,
+#   author_id: 4,
+#   property_id: 2
+#   })
+# Review.create({
+#   title: "Nice place",
+#   body: "The landlord left me alone, which is good because I don't like people.  There were neighbors, but I left my garbage in the hall so they would move out.",
+#   property_rating: 1,
+#   landlord_rating: 1,
+#   author_id: 2,
+#   property_id: 3
+#   })
+# Review.create({
+#   title: "Get me out of here",
+#   body: "No really, I've been trapped in my apartment for 2 weeks, the doorknob broke off.",
+#   property_rating: 1,
+#   landlord_rating: 1,
+#   author_id: 2,
+#   property_id: 3
+#   })

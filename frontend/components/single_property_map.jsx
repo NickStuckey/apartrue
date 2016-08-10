@@ -43,7 +43,7 @@ const PropertyMap = React.createClass ({
 
   render () {
     return (
-      <div className="map" ref={(map) => this.mapContainer = map}></div>
+      <div className="single-prop-map" ref={(map) => this.mapContainer = map}></div>
     );
   }
 });

@@ -29,10 +29,14 @@ const PropertyMap = React.createClass ({
 
   componentDidMount () {
     const mapOptions = {center: this.props.mapCenter, zoom: 16};
-    PropertyStore.addListener(this._onChange);
+    this.propertyListener = PropertyStore.addListener(this._onChange);
     this.map = new google.maps.Map(this.mapContainer, mapOptions);
     this.addMapListeners();
     this.markers = [];
+  },
+
+  componentWillUnmount () {
+    this.propertyListener.remove();
   },
 
   createMarker (property) {

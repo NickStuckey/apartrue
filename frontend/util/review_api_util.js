@@ -1,7 +1,7 @@
 const ReviewApiUtil = {
-  createReview (review) {
+  createReview (review, success) {
     $.ajax({
-      url: `api/review`,
+      url: `api/reviews`,
       type: "POST",
       data: {review: {
         title: review.title,
@@ -22,7 +22,7 @@ const ReviewApiUtil = {
     $.ajax({
       url: `api/reviews`,
       type: "GET",
-      data: {property: {propertyId: id}},
+      data: {review: {property_id: id}},
       success,
       error: (xhr) => {
         const error = xhr.responseJSON;

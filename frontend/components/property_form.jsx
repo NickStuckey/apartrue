@@ -45,10 +45,14 @@ const PropertyFrom = React.createClass ({
     this.propertyListener = PropertyStore.addListener(this._onChange);
   },
 
+  componentWillUnmount () {
+    this.propertyListener.remove();
+  },
+
   codeAddress() {
     const that = this;
     const address = `${this.state.address}, ${this.state.city}, ${this.state.zipcode}`;
-    geocoder.geocode( { 'address': address}, function(results, status) {
+    geocoder.geocode( { 'address': address}, function(results, status) { 
       if (status == 'OK') {
         that.sendToAPI(results);
       } else {

@@ -13,6 +13,10 @@ const PropertyIndex = React.createClass ({
     this.propertyListener = PropertyStore.addListener(this._onChange);
   },
 
+  componentWillUnmount () {
+    this.propertyListener.remove();
+  },
+
   _onChange () {
     this.setState({properties: PropertyStore.all()});
   },

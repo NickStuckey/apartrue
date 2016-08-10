@@ -16,9 +16,9 @@ let PropertyApiUtil = require('./util/property_api_util'),
     SearchForm = require('./components/search_form'),
     AddressFinder = require('./components/address_finder'),
     NavBar = require('./components/nav_bar'),
+    ReviewForm = require('./components/review_form'),
     PropertyForm = require('./components/property_form');
 
-    // <div className="header"></div>
 const App = React.createClass ({
 
 
@@ -50,6 +50,7 @@ const routes = (
       <Route path="index" component={ PropertyIndex }/>
       <Route path="users/:userId" component={ UserProfile } />
       <Route path="address" component={ AddressFinder } />
+      <Route path="reviewform" component={ ReviewForm } />
     </Route>
   </Router>
 );

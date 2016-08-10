@@ -1,11 +1,9 @@
 const React = require('react'),
       AddressFinder = require('./address_finder'),
-      // PropertyStore = require('../stores/property_store'),
       hashHistory = require('react-router').hashHistory,
       FilterStore = require('../stores/filter_store'),
       NavBar = require('./nav_bar'),
       SearchFields = require('./search_feilds'),
-      // PropertyActions = require('../actions/property_actions'),
       SearchResults = require('./search_results'),
       SessionStore = require('../stores/session_store');
 
@@ -23,10 +21,6 @@ const SearchForm = React.createClass({
   componentWillUnmount () {
     this.filterListener.remove();
   },
-  //
-  // currentPath () {
-  //   return (hashHistory[-1] === "/") ? "welcome" : "navbar"; // NOTE figure out how to get current path
-  // },
 
   _onFilterChange () {
     results = <SearchResults mapCenter={ this.state.mapCenter } format={ this.currentPath }/>; // format is for css styling of the result element
@@ -38,7 +32,6 @@ const SearchForm = React.createClass({
   },
 
   render () {
-    // debugger
     return (
       <div className="page-wrapper group">
         <h2 className="search-header">You''re just a few steps from home.</h2>

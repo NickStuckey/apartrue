@@ -1,9 +1,7 @@
 class Api::ReviewsController < ApplicationController
   def index
-    debugger
-    @reviews = Review.find_by_property_id(review_params[:propertyId])
+    @reviews = Review.find_all_for_property(review_params[:property_id])
 
-    debugger
     if @reviews
       render "api/reviews/index"
     else
@@ -12,8 +10,8 @@ class Api::ReviewsController < ApplicationController
   end
 
   def create
-    @review = review_params
-    @review.user_id = current_user.id
+    @review = Review.new(review_params)
+    @review.author_id = current_user.id
 
     if @review.save
       render "api/reviews/show"
@@ -23,10 +21,11 @@ class Api::ReviewsController < ApplicationController
   end
 
   def destroy
-
+    
   end
 
   def review_params
-    params.require(:review).permit(:title, :body, :property_rating, :landlord_rating, :propertyId)
+    params.require(:review).permit(
+    :title, :body, :property_rating, :landlord_rating, :property_id)
   end
 end

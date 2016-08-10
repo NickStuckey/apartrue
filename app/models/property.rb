@@ -2,6 +2,7 @@ class Property < ActiveRecord::Base
   validates :address, :zipcode, :available, :lat, :lng, presence: true
 
   belongs_to :neighborhood
+  has_many :reviews
 
   belongs_to(
     :owner,
@@ -19,4 +20,5 @@ class Property < ActiveRecord::Base
       .where('neighborhood_id = ?', filters[:neighborhood_id])
     properties
   end
+
 end

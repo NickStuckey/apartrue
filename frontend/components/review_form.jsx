@@ -5,7 +5,7 @@ const React = require('react'),
 
 const ReviewForm = React.createClass({
   getInitialState () {
-    const propId = this.props.params.propertyId;
+    const propId = this.props.propertyId;
     return ({
       title: "",
       body: "",
@@ -19,13 +19,17 @@ const ReviewForm = React.createClass({
     this.reviewListener = ReviewStore.addListener(this._onChange);
   },
 
+  componentWillUnmount () {
+    this.reviewListener.remove();
+  },
+
   _onChange () {
     // NOTE propbably don't need to redirect, just put a listener on the review
     // store in the property show, so it will update when a new review is added
   },
 
   updateLandlordRating (e) {
-    this.setState({title: e.taget.id});
+    this.setState({landlordRating: e.target.id});
   },
 
   updatePropertyRating (e) {
@@ -42,21 +46,28 @@ const ReviewForm = React.createClass({
 
   handleSubmit () {
     ReviewActions.createReview(this.state);
-
   },
 
   render () {
+    let deleteButton;
+    // if (SessionStore.currentUserId === this.review.author_id) {
+    //   deleteButton = <button onClick={this.deleteReview}>Delete</button>;
+    // }
+
     return (
       <div>
+        <h1>REVIEW FORM</h1>
         <form className="review-form">
-          <div class="landlord-rating">
+          <div className="landlord-rating">
+            <h4>Landlord rating: </h4>
             <span onClick={this.updateLandlordRating} id="1">☆</span>
             <span onClick={this.updateLandlordRating} id="2">☆</span>
             <span onClick={this.updateLandlordRating} id="3">☆</span>
             <span onClick={this.updateLandlordRating} id="4">☆</span>
             <span onClick={this.updateLandlordRating} id="5">☆</span>
           </div>
-          <div class="property-rating">
+          <div className="property-rating">
+            <h4>Property rating: </h4>
             <span onClick={this.updatePropertyRating} id="1">☆</span>
             <span onClick={this.updatePropertyRating} id="2">☆</span>
             <span onClick={this.updatePropertyRating} id="3">☆</span>
@@ -68,19 +79,22 @@ const ReviewForm = React.createClass({
             placeholder="title"
             onChange={this.updateTitle}
             value={this.props.title}
-          />
+            />
           <textarea
             placeholder="Leave a review"
             onChange={this.updateBody}
             value={this.props.body}
-          />
+            />
           <input
             type="submit"
             className="button submit-button"
             onClick={this.handleSubmit}
             />
         </form>
+        { deleteButton }
       </div>
     );
   }
 });
+
+module.exports = ReviewForm;
