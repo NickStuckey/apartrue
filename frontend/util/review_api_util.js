@@ -1,15 +1,11 @@
 const ReviewApiUtil = {
-  createReview (review, success) {
+  createReview (formData, success) {
     $.ajax({
       url: `api/reviews`,
       type: "POST",
-      data: {review: {
-        title: review.title,
-        body: review.body,
-        landlord_rating: review.landlordRating,
-        property_rating: review.propertyRating,
-        property_id: review.propertyId
-      }},
+      contentType: false,
+      processData: false,
+      data: formData,
       success,
       error: (xhr) => {
         const error = xhr.responseJSON;

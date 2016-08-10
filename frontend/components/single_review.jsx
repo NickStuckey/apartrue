@@ -12,7 +12,6 @@ const SingleReview = React.createClass({
   },
 
   render () {
-    // debugger
     const review = this.state.review;
     return (
       <li key={review.id} className="review-wrapper">
@@ -21,7 +20,6 @@ const SingleReview = React.createClass({
         <h1 className="review-title">{ review.title }</h1>
         <p className="review-body">{ review.body }</p>
         <button className="button delete-review" onClick={this.deleteReview}>Delete</button>
-
       </li>
     );
   }

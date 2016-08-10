@@ -11,7 +11,9 @@ const ReviewForm = React.createClass({
       body: "",
       landlordRating: null,
       propertyRating: null,
-      propertyId: propId
+      propertyId: propId,
+      imageUrl: null,
+      imageFile: null
     });
   },
 
@@ -46,9 +48,25 @@ const ReviewForm = React.createClass({
     this.setState({body: e.target.value});
   },
 
+  // data: {review: {
+  //   title: review.title,
+  //   body: review.body,
+  //   landlord_rating: review.landlordRating,
+  //   property_rating: review.propertyRating,
+  //   property_id: review.propertyId
+  // }},
+
   handleSubmit (e) {
     e.preventDefault();
-    ReviewActions.createReview(this.state);
+
+    const formData = new FormData();
+
+    formData.append("property[address]", this.state.address);
+    formData.append("property[address]", this.state.address);
+    formData.append("property[address]", this.state.address);
+    formData.append("property[address]", this.state.address);
+
+    ReviewActions.createReview(formData);
   },
 
 

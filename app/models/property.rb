@@ -1,5 +1,6 @@
 class Property < ActiveRecord::Base
-  validates :address, :zipcode, :available, :lat, :lng, presence: true
+  validates :address, :zipcode, :lat, :lng, presence: true
+  validates :address, uniqueness: true
 
   belongs_to :neighborhood
   has_many :reviews

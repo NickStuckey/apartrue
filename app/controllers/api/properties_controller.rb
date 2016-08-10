@@ -24,10 +24,17 @@ class Api::PropertiesController < ApplicationController
   end
 
   def create
+    property_params[:image] = nil if property_params[:image] = "null"
     @property = Property.new(property_params)
-    # find Neighborhood ID using provided city name
+
     city_name = property_params[:city]
-    @property.neighborhood_id = Neighborhood.find_by_name(city_name).id
+    neighborhood = Neighborhood.find_by_name(city_name)
+
+    if neighborhood
+      @property.neighborhood_id = neighborhood.id
+    else
+      @property.neighborhood_id = Neighborhood.create_and_return_id(city_name)
+    end
 
     if @property.save
       render "api/properties/show"
@@ -49,7 +56,7 @@ class Api::PropertiesController < ApplicationController
   def property_params
     form_params = params.require(:property).permit(
       :address, :owner_id, :price, :num_bedrooms, :available,
-      :lat, :lng, :zipcode, :city, :neighborhood_id,
+      :lat, :lng, :zipcode, :city, :neighborhood_id, :image,
       bounds: [northEast: [:lat, :lng], southWest: [:lat, :lng]]
     )
   end

@@ -33,11 +33,18 @@ const AddressFinder = React.createClass({
     e.preventDefault();
     if (!this.state.places[0]) { return; }
     const fullAddress = this.state.places[0];
-    const formatedAddress = fullAddress.formatted_address;
-    const addressParts = formatedAddress.split(', ');
-    const streetAddress = fullAddress.name;
+    const formattedAddress = fullAddress.formatted_address;
+    let addressParts, zipcode;
+
+    if (formattedAddress) {
+      addressParts = formattedAddress.split(', ');
+      zipcode = addressParts[2].slice(3);
+    } else {
+      addressParts = fullAddress.name.split(', ');
+    }
+
     const city =  addressParts[1];
-    const zipcode = addressParts[2].slice(3);
+    const streetAddress = fullAddress.name;
 
     const propertyId = PropertyStore.findByStreetAddress(streetAddress);
     PropertyActions.stageProperty({

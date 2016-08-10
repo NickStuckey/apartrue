@@ -27,6 +27,6 @@ class Api::ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(
-    :title, :body, :property_rating, :landlord_rating, :property_id)
+    :title, :body, :property_rating, :landlord_rating, :image, :property_id)
   end
 end

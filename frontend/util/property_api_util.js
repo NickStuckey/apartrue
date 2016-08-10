@@ -1,23 +1,13 @@
 
 module.exports = {
 
-  createProperty (property, success, error) {
+  createProperty (formData, success, error) {
     $.ajax({
       url: "api/properties",
       type: "POST",
-      data: {
-        property: {
-          address: property.address,
-          zipcode: property.zipcode,
-          price: property.price,
-          num_bedrooms: property.numBedRooms,
-          available: property.available,
-          lat: property.lat,
-          lng: property.lng,
-          city: property.city,
-          owner_id: property.ownerId
-          }
-        },
+      contentType: false,
+      processData: false,
+      data: formData,
       success,
       error: function (xhr) {
         const errors = xhr.responseJSON;

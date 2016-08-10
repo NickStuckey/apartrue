@@ -1,7 +1,10 @@
 source 'https://rubygems.org'
 
 gem 'bcrypt'
+
+gem 'figaro'
 gem 'paperclip', '~> 5.0.0.beta1'
+gem 'aws-sdk', '>= 2.0'
 
 group :production do
   gem 'rails_12factor'

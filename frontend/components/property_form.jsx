@@ -30,11 +30,13 @@ const PropertyFrom = React.createClass ({
       city: city,
       zipcode: zipcode,
       price: null,
-      numBedRooms: "", // change to dropdown
+      numBedrooms: "",
       available: false,
       ownerId: null,
       lat: null,
-      lng: null
+      lng: null,
+      imageFile: null,
+      imageUrl: null
     });
   },
 
@@ -60,7 +62,6 @@ const PropertyFrom = React.createClass ({
 
   handleSubmit (e) {
     e.preventDefault();
-
     const address = this.state.address,
           zipcode = this.state.zipcode,
           city = this.state.city;
@@ -94,7 +95,23 @@ const PropertyFrom = React.createClass ({
       lng: latLng.lng(),
       ownerId: ownerId
     });
-    PropertyActions.createProperty(this.state);
+
+    const formData = new FormData();
+
+    formData.append("property[address]", this.state.address);
+    formData.append("property[zipcode]", this.state.zipcode);
+    formData.append("property[price]", this.state.price);
+    formData.append("property[num_bedrooms]", this.state.numBedrooms);
+    formData.append("property[available]", this.state.available);
+    formData.append("property[lat]", this.state.lat);
+    formData.append("property[lng]", this.state.lng);
+    formData.append("property[city]", this.state.city);
+    formData.append("property[owner_id]", this.state.ownerId);
+    formData.append("property[image]", this.state.imageFile);
+
+    PropertyActions.createProperty(formData);
+
+    // PropertyActions.createProperty(this.state);
   },
 
   showErrors () {
@@ -117,8 +134,8 @@ const PropertyFrom = React.createClass ({
     this.setState({price: parseInt(e.target.value)});
   },
 
-  updateNumBedRooms (e) { // NOTE change to dropdown
-    this.setState({numBed: parseInt(e.target.value)});
+  updateNumBedRooms (e) {
+    this.setState({numBed: e.target.value});
   },
 
   updateIsCurrentOwner () {
@@ -129,9 +146,28 @@ const PropertyFrom = React.createClass ({
     this.setState({available: !this.props.available});
   },
 
+  updateFile (e) {
+    const file = e.currentTarget.files[0];
+    const fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      this.setState({imageFile: file, imageUrl: fileReader.result});
+    };
+
+    if (file) {
+      fileReader.readAsDataURL(file);
+    }
+   },
+
   render () {
+    const address = [
+      this.state.address,
+      this.state.city,
+      this.state.zipcode
+    ].join(', ');
+
     return (
       <div className="property-form-component-wrapper">
+        <h1>{address} is not in our database, please complete the form and submit it</h1>
         <form className="property-form" onSubmit={this.handleSubmit}>
           <div className="form-feild-error">{ addressError }</div>
           <label>Address
@@ -169,28 +205,35 @@ const PropertyFrom = React.createClass ({
               />
           </label>
 
-          <label>Number of Bedrooms // NOTE change to dropdown
-            <input
-              type="text"
-              className="property-form-input-field"
+          <label>Number of Bedrooms
+            <select
+              className="dropdown bedrooms-field"
               onChange={this.updateNumBedRooms}
-              value={this.state.numBedRooms}
-              />
+              value={ this.state.numBedrooms }>
+              <option className="default" value="">bedrooms</option>
+              <option value="5">5</option>
+              <option value="4">4</option>
+              <option value="3">3</option>
+              <option value="2">2</option>
+              <option value="1">1</option>
+              <option value="0">0</option>
+            </select>
           </label>
           <label>owner?
             <input
               type="checkbox"
-              className="property-form-input-field"
+              className="property-form-check-box"
               onChange={this.updateIsCurrentOwner}
               />
           </label>
           <label>Available?
             <input
               type="checkbox"
-              className="property-form-input-field"
+              className="property-form-check-box"
               onChange={this.updateIsAvailable}
               />
           </label>
+          <input type="file" onChange={this.updateFile} />
           <input type="submit" value="Add Location"/>
         </form>
       </div>
@@ -198,10 +241,11 @@ const PropertyFrom = React.createClass ({
   }
 });
 
-// <select
-//   className="dropdown bedrooms-field"
+// <input
+//   type="text"
+//   className="property-form-input-field"
 //   onChange={this.updateNumBedRooms}
-//   value={ this.state.numBedRooms }>
-// </selct>
+//   value={this.state.numBedrooms}
+//   />
 
 module.exports = PropertyFrom;
