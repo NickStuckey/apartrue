@@ -10,6 +10,7 @@
 .landlord-rating > span:hover:before,
 .landlord-rating > span:hover ~ span:before {
    content: "\2605";
+   color: yellow;
    position: absolute;
 }
 
@@ -25,5 +26,12 @@
 .property-rating > span:hover:before,
 .property-rating > span:hover ~ span:before {
    content: "\2605";
+   color: yellow;
    position: absolute;
+}
+
+.selected-star {
+  content: "\2605";
+  position: absolute;
+  color: #D6A100;
 }

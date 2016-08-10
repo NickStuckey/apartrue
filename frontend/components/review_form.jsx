@@ -30,10 +30,12 @@ const ReviewForm = React.createClass({
 
   updateLandlordRating (e) {
     this.setState({landlordRating: e.target.id});
+    this.forceUpdate();
   },
 
   updatePropertyRating (e) {
     this.setState({propertyRating: e.target.id});
+    this.forceUpdate();
   },
 
   updateTitle (e) {
@@ -48,6 +50,30 @@ const ReviewForm = React.createClass({
     ReviewActions.createReview(this.state);
   },
 
+  selectedPropStar(star) {
+    const rank = this.state.propertyRating;
+
+    // if (!rank) {return;}
+
+    if (star <= rank) {
+      return "selected-star";
+    } else {
+      return;
+    }
+  },
+
+  selectedLordStar(star) {
+    const rank = this.state.landlordRating;
+
+    // if (!rank) {return;}
+
+    if (star <= rank) {
+      return "selected-star";
+    } else {
+      return;
+    }
+  },
+
   render () {
     let deleteButton;
     // if (SessionStore.currentUserId === this.review.author_id) {
@@ -60,19 +86,19 @@ const ReviewForm = React.createClass({
         <form className="review-form">
           <div className="landlord-rating">
             <h4>Landlord rating: </h4>
-            <span onClick={this.updateLandlordRating} id="1">☆</span>
-            <span onClick={this.updateLandlordRating} id="2">☆</span>
-            <span onClick={this.updateLandlordRating} id="3">☆</span>
-            <span onClick={this.updateLandlordRating} id="4">☆</span>
-            <span onClick={this.updateLandlordRating} id="5">☆</span>
+            <span onClick={this.updateLandlordRating} className={this.selectedLordStar(5)} id="5">☆</span>
+            <span onClick={this.updateLandlordRating} className={this.selectedLordStar(4)} id="4">☆</span>
+            <span onClick={this.updateLandlordRating} className={this.selectedLordStar(3)} id="3">☆</span>
+            <span onClick={this.updateLandlordRating} className={this.selectedLordStar(2)} id="2">☆</span>
+            <span onClick={this.updateLandlordRating} className={this.selectedLordStar(1)} id="1">☆</span>
           </div>
           <div className="property-rating">
             <h4>Property rating: </h4>
-            <span onClick={this.updatePropertyRating} id="1">☆</span>
-            <span onClick={this.updatePropertyRating} id="2">☆</span>
-            <span onClick={this.updatePropertyRating} id="3">☆</span>
-            <span onClick={this.updatePropertyRating} id="4">☆</span>
-            <span onClick={this.updatePropertyRating} id="5">☆</span>
+            <span onClick={this.updatePropertyRating} className={this.selectedPropStar(5)} id="5">☆</span>
+            <span onClick={this.updatePropertyRating} className={this.selectedPropStar(4)} id="4">☆</span>
+            <span onClick={this.updatePropertyRating} className={this.selectedPropStar(3)} id="3">☆</span>
+            <span onClick={this.updatePropertyRating} className={this.selectedPropStar(2)} id="2">☆</span>
+            <span onClick={this.updatePropertyRating} className={this.selectedPropStar(1)} id="1">☆</span>
           </div>
           <input
             type="text"

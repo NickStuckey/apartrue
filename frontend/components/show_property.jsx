@@ -28,17 +28,13 @@ const ShowProperty = React.createClass({
   },
 
   drawPropertyRating () {
-    const sum = parseInt(this.state.propRatingSum);
-    const total = parseInt(this.numRatings);
-    const average = Math.round(((sum / total) * 10) / 10);
-    return (average);
+    const rating = this.state.reviews.avgPropertyRating;
+    return (rating);
   },
 
   drawLandlordRating () {
-    const sum = parseInt(this.state.lordRatingSum);
-    const total = parseInt(this.numRatings);
-    const average = Math.round(((sum / total) * 10) / 10);
-    return (average);
+    const rating = this.state.reviews.avgLandlordRating;
+    return (rating);
   },
 
   _onPropertyChange () {

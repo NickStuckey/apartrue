@@ -21,7 +21,7 @@ class Api::ReviewsController < ApplicationController
   end
 
   def destroy
-    
+
   end
 
   def review_params
