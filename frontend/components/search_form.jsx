@@ -34,7 +34,7 @@ const SearchForm = React.createClass({
   render () {
     return (
       <div className="page-wrapper group">
-        <h2 className="search-header">You''re just a few steps from home.</h2>
+        <h2 className="search-header">"You're just a few steps from home."</h2>
         <div className="backing-bar"></div>
         <div className="search-form-background"></div>
         <div className="search-form-wrapper">

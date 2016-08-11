@@ -35,7 +35,9 @@ class Api::PropertiesController < ApplicationController
       @property.neighborhood_id = Neighborhood.create_and_return_id(city_name)
     end
 
+    # debugger
     if @property.save
+      # debugger
       render "api/properties/show"
     else
       render json: @property.errors

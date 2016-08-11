@@ -17,10 +17,6 @@ const ReviewForm = React.createClass({
     });
   },
 
-  componentWillUnmount () {
-    this.reviewListener.remove();
-  },
-
   updateLandlordRating (e) {
     this.setState({landlordRating: e.target.id});
     this.forceUpdate();

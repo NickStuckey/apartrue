@@ -47,14 +47,14 @@ const AddressFinder = React.createClass({
     const city =  addressParts[1];
     const streetAddress = addressParts[0];
 
-    const propertyId = PropertyStore.findByStreetAddress(streetAddress);
+    const property = PropertyStore.findByStreetAddress(streetAddress);
     PropertyActions.stageProperty({
       address: streetAddress,
       zipcode: zipcode,
       city: city
     });
-    if (!!propertyId) {
-      hashHistory.push(`properties/${propertyId}`);
+    if (!!property) {
+      hashHistory.push(`properties/${property.id}`);
     } else {
       hashHistory.push("properties/new");
     }

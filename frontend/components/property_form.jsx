@@ -76,7 +76,7 @@ const PropertyFrom = React.createClass ({
   },
 
   _onChange () {
-    const newProperty = PropertyStore.all(); // NOTE CHANGE TO LAST PROPETY
+    const newProperty = PropertyStore.mostRecentlyAdded();
     hashHistory.push(`properties/${newProperty.id}`);
   },
 

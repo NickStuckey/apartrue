@@ -5,34 +5,30 @@ const ReviewConstants = require('../constants/review_constants');
 
 const PropertyStore = new Store(AppDispatcher);
 
-let _properties = {};
+let _properties = [];
 
 const addProperty = function (property) {
-  _properties[property.id] = property;
+  _properties.push(property);
   PropertyStore.__emitChange();
 };
 
 const resetProperties = function (properties) {
-  _properties = properties;
+  _properties = Object.keys(properties).map((id) => { return properties[id]; });
   PropertyStore.__emitChange();
 };
 
 PropertyStore.findByStreetAddress = function (streetAddress) {
-  let propertyId;
-  Object.keys(_properties).forEach((propId) => {
-    if (_properties[propId].address === streetAddress) {
-        propertyId = propId;
-    }
+  return _properties.find((property) => {
+    return property.address === streetAddress;
   });
-  return propertyId;
 };
 
-PropertyStore.all = () => {
-  return Object.assign({}, _properties);
+PropertyStore.all = function () {
+  return _properties.slice();
 };
 
-PropertyStore.find = function(id){
-  return Object.assign({}, _properties[id]);
+PropertyStore.mostRecentlyAdded = function () {
+  return _properties.pop();
 };
 
 PropertyStore.__onDispatch = (payload) => {

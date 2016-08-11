@@ -3,7 +3,6 @@ const React = require('react'),
 
 const SingleReview = React.createClass({
   getInitialState () {
-    // debugger
     return ({review: this.props.review});
   },
 

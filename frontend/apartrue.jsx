@@ -8,6 +8,7 @@ const ReactDOM = require('react-dom'),
       PropertyMap = require('./components/property_map'),
       SearchResults = require('./components/search_results'),
       ShowProperty = require('./components/show_property'),
+      Modal = require('react-modal'),
       UserProfile = require('./components/user_profile');
 
 //testing only
@@ -20,7 +21,6 @@ let PropertyApiUtil = require('./util/property_api_util'),
     PropertyForm = require('./components/property_form');
 
 const App = React.createClass ({
-
 
   render () {
 
@@ -57,6 +57,7 @@ const routes = (
 
 document.addEventListener("DOMContentLoaded", () => {
   let root = document.getElementById('content');
+  Modal.setAppElement(document.body);
 
   if (window.currentUser) {
     SessionActions.receiveCurrentUser(window.currentUser);

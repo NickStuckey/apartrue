@@ -1,12 +1,11 @@
 **Implementation Timeline**
 
-
 *whats left*
+  - fix auth
   - fix error handling on controllers to not create objects
   - style prop show
   - style submit form
   - set up user profile
-  - fix auth
 
   *current bugs to fix*
     - fix empty review display for ratings in jbuilder

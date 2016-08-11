@@ -1,4 +1,4 @@
-.nav-bar-link:hover {
+.hoverable:hover {
   color: #E89595;
 }
 
@@ -11,16 +11,22 @@
   height:50px;
 }
 
-.session-button {
+.link-list {
+  display: block;
+  float: right;
+}
+
+.link-list > li {
   color: white;
-  top: 0;
-  right: 0;
+  text-align: center;
+  font-size: 12px;
   display:block;
   height: 50px;
   width: 70px;
   float: left;
+  line-height: 50px;
+  text-transform: capitalize;
 }
-
 
 .nav-bar-background {
   display: block;

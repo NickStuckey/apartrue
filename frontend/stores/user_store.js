@@ -6,20 +6,23 @@ const UserStore = new Store(AppDispatcher);
 
 let _user = {};
 
-const resetUser = function (user) {
-  _user = user;
+const addUser = function (user) {
+  _user[user.id] = user;
   UserStore.__emitChange();
 };
 
 UserStore.find = function (id) {
-  console.log(id);
-  return Object.assign({}, _user[id]);
+  return Object.assign({}, _user.id);
 };
+
+// const resetUser = function {
+//
+// }
 
 UserStore.__onDispatch = function (payload) {
   switch (payload.actionType) {
     case UserConstants.PROFILE_RECIVED:
-      resetUser(payload.user);
+      addUser(payload.user);
       break;
   }
 };
