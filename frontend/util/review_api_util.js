@@ -17,20 +17,6 @@ const ReviewApiUtil = {
       }
     });
   },
-  // createReview (formData, success) {
-  //   $.ajax({
-  //     url: `api/reviews`,
-  //     type: "POST",
-  //     contentType: false,
-  //     processData: false,   NOTE for file uploads
-  //     data: formData,
-  //     success,
-  //     error: (xhr) => {
-  //       const error = xhr.responseJSON;
-  //       console.log('createReview', error);
-  //     }
-  //   });
-  // },
 
   fetchPropertyReviews (id, success) {
     $.ajax({

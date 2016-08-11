@@ -11,7 +11,7 @@ const addReview = function (review) {
 };
 
 const resetReviews = function (reviews) {
-  _reviews = reviews.reviews;
+  _reviews = reviews;
   ReviewStore.__emitChange();
 };
 

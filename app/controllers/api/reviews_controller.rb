@@ -11,12 +11,10 @@ class Api::ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.author_id = current_user.id
-    
-    associated_property = Property.find(review_params[:property_id])
-    associated_property.update_rating_averages!
-    
 
     if @review.save
+      associated_property = Property.find(review_params[:property_id])
+      associated_property.update_rating_averages!
       render "api/reviews/show"
     else
       render json: @review.errors
@@ -25,6 +23,7 @@ class Api::ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find(params[:id])
+    @review.destroy
     render "api/reviews/show"
   end
 

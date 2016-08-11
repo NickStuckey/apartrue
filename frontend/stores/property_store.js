@@ -46,9 +46,6 @@ PropertyStore.__onDispatch = (payload) => {
     case PropertyConstants.PROPERTY_REMOVED:
       removeProperty(payload.property);
       break;
-    // case ReviewConstants.UPDATE_PROPERTY_STATS:
-    //   updatePropertyStats(payload);
-    //   break;
   }
 };
 

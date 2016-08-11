@@ -9,7 +9,7 @@ const React = require('react'),
 
 const ShowProperty = React.createClass({
   getInitialState () {
-    return { property: {}, reviews: {}, landlordStats: {} };
+    return { property: {}, reviews: {} };
   },
 
   componentDidMount() {
@@ -30,7 +30,7 @@ const ShowProperty = React.createClass({
   },
 
   drawLandlordRating () {
-    const rating = this.state.property.avg_property_rating;
+    const rating = this.state.property.avg_landlord_rating;
     const stars = [];
     for (let i = 0; i < rating; i++) {
       stars.push("★");
@@ -42,12 +42,13 @@ const ShowProperty = React.createClass({
   _onPropertyChange () {
     const propId = this.props.params.propertyId;
     this.setState({property: PropertyStore.find(propId)});
+    let x = null;
   },
 
   _onReviewChange () {
     const propId = this.props.params.propertyId;
     this.setState({reviews: ReviewStore.all()});
-    this.setStat({property: PropetyActions.fetchProperty(propId)});
+    PropertyActions.fetchProperty(propId);
   },
 
   showReviews () {

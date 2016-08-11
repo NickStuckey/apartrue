@@ -17,10 +17,6 @@ const ReviewForm = React.createClass({
     });
   },
 
-  componentDidMount () {
-    this.reviewListener = ReviewStore.addListener(this._onChange);
-  },
-
   componentWillUnmount () {
     this.reviewListener.remove();
   },
@@ -47,7 +43,6 @@ const ReviewForm = React.createClass({
     e.preventDefault();
 
     ReviewActions.createReview(this.state);
-    PropertyActions.fetchProperty(this.state.propertyId);
   },
 
   selectedPropStar(star) {
