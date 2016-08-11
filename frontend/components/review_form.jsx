@@ -1,6 +1,8 @@
 const React = require('react'),
       ReviewActions = require('../actions/review_actions'),
       SessionStore = require('../stores/session_store'),
+      PropertyActions = require('../actions/property_actions'),
+      PropertyStore = require('../stores/property_store'),
       ReviewStore = require('../stores/review_store');
 
 const ReviewForm = React.createClass({
@@ -12,8 +14,6 @@ const ReviewForm = React.createClass({
       landlordRating: null,
       propertyRating: null,
       propertyId: propId,
-      imageUrl: null,
-      imageFile: null
     });
   },
 
@@ -23,11 +23,6 @@ const ReviewForm = React.createClass({
 
   componentWillUnmount () {
     this.reviewListener.remove();
-  },
-
-  _onChange () {
-    // NOTE propbably don't need to redirect, just put a listener on the review
-    // store in the property show, so it will update when a new review is added
   },
 
   updateLandlordRating (e) {
@@ -48,33 +43,15 @@ const ReviewForm = React.createClass({
     this.setState({body: e.target.value});
   },
 
-  // data: {review: {
-  //   title: review.title,
-  //   body: review.body,
-  //   landlord_rating: review.landlordRating,
-  //   property_rating: review.propertyRating,
-  //   property_id: review.propertyId
-  // }},
-
   handleSubmit (e) {
     e.preventDefault();
 
-    const formData = new FormData();
-
-    formData.append("property[address]", this.state.address);
-    formData.append("property[address]", this.state.address);
-    formData.append("property[address]", this.state.address);
-    formData.append("property[address]", this.state.address);
-
-    ReviewActions.createReview(formData);
+    ReviewActions.createReview(this.state);
+    PropertyActions.fetchProperty(this.state.propertyId);
   },
-
-
 
   selectedPropStar(star) {
     const rank = this.state.propertyRating;
-
-    // if (!rank) {return;}
 
     if (star <= rank) {
       return "selected-star";
@@ -85,8 +62,6 @@ const ReviewForm = React.createClass({
 
   selectedLordStar(star) {
     const rank = this.state.landlordRating;
-
-    // if (!rank) {return;}
 
     if (star <= rank) {
       return "selected-star";
@@ -101,7 +76,7 @@ const ReviewForm = React.createClass({
         <h1>REVIEW FORM</h1>
         <form className="review-form">
           <div className="landlord-rating">
-            <h4>Landlord rating: </h4>
+            <h4>Landlord rating </h4>
             <span onClick={this.updateLandlordRating} className={this.selectedLordStar(5)} id="5">☆</span>
             <span onClick={this.updateLandlordRating} className={this.selectedLordStar(4)} id="4">☆</span>
             <span onClick={this.updateLandlordRating} className={this.selectedLordStar(3)} id="3">☆</span>
@@ -109,7 +84,7 @@ const ReviewForm = React.createClass({
             <span onClick={this.updateLandlordRating} className={this.selectedLordStar(1)} id="1">☆</span>
           </div>
           <div className="property-rating">
-            <h4>Property rating: </h4>
+            <h4>Property rating </h4>
             <span onClick={this.updatePropertyRating} className={this.selectedPropStar(5)} id="5">☆</span>
             <span onClick={this.updatePropertyRating} className={this.selectedPropStar(4)} id="4">☆</span>
             <span onClick={this.updatePropertyRating} className={this.selectedPropStar(3)} id="3">☆</span>
@@ -118,11 +93,13 @@ const ReviewForm = React.createClass({
           </div>
           <input
             type="text"
+            className="title-input-field"
             placeholder="title"
             onChange={this.updateTitle}
             value={this.props.title}
             />
           <textarea
+            className="review-text-area"
             placeholder="Leave a review"
             onChange={this.updateBody}
             value={this.props.body}

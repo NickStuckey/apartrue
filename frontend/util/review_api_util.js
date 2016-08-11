@@ -1,11 +1,15 @@
 const ReviewApiUtil = {
-  createReview (formData, success) {
+  createReview (review, success) {
     $.ajax({
       url: `api/reviews`,
       type: "POST",
-      contentType: false,
-      processData: false,
-      data: formData,
+      data: {review: {
+        title: review.title,
+        body: review.body,
+        landlord_rating: review.landlordRating,
+        property_rating: review.propertyRating,
+        property_id: review.propertyId
+      }},
       success,
       error: (xhr) => {
         const error = xhr.responseJSON;
@@ -13,6 +17,20 @@ const ReviewApiUtil = {
       }
     });
   },
+  // createReview (formData, success) {
+  //   $.ajax({
+  //     url: `api/reviews`,
+  //     type: "POST",
+  //     contentType: false,
+  //     processData: false,   NOTE for file uploads
+  //     data: formData,
+  //     success,
+  //     error: (xhr) => {
+  //       const error = xhr.responseJSON;
+  //       console.log('createReview', error);
+  //     }
+  //   });
+  // },
 
   fetchPropertyReviews (id, success) {
     $.ajax({

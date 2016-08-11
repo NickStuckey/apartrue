@@ -35,3 +35,26 @@
   position: absolute;
   color: #D6A100;
 }
+
+.review-form {
+  border: 1px solid grey;
+  padding: 10px;
+}
+
+.review-form h4 {
+  margin: 0;
+  padding: 0; 
+}
+
+.title-input-field {
+  width: 200px;
+  border: 3px solid grey;
+  display: block;
+  float: left;
+}
+.review-text-area {
+  display: block;
+  width: 600px;
+  height: 200px;
+  border: 3px solid grey;
+}

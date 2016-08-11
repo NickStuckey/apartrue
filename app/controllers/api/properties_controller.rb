@@ -15,7 +15,6 @@ class Api::PropertiesController < ApplicationController
 
   def show
     @property = Property.find(params[:id])
-
     if @property
       render "api/properties/show"
     else
@@ -43,7 +42,6 @@ class Api::PropertiesController < ApplicationController
     end
   end
 
-
   private
   def is_owner?
     params[:is_owner]
@@ -56,7 +54,7 @@ class Api::PropertiesController < ApplicationController
   def property_params
     form_params = params.require(:property).permit(
       :address, :owner_id, :price, :num_bedrooms, :available,
-      :lat, :lng, :zipcode, :city, :neighborhood_id, :image,
+      :lat, :lng, :zipcode, :city, :neighborhood_id, :image, :id,
       bounds: [northEast: [:lat, :lng], southWest: [:lat, :lng]]
     )
   end

@@ -1,5 +1,5 @@
 class Property < ActiveRecord::Base
-  validates :address, :zipcode, :lat, :lng, presence: true
+  validates :address, :lat, :lng, presence: true
   validates :address, uniqueness: true
 
   belongs_to :neighborhood
@@ -23,6 +23,17 @@ class Property < ActiveRecord::Base
       .where('num_bedrooms = ?', filters[:num_bedrooms])
       .where('neighborhood_id = ?', filters[:neighborhood_id])
     properties
+  end
+
+  def update_rating_averages!
+    ratings = {
+      property_average: self.reviews.average(:property_rating).round,
+      landlord_average: self.reviews.average(:landlord_rating).round
+    }
+
+    self.avg_property_rating = ratings[:property_average]
+    self.avg_landlord_rating = ratings[:landlord_average]
+    self.save!
   end
 
 end

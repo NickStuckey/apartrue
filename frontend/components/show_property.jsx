@@ -9,13 +9,7 @@ const React = require('react'),
 
 const ShowProperty = React.createClass({
   getInitialState () {
-    const propId = this.props.params.propertyId;
-    const property = PropertyStore.find(propId);
-
-    return {
-      property: property,
-      reviews: {},
-     };
+    return { property: {}, reviews: {}, landlordStats: {} };
   },
 
   componentDidMount() {
@@ -26,13 +20,23 @@ const ShowProperty = React.createClass({
   },
 
   drawPropertyRating () {
-    const rating = this.state.reviews.avgPropertyRating;
-    return (rating);
+    const rating = this.state.property.avg_property_rating;
+    const stars = [];
+    for (let i = 0; i < rating; i++) {
+      stars.push("★");
+    }
+
+    return (<p className="avg-stars">{stars.join('')}</p>);
   },
 
   drawLandlordRating () {
-    const rating = this.state.reviews.avgLandlordRating;
-    return (rating);
+    const rating = this.state.property.avg_property_rating;
+    const stars = [];
+    for (let i = 0; i < rating; i++) {
+      stars.push("★");
+    }
+
+    return (<p className="avg-stars">{stars.join('')}</p>);
   },
 
   _onPropertyChange () {
@@ -41,7 +45,9 @@ const ShowProperty = React.createClass({
   },
 
   _onReviewChange () {
+    const propId = this.props.params.propertyId;
     this.setState({reviews: ReviewStore.all()});
+    this.setStat({property: PropetyActions.fetchProperty(propId)});
   },
 
   showReviews () {
@@ -59,12 +65,12 @@ const ShowProperty = React.createClass({
     const property = this.state.property;
 
     if (property.address) {
+      reviews = this.showReviews();
       address = property.address;
       city = property.city;
       zipcode = property.zipcode;
       lat = property.lat;
       lng = property.lng;
-      reviews = this.showReviews();
       propRating = this.drawPropertyRating();
       lordRating = this.drawLandlordRating();
       map = <SinglePropertyMap
@@ -74,20 +80,31 @@ const ShowProperty = React.createClass({
       />;
     }
 
-
     return (
       <div className="show-property-wrapper">
-        <h1 className="address-details street-address">{address}</h1>
-        <h4 className="address-details">{city}</h4>
-        <h4 className="address-details">{zipcode}</h4>
-        <h2 className="stars">Property rating: {propRating}</h2>
-        <h2 className="stars">Landlord rating: {lordRating}</h2>
-        <img src={property.image_url}/>
-        { map }
-      { reviews }
-      <ReviewForm
-        className="review-form-component"
-        propertyId={this.props.params.propertyId}/>
+        <div className="header-wrapper">
+          <h1 className="title-address">{address}</h1>
+            <h2>Property</h2>
+              {propRating}
+            <h2>Landlord</h2>
+              {lordRating}
+          <div className="map-box group">
+            { map }
+            <div className="map-box-text">
+              <ul>
+                <li className="address-detail">{address}</li>
+                <li className="address-detail">{city}</li>
+                <li className="address-detail">{zipcode}</li>
+              </ul>
+
+            </div>
+          </div>
+          <img className="property-pic" src={property.image_url}/>
+          { reviews }
+          <ReviewForm
+            className="review-form-component"
+            propertyId={this.props.params.propertyId}/>
+        </div>
       </div>
     );
   }

@@ -4,13 +4,17 @@ class Api::ReviewsController < ApplicationController
     if @reviews
       render "api/reviews/index"
     else
-      render :json ['no reviews found']
+      render json: ['no reviews found']
     end
   end
 
   def create
     @review = Review.new(review_params)
     @review.author_id = current_user.id
+    
+    associated_property = Property.find(review_params[:property_id])
+    associated_property.update_rating_averages!
+    
 
     if @review.save
       render "api/reviews/show"
@@ -21,12 +25,12 @@ class Api::ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find(params[:id])
-    @review.delete
     render "api/reviews/show"
   end
 
   def review_params
     params.require(:review).permit(
-    :title, :body, :property_rating, :landlord_rating, :image, :property_id)
+      :title, :body, :property_rating, :landlord_rating, :image, :property_id
+      )
   end
 end

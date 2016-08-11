@@ -24,7 +24,7 @@ const NavBar = React.createClass ({
       <header className="nav-bar-wrapper">
         <div className="nav-bar-background"></div>
           <nav className="nav-bar ">
-            <a href="/" className="home-button nav-bar-link">aparTrue</a>
+            <a href="#/" className="home-button nav-bar-link">aparTrue</a>
             <ul className="nav-buttons">
               { this.sessionOption() }
             </ul>

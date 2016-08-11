@@ -1,11 +1,27 @@
 **Implementation Timeline**
 
-  *current bugs to fix*
-    - can't submit a new property with 'false' value for available
-    - complete numBedRooms dropdown in property form
-    - debug property form auto fill from store
-    - extract zipcode and neighborhood from google address object
 
+*whats left*
+  - fix error handling on controllers to not create objects
+  - style prop show
+  - style submit form
+  - set up user profile
+  - fix auth
+
+  *current bugs to fix*
+    - fix empty review display for ratings in jbuilder
+    - fix property submit and display
+    - style property show
+
+    - fix login redirect
+      - log out button disapears
+      - review form only shows up when signed in
+      - delete button only shows up for user reviews
+
+    - style property add
+    - add user profile update form
+    - style user profile
+    - get rid of two extra reviews on refresh
 
   *Phase 1: backend and authentication* (2 days, W1 tuesday, wednesday) √
     - create new project √
@@ -33,21 +49,21 @@
     - set up google map api to view properties √
     - add properties with google map api √
 
-    - create all properties forms and components, set up FLUX
+    - create all properties forms and components, set up FLUX √
     - CSS style new components
 
   *Phase 3: Reviews, User profiles* (2 days, w2 monday, tuesday)
-    - create Reviews model
-    - create Users model
+    - create Reviews model √
+    - create Users model √
     - seed database with reviews for each user
-    - JBuilder for reviews
-    - JBuilder for users
-    - CRUD API for reviews
+    - JBuilder for reviews √
+    - JBuilder for users √
+    - CRUD API for reviews √
     - CRUD API for users
     - style user profile page
-    - style review submit and update form
-    - set up flux for reviews
-    - set up flux for users
+    - style review submit and update form √
+    - set up flux for reviews √
+    - set up flux for users √
     - CSS style sign up, sign in forms
 
   *Phase 4: search and fuzzy finders* (1 day, w2 wednesday)

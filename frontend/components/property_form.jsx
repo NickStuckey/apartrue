@@ -1,4 +1,4 @@
-const React = require('react'),
+ const React = require('react'),
       PropertyStore = require('../stores/property_store'),
       PropertyActions = require('../actions/property_actions'),
       SessionStore = require('../stores/session_store'),
@@ -63,12 +63,10 @@ const PropertyFrom = React.createClass ({
   handleSubmit (e) {
     e.preventDefault();
     const address = this.state.address,
-          zipcode = this.state.zipcode,
           city = this.state.city;
 
-    if (!(address, zipcode, city)) {
+    if (!(address, city)) {
       addressError = address ? "" : fieldErrorMsg;
-      zipcodeError =  zipcode ? "" : fieldErrorMsg;
       cityError =  city ? "" : fieldErrorMsg;
       this.forceUpdate();
       return;
@@ -78,7 +76,7 @@ const PropertyFrom = React.createClass ({
   },
 
   _onChange () {
-    const newProperty = PropertyStore.all();
+    const newProperty = PropertyStore.all(); // NOTE CHANGE TO LAST PROPETY
     hashHistory.push(`properties/${newProperty.id}`);
   },
 
@@ -178,7 +176,6 @@ const PropertyFrom = React.createClass ({
               value={this.state.address}
               />
           </label>
-          <div className="form-feild-error">{ zipcodeError }</div>
           <label>Zipcode
             <input
               type="text"

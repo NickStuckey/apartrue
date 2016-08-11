@@ -1,10 +1,16 @@
 const Store = require('flux/utils').Store;
 const AppDispatcher = require('../dispatcher/dispatcher');
 const PropertyConstants = require('../constants/property_constants');
+const ReviewConstants = require('../constants/review_constants');
 
 const PropertyStore = new Store(AppDispatcher);
 
 let _properties = {};
+
+const addProperty = function (property) {
+  _properties[property.id] = property;
+  PropertyStore.__emitChange();
+};
 
 const resetProperties = function (properties) {
   _properties = properties;
@@ -19,11 +25,6 @@ PropertyStore.findByStreetAddress = function (streetAddress) {
     }
   });
   return propertyId;
-};
-
-const addProperty = function (property) {
-  _properties[property.id] = property;
-  PropertyStore.__emitChange();
 };
 
 PropertyStore.all = () => {
@@ -45,6 +46,9 @@ PropertyStore.__onDispatch = (payload) => {
     case PropertyConstants.PROPERTY_REMOVED:
       removeProperty(payload.property);
       break;
+    // case ReviewConstants.UPDATE_PROPERTY_STATS:
+    //   updatePropertyStats(payload);
+    //   break;
   }
 };
 

@@ -1,3 +1,10 @@
+.avg-stars {
+  font-size: 2.5em;
+  color: #f4bf00;
+  max-width: 100px;
+  // display: block;
+}
+
 .show-property-wrapper {
   max-width: 1000px;
   background: white;
@@ -7,23 +14,49 @@
   margin: auto;
 }
 
-.address-details {
-  display: block;
-  float: left;
-  color: #7a7e7e;
+.title-address {
+  font-size: 50px;
+  color: #64aaaa;
   padding: 10px;
-  
 }
 
-.single-prop-map {
-  height: 300px;
+.address-details {
+  width: 1000px;
+}
+
+.address-detail {
   width: 300px;
-  float: right;
-  margin:5px;
-  border: 2px solid #7a7b7b;
+  display: block;
+  float: left;
+}
+
+.header-wrapper {
+  min-width: 1000px;
+  padding-bottom: 20px;
+}
+
+.map-box {
+  display: block;
+  float: left;
+  height: auto;
+  width: 300px;
+  padding: 5px;
+  border: 1px solid grey;
+}
+
+.property-pic {
+  max-width: 400px;
+  height: auto;
 }
 
 .review-wrapper {
   height: 200px;
   border-top: 1px solid grey;
+}
+
+.single-prop-map {
+  height: 295px;
+  width: 295px;
+  float: left;
+  border: 2px solid #7a7b7b;
 }

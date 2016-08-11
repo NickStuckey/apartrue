@@ -59,6 +59,6 @@ module.exports = {
         console.log("fetch property", errors);
       }
     });
-  }
+  },
 
 };

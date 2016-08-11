@@ -32,6 +32,7 @@ const AddressFinder = React.createClass({
   handleSubmit(e) {
     e.preventDefault();
     if (!this.state.places[0]) { return; }
+
     const fullAddress = this.state.places[0];
     const formattedAddress = fullAddress.formatted_address;
     let addressParts, zipcode;
@@ -44,7 +45,7 @@ const AddressFinder = React.createClass({
     }
 
     const city =  addressParts[1];
-    const streetAddress = fullAddress.name;
+    const streetAddress = addressParts[0];
 
     const propertyId = PropertyStore.findByStreetAddress(streetAddress);
     PropertyActions.stageProperty({
