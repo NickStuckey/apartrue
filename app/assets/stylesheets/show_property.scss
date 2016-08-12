@@ -53,7 +53,7 @@ li.address-detail:first-child {
 }
 
 li.show-property-star-wrapper {
-  width: 260px;
+  width: 220px;
   float: left;
   padding: 0;
 }
@@ -83,17 +83,20 @@ li.single-review-star-wrapper {
   position: relative;
   width: 300px;
   height: 400px;
-  transform: translate(-30px, -35px);
   background: #64aaaa;
   padding: 5px;
   color: white;
+  left: 50px;
+  // top: 10px;
   font-size: 20px;
   border: 3px solid #515252;
+  transform: translateY(-20px);
 }
 
 
 .mid-content-wrapper {
   height: 400px;
+  // padding-top:0px;
 }
 
 .property-content-wrapper {
@@ -108,11 +111,13 @@ li.single-review-star-wrapper {
   z-index: 200;
   position: relative;
   max-width: 510px;
-  height: auto;
+  /* height: auto; */
   float: left;
-  transform: translate(366px, -396px);
+      transform: translate(366px, -406px);
+  // transform: translate(366px, -396px);
   border: 10px solid white;
-  margin-left: 10px;
+  margin-left: 36px;
+  max-height: 390px;
 }
 
 .review-wrapper {
@@ -150,7 +155,7 @@ h1.review-title {
 }
 
 ul.show-page-star-ratings {
-  width: 520px;
+  width: 440px;
   float: right;
   margin-right: 20px;
   transform: translateY(-20px);
@@ -169,7 +174,8 @@ ul.show-page-star-ratings {
 
 p.star-label {
   font-size: 30px;
-  text-align: center;
+      text-align: center;
+      padding-right: 20px;
 }
 
 ul.single-review-star-ratings {
@@ -191,8 +197,9 @@ p.single-review-star-label {
 .title-address {
   font-size: 50px;
   color: #64aaaa;
-  padding: 20px 0 0 10px;
-  width: 400px;
+  padding: 0 0 0 10px;
+  width: 450px;
+  height: 150px;
   text-align: center;
   float: left;
 }

@@ -121,7 +121,8 @@ const PropertyFrom = React.createClass ({
   },
 
   updateZipcode (e) {
-    this.setState({zipcode: parseInt(e.target.value)});
+    const zip = parseInt(e.target.value) || "";
+    this.setState({zipcode: zip});
   },
 
   updateCity (e) {
@@ -220,8 +221,9 @@ const PropertyFrom = React.createClass ({
             <p className="label-text">Number of Bedrooms</p>
             <select
               className="bedroom-dropdown"
+              placeholder="bedrooms"
               onChange={this.updateNumBedRooms}
-              value={ this.state.numBedrooms }>
+              >
               <option className="default" value="">bedrooms</option>
               <option value="5">5</option>
               <option value="4">4</option>
@@ -240,7 +242,7 @@ const PropertyFrom = React.createClass ({
                 className="property-form-check-box"
                 onChange={this.updateIsCurrentOwner}
                 />
-              <label for="toggle-property"><span className="checkbox-filler"></span></label>
+              <label><span className="checkbox-filler"></span></label>
             </label>
             <label className="checkbox-field-label">
               <p className="label-text">Is it available?</p>
@@ -250,7 +252,7 @@ const PropertyFrom = React.createClass ({
                 className="property-form-check-box"
                 onChange={this.updateIsAvailable}
                 />
-              <label for="toggle-available"><span className="checkbox-filler"></span></label>
+              <label ><span className="checkbox-filler"></span></label>
             </label>
           </div>
           <input type="file" className="file-upload" onChange={this.updateFile} />
