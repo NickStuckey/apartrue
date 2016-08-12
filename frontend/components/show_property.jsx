@@ -84,7 +84,7 @@ const ShowProperty = React.createClass({
         right           : 0,
         bottom          : 0,
         backgroundColor : 'rgba(128,128,128, 0.5)',
-        zIndex         : 10
+        zIndex         : 1000
       },
       content : {
         backgroundColor : 'rgba(0,0,0, 0.75)',
@@ -95,7 +95,7 @@ const ShowProperty = React.createClass({
         bottom          : '100px',
         border          : '1px solid #ccc',
         padding         : '20px',
-        zIndex         : 11
+        zIndex         : 1000
       }
     };
   },
@@ -230,10 +230,10 @@ const ShowProperty = React.createClass({
               />
           </form>
 
-          <h2>Or continue as a guest</h2>
+          <h2 className="guest-login-modal">Or continue as a guest</h2>
         <button
           onClick={this.signInGuest}
-          className="sign-in-button"
+          id="modal-sign-in-button"
           >Welcome</button>
 
         </Modal>

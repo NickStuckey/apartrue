@@ -26,6 +26,8 @@ const UserProfile = React.createClass({
     return (
       <div className="content-wrapper">
       <h1>{user.username}</h1>
+      <form className="update-profile">
+      </form>
       </div>
     );
   }
