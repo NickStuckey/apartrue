@@ -32,7 +32,7 @@ const NavBar = React.createClass ({
   },
 
   profileOption () {
-    const user = this.state.user;
+    const user = SessionStore.currentUser();
     if (user) {
       const path = `#/users/${user.id}`;
       return <a href={path} >Profile</a>;

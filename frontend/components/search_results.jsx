@@ -6,10 +6,10 @@ const React = require('react'),
 const SearchResults = React.createClass ({
   render () {
     return (
-      <div>
+      <div className="search-results-wrapper">
         <PropertyMap
           mapCenter={this.props.mapCenter}/>
-        <PropertyIndex />
+        <PropertyIndex className="property-result-list"/>
       </div>
     );
   }

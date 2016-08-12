@@ -28,11 +28,11 @@ const App = React.createClass ({
       <div className="app-wrapper">
         <NavBar/>
         {this.props.children}
-        <div className="footer">apartrue  (:</div>
       </div>
     );
   }
 });
+// <div className="footer">apartrue  (:</div>
 
 window.PropertyApiUtil = PropertyApiUtil;
 

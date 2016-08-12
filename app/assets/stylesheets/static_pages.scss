@@ -72,3 +72,11 @@ h1, h2, h3, label{
 .no-background {
   background: none;
 }
+
+.page-break {
+  position: absolute;
+  height: 50px;
+  color: #7a7b7b;
+  width: 100%;
+  z-index: -1;
+}

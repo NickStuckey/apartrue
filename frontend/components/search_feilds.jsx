@@ -58,7 +58,7 @@ const SearchFields = React.createClass({
         center = {lat: 40.584235, lng: -74.150848};
         break;
       }
-    this.props.setMap(center); // NOTE make sure this is the right way to call a parent function
+    this.props.setMap(center); 
   },
 
   updateNeighborhoodId (e) {

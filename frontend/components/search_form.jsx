@@ -23,7 +23,9 @@ const SearchForm = React.createClass({
   },
 
   _onFilterChange () {
-    results = <SearchResults mapCenter={ this.state.mapCenter } format={ this.currentPath }/>; // format is for css styling of the result element
+    results = <SearchResults
+      mapCenter={ this.state.mapCenter } 
+      className="search-map-wrapper"/>;
     this.forceUpdate();
   },
 
