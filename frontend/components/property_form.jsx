@@ -40,6 +40,22 @@ const PropertyFrom = React.createClass ({
     });
   },
 
+  availClicked() {
+    if (this.state.available) {
+      return "√";
+    } else {
+      return " ";
+    }
+  },
+
+  lordClicked() {
+    if (!!this.state.ownerId) {
+      return "√";
+    } else {
+      return " ";
+    }
+  },
+
   componentDidMount () {
     this.propertyListener = PropertyStore.addListener(this._onChange);
   },
@@ -138,13 +154,18 @@ const PropertyFrom = React.createClass ({
     this.setState({numBed: e.target.value});
   },
 
-  updateIsCurrentOwner () {
-    isOwner = !isOwner;
-  },
+  // updateIsCurrentOwner () {
+  //   SessionStore.isUserLoggedIn();
+  //   if (!!this.state.ownerId) {
+  //     this.setState({ownerId: SessionStore.currentUser()});
+  //   } else {
+  //     this.setState({ownerId: null});
+  //   }
+  // },
 
-  updateIsAvailable () {
-    this.setState({available: !this.props.available});
-  },
+  // updateIsAvailable () {
+  //   this.setState({available: !this.state.available});
+  // },
 
   updateFile (e) {
     const file = e.currentTarget.files[0];
@@ -236,22 +257,20 @@ const PropertyFrom = React.createClass ({
           <div className="checkbox-wrapper">
             <label className="checkbox-field-label">
               <p className="label-text">Your property?</p>
-              <input
-                type="checkbox"
-                id="toggle-property"
+              <div
                 className="property-form-check-box"
-                onChange={this.updateIsCurrentOwner}
-                />
+                value={this.lordClicked()}
+                onClick={this.updateIsCurrentOwner}
+                ></div>
               <label><span className="checkbox-filler"></span></label>
             </label>
             <label className="checkbox-field-label">
               <p className="label-text">Is it available?</p>
-              <input
-                type="checkbox"
-                id="toggle-property"
+              <div
                 className="property-form-check-box"
-                onChange={this.updateIsAvailable}
-                />
+                value={this.availClicked()}
+                onClick={this.updateIsAvailable}
+                ></div>
               <label ><span className="checkbox-filler"></span></label>
             </label>
           </div>

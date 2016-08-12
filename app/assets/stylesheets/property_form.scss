@@ -35,10 +35,20 @@
   text-align: center;
 }
 
-input.property-form-check-box {
+.property-form-check-box {
   height: 45px;
   width: 45px;
   background: white;
+  border: 2px solid #7b7a7a;
+  margin-left: 50px;
+  // color: black;
+
+}
+
+.property-form-check-box:hover {
+  height: 45px;
+  width: 45px;
+  background: grey;
   border: 2px solid #7b7a7a;
   color: black;
 }
