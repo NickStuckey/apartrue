@@ -1,6 +1,6 @@
 const React = require('react'),
       hashHistory = require('react-router').hashHistory,
-      SearchFields = require('./search_feilds'),
+      SearchFields = require('./search_fields'),
       SessionActions = require('../actions/session_actions'),
       SessionStore = require('../stores/session_store');
 

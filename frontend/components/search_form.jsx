@@ -3,7 +3,7 @@ const React = require('react'),
       hashHistory = require('react-router').hashHistory,
       FilterStore = require('../stores/filter_store'),
       NavBar = require('./nav_bar'),
-      SearchFields = require('./search_feilds'),
+      SearchFields = require('./search_fields'),
       SearchResults = require('./search_results'),
       SessionStore = require('../stores/session_store');
 
@@ -24,7 +24,7 @@ const SearchForm = React.createClass({
 
   _onFilterChange () {
     results = <SearchResults
-      mapCenter={ this.state.mapCenter } 
+      mapCenter={ this.state.mapCenter }
       className="search-map-wrapper"/>;
     this.forceUpdate();
   },

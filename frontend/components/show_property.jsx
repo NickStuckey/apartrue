@@ -61,11 +61,11 @@ const ShowProperty = React.createClass({
     this.forceUpdate();
   },
 
-  updateUsernameFeild (e) {
+  updateUsernameField (e) {
     this.setState({modalLoginInfo: {username: e.target.value}});
   },
 
-  updatePasswordFeild (e) {
+  updatePasswordField (e) {
     this.setState({modalLoginInfo: {password: e.target.value}});
   },
 
@@ -169,27 +169,38 @@ const ShowProperty = React.createClass({
     }
 
     return (
-      <div className="content-wrapper">
+      <div className="property-content-wrapper">
         <div className="header-wrapper">
           <h1 className="title-address">{address}</h1>
-            <h2>Property</h2>
-              {propRating}
-            <h2>Landlord</h2>
-              {lordRating}
-          <div className="map-box group">
-            { map }
-            <div className="map-box-text">
-              <ul>
-                <li className="address-detail">{address}</li>
-                <li className="address-detail">{city}</li>
-                <li className="address-detail">{zipcode}</li>
-              </ul>
+            <ul className="show-page-star-ratings">
+              <li className="show-property-star-wrapper">
+                <p className="star-label">Property</p>
+                {propRating}
+              </li>
+              <li className="show-property-star-wrapper">
+                <p className="star-label">Landlord</p>
+                {lordRating}
+              </li>
+            </ul>
+            <div className="mid-content-wrapper">
+              <div className="map-box group">
+                { map }
+                <div className="map-box-text">
+                  <ul>
+                    <li className="address-detail">{address}</li>
+                    <li className="address-detail">{city}</li>
+                    <li className="address-detail">{zipcode}</li>
+                  </ul>
 
+                </div>
+              </div>
+              <img className="property-pic" src={property.image_url}/>
             </div>
-          </div>
-          <img className="property-pic" src={property.image_url}/>
-          { reviews }
-          { sessionOption }
+            <div className="grey-end-to-end-bar"></div>
+            <div className="bottom-content-wrapper" >
+              { reviews }
+              { sessionOption }
+            </div>
         </div>
 
         <Modal
@@ -202,14 +213,14 @@ const ShowProperty = React.createClass({
             <input
               type="text"
               value={this.state.modalLoginInfo.username}
-              onChange={this.updateUsernameFeild}
-              className="form-feilds"
+              onChange={this.updateUsernameField}
+              className="form-fields"
               />
             <input
               type="password"
               value={this.state.modalLoginInfo.password}
-              onChange={this.updatePasswordFeild}
-              className="form-feilds"
+              onChange={this.updatePasswordField}
+              className="form-fields"
               />
             <input
               type="submit"

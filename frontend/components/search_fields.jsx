@@ -58,7 +58,7 @@ const SearchFields = React.createClass({
         center = {lat: 40.584235, lng: -74.150848};
         break;
       }
-    this.props.setMap(center); 
+    this.props.setMap(center);
   },
 
   updateNeighborhoodId (e) {
@@ -72,7 +72,7 @@ const SearchFields = React.createClass({
       <form className={"search-filter-inputs"} onSubmit={ this.handleSubmit }>
         <p>{ bedroomsError } </p>
         <select
-          className="search-feild-list input-field"
+          className="search-field-list input-field"
           onChange={this.updateSize}>
           <option className="default" value="" hidden>bedrooms</option>
           <option value="5">5</option>
@@ -85,7 +85,7 @@ const SearchFields = React.createClass({
 
         <p>{ priceLimitError } </p>
         <select
-          className="search-feild-list input-field"
+          className="search-field-list input-field"
           onChange={this.updatePrice}>
           <option className="default" value="" hidden>Price Limit</option>
           <option value="1500">1500</option>
@@ -98,7 +98,7 @@ const SearchFields = React.createClass({
 
         <p>{ neighborhoodIdError }</p>
         <select
-          className="search-feild-list input-field"
+          className="search-field-list input-field"
           onChange={this.updateNeighborhoodId}>
           <option className="default" value="" hidden>Neighborhood</option>
           <option value="1">Manhattan</option>

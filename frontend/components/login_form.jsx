@@ -62,11 +62,11 @@ const LoginForm = React.createClass({
     }
   },
 
-  updateUsernameFeild (e) {
+  updateUsernameField (e) {
     this.setState({username: e.target.value});
   },
 
-  updatePasswordFeild (e) {
+  updatePasswordField (e) {
     this.setState({password: e.target.value});
   },
 
@@ -126,8 +126,8 @@ const LoginForm = React.createClass({
                   <input
                     type="text"
                     value={this.props.username}
-                    onChange={this.updateUsernameFeild}
-                    className="login-form-input-field login-form-username-feild"
+                    onChange={this.updateUsernameField}
+                    className="login-form-input-field login-form-username-field"
                     placeholder="username"
                     />
 
@@ -138,8 +138,8 @@ const LoginForm = React.createClass({
                   <input
                     type="password"
                     value={this.props.username}
-                    onChange={this.updatePasswordFeild}
-                    className="login-form-input-field login-form-password-feild"
+                    onChange={this.updatePasswordField}
+                    className="login-form-input-field login-form-password-field"
                     placeholder="password"
                     />
 

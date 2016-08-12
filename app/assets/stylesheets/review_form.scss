@@ -1,3 +1,10 @@
+.errorMessage-placeholder {
+  height: 20px;
+  width: 200px;
+  color: red;
+  margin: 5px 0 0 244px;
+}
+
 .landlord-rating {
   unicode-bidi: bidi-override;
   direction: rtl;
@@ -12,6 +19,11 @@
    content: "\2605";
    color: yellow;
    position: absolute;
+}
+
+.landlord-rating > h4 {
+  // width: 200px;
+  // float: right;
 }
 
 .property-rating {
@@ -31,8 +43,7 @@
 }
 
 .selected-star {
-  content: "\2605";
-  position: absolute;
+
   color: #D6A100;
 }
 
@@ -41,17 +52,47 @@
   padding: 10px;
 }
 
-.review-form h4 {
-  margin: 0;
-  padding: 0; 
+.review-form-stars {
+  position: relative;
+      font-size: 20px;
+      margin-right: 45px;
+      margin-top: 19px;
+      float: right;
+      text-align: center;
+}
+
+.review-form-wrapper {
+  width: 1000px;
+height: 450px;
+border-top: 10px solid grey;
+display: block;
+float: left;
+background: white;
+}
+
+.text-feild-input-wrapper {
+  padding: 20px 20px 5px 20px;
+  background: #e4e4e4;
+  width: 610px;
+  margin: 10px 20px;
 }
 
 .title-input-field {
-  width: 200px;
+  padding-left: 5px;
+  font-size: 20px;
+  width: 600px;
+  height: 40px;
   border: 3px solid grey;
   display: block;
+  margin-bottom: 10px;
   float: left;
+  background: white;
 }
+
+.star {
+  font-size: 2em;
+}
+
 .review-text-area {
   display: block;
   width: 600px;
