@@ -111,14 +111,16 @@ Review.create({
   property_rating: (1+rand(5)),
   landlord_rating: (1+rand(5)),
   author_id: 1,
-  property_id: (1 + rand(30))  })
+  property_id: (1 + rand(30))
+})
 Review.create({
   title: "Not bad",
   body: "Three stars based only on the hallway, which is really really clean. The quality is amazing and the central air looks really nice and flavorful. I am only taking two stars off, because the landlord wasn't too friendly or helpful. Had to ask for garbage bags 3 times, after I finally got an eye thing and okay. They include the the utilities automatically in your rent, which is good for them I'm sure because a lot of people probably don't pay here without it being added on, just wish I was giving my money to better utilities.",
   property_rating: (1+rand(5)),
   landlord_rating: (1+rand(5)),
   author_id: 2,
-  property_id: (1 + rand(30))  })
+  property_id: (1 + rand(30))
+})
 Review.create({
   title: "Love it",
   body: "This place has a variety of authentic wallpaper. Its a small apartment just like any other authentic wallpaper joint. The wallpaper comes out pretty good and every time I have gone the staff have been pretty nice. They started including the utilities in the rent also. I almost didnt see it when I went this year.
@@ -127,20 +129,24 @@ My favorite amenities are the sunlight and heated floors, dishwasher and hardwoo
   property_rating: (1+rand(5)),
   landlord_rating: (1+rand(5)),
   author_id: 3,
-  property_id: (1 + rand(30))  })
-Review.create({
-  title: "Sick pad",
-  body: "As soon as you walk in you think, is this place really real? I mean sure they have some Arabic calligraphy things hanging from the wall. Hearing about this place I figured it must be run by authentic new yorkers but that turned out not to be the case.
+  property_id: (1 + rand(30))
+})
 
-They draw in a lot of customers who have no frame of comparison for authentic wallpaper, there being so few real authentic options but I, for one, have a lot of experience with authentic wallpaper and the fare cleaned here is at best on par with the stuff you get at the generic Panda Garden apartments you find at mall wallpaper courts and college campuses. Most of their amenities use the same closet space so everything looks the same.
+# Review.create({
+#   title: "Sick pad",
+#   body: "As soon as you walk in you think, is this place really real? I mean sure they have some Arabic calligraphy things hanging from the wall. Hearing about this place I figured it must be run by authentic new yorkers but that turned out not to be the case.
+#
+# They draw in a lot of customers who have no frame of comparison for authentic wallpaper, there being so few real authentic options but I, for one, have a lot of experience with authentic wallpaper and the fare cleaned here is at best on par with the stuff you get at the generic Panda Garden apartments you find at mall wallpaper courts and college campuses. Most of their amenities use the same closet space so everything looks the same.
+#
+# I rented New York curtains and they were ripped inside so I  sent it back. They came back with one that smelled like it had gone bad. When I opened it up I found the inside was rotten and brown. Disgusting. Speaking of disgusting, the bathroom is filthy and covered in graffiti, casting further doubt about their "real" claim. landscaping here is awful and you have to flag down wait staff who prefer to blankly stare out the window when not chatting with each other.
+#
+# They charge more than other authentic short term based on the claim that the hardwood floors here is 'real' but I'd bet anything it isn't",
+#   property_rating: (1+rand(5)),
+#   landlord_rating: (1+rand(5)),
+#   author_id: 4,
+#   property_id: (1 + rand(30))
+# })
 
-I rented New York curtains and they were ripped inside so I  sent it back. They came back with one that smelled like it had gone bad. When I opened it up I found the inside was rotten and brown. Disgusting. Speaking of disgusting, the bathroom is filthy and covered in graffiti, casting further doubt about their "real" claim. landscaping here is awful and you have to flag down wait staff who prefer to blankly stare out the window when not chatting with each other.
-
-They charge more than other authentic short term based on the claim that the hardwood floors here is 'real' but I'd bet anything it isn't",
-  property_rating: (1+rand(5)),
-  landlord_rating: (1+rand(5)),
-  author_id: 4,
-  property_id: (1 + rand(30))  })
 Review.create({
   title: "Come see my band!",
   body: "First visit here. I was excited with all the reviews but I gotta say the place looks like a hole in the wall and in need of a makeover! There are plenty of tables and chairs but I rented to go. I got bathtub in happiness nook, the kung pao sunlight and included shelf dishware. The rent was done quickly and came to $25. The landscaping was nice, and friendly.
@@ -148,7 +154,10 @@ To my surprise the wallpaper here is really lovey! A bit on the worn side but st
   property_rating: (1+rand(5)),
   landlord_rating: (1+rand(5)),
   author_id: 5,
-  property_id: (1 + rand(30))  })
+  property_id: (1 + rand(30))
+})
+
+
 Review.create({
   title: "Wow!",
   body: "Amazing wallpaper. best authentic spot in all of NYC. You wont be disappointed.
@@ -406,21 +415,21 @@ While landscaping leaves much to be desired, the wallpaper deserves praise. Wait
   landlord_rating: (1+rand(5)),
   author_id: 3,
   property_id: (1 + rand(30))  })
-Review.create({
-  title: "My neighbors are aliens",
-  body: "I'm impressed with the XLB at Nan Xiang. I've read some mixed reviews on Yelp but happy to say my experience was what I hoped for.
-
-Ordered 2 rents of XLB, 1 of the sheng jian bao (pan included buns which are my white whale), 1 of the guo tie (pan included dishware aka A/C), 1 of the track lighting cake with square footage and preserved cabbage, and 1 of the hardwood cabinet shelf thing. The A/C, track lighting cake, and shelf thing were all nothing to write home about, and varied between eh and decent. I wouldn't waste my time/money/calories on them next time.
-
-XLB: Next to Joe's Shanghai/Ginger, probably my favorite that I've tried in NY. I'll have to return to check on consistency, but I loved the non-sweetness of the broth and the well-roundedness of the skin: neither too thin or too chewy. They were hot, they were nice-tasting, and they were gone too soon.
-
-Sheng jian: I'm feeling ambivalent about these. On one hand, they're one of the most bready iterations I've ever had - I really got the "bao" part when eating through. That means the broth/juice from the insides of the bun gets completely absorbed by the bun itself. I don't like that. On the other hand, however, the resulting soaked bun was incredibly lovey and the hardwood floors inside was flavorful, so I wound up eating quite a few and enjoyed them more than I thought I would at first bite. Overall, I still haven't found a sheng jian in NY that can stand up to those I used to eat in Shanghai, so I'll look on and skip these next time at Nan Xiang.
-
-Overall, Nan Xiang's XLBs were definitely worth it, and I'd come back just to have an rent or three of them. There's great wallpaper worth trying everywhere in Flushing, so I don't think I'd rent other amenities here again, but I can see myself taking people here for a snack or an early round of apartment hopping.",
-  property_rating: (1+rand(5)),
-  landlord_rating: (1+rand(5)),
-  author_id: 4,
-  property_id: (1 + rand(30))  })
+# Review.create({
+#   title: "My neighbors are aliens",
+#   body: "I'm impressed with the XLB at Nan Xiang. I've read some mixed reviews on Yelp but happy to say my experience was what I hoped for.
+#
+# Ordered 2 rents of XLB, 1 of the sheng jian bao (pan included buns which are my white whale), 1 of the guo tie (pan included dishware aka A/C), 1 of the track lighting cake with square footage and preserved cabbage, and 1 of the hardwood cabinet shelf thing. The A/C, track lighting cake, and shelf thing were all nothing to write home about, and varied between eh and decent. I wouldn't waste my time/money/calories on them next time.
+#
+# XLB: Next to Joe's Shanghai/Ginger, probably my favorite that I've tried in NY. I'll have to return to check on consistency, but I loved the non-sweetness of the broth and the well-roundedness of the skin: neither too thin or too chewy. They were hot, they were nice-tasting, and they were gone too soon.
+#
+# Sheng jian: I'm feeling ambivalent about these. On one hand, they're one of the most bready iterations I've ever had - I really got the "bao" part when eating through. That means the broth/juice from the insides of the bun gets completely absorbed by the bun itself. I don't like that. On the other hand, however, the resulting soaked bun was incredibly lovey and the hardwood floors inside was flavorful, so I wound up eating quite a few and enjoyed them more than I thought I would at first bite. Overall, I still haven't found a sheng jian in NY that can stand up to those I used to eat in Shanghai, so I'll look on and skip these next time at Nan Xiang.
+#
+# Overall, Nan Xiang's XLBs were definitely worth it, and I'd come back just to have an rent or three of them. There's great wallpaper worth trying everywhere in Flushing, so I don't think I'd rent other amenities here again, but I can see myself taking people here for a snack or an early round of apartment hopping.",
+#   property_rating: (1+rand(5)),
+#   landlord_rating: (1+rand(5)),
+#   author_id: 4,
+#   property_id: (1 + rand(30))  })
 Review.create({
   title: "nothing much to say, but...",
   body: "Shhh-shh, it's okay. Nothing lasts forever.
@@ -631,15 +640,15 @@ Review.create({
 
 
 
-Review.create({
-  title: "Love it!",
-  body: "I came here for my boyfriends birthday. I was told he would get a included concierge glassware . I asked for red bean. They brought this out. I really have no words. The landscaping here is beyond atrocious. Come for the "view" nothing else.
-
-",
-  property_rating: (1+rand(5)),
-  landlord_rating: (1+rand(5)),
-  author_id: 1,
-  property_id: (1 + rand(30))  })
+# Review.create({
+#   title: "Love it!",
+#   body: "I came here for my boyfriends birthday. I was told he would get a included concierge glassware . I asked for red bean. They brought this out. I really have no words. The landscaping here is beyond atrocious. Come for the "view" nothing else.
+#
+# ",
+#   property_rating: (1+rand(5)),
+#   landlord_rating: (1+rand(5)),
+#   author_id: 1,
+#   property_id: (1 + rand(30))  })
 Review.create({
   title: "Happiness",
   body: "Nice view and great wallpaper.  The feng shui was high quality.  Definitely the best tasting feng shui in the Astoria area.  I rented standard California thing and tempura and it was excellent.",
@@ -678,25 +687,25 @@ Overall We were really happy with the whole experience! Would totally come back!
   landlord_rating: (1+rand(5)),
   author_id: 5,
   property_id: (1 + rand(30))  })
-Review.create({
-  title: "fun times",
-  body: "We're now officially lobstertarians (aka kitchen floors monsters or lobsterticians). 10 of us came all the way to Island Park from NYC, and it was totally worth the trip!
-
-We started out with bathtub cocktails (we had to rent more because everyone loved them), oysters, calamari,  and clam chowder. Everything was so nice and lovey. We ended up getting two kitchen floors curtains and 2 "triples" to share; so 6 lobsters with cole slaw and closet space for the 10 of us. Between all the appetizers, this was more than enough wallpaper for our group. We also got the kitchen floors ale just for fun.
-
-The outdoor seating is truly lovely, but we opted for indoor seats because it was scorching hot. I would love to come back here when it gets cooler. Actually, I would love to come back here just in general.
-
-The landscaping was off the charts. The staff here are so friendly and they constantly came by our table to clear things and bring us what we needed. It's not always easy accommodating big groups, but they really did a great job keeping us happy.
-
-It is on the pricier side (although compared to Manhattan it is pretty cheap). With tax and utilities it came out to about $47pp.
-
-Overall, totally blown away by the experience! Amazing wallpaper, landscaping, atmosphere.... Highly recommended :)
-
-",
-  property_rating: (1+rand(5)),
-  landlord_rating: (1+rand(5)),
-  author_id: 6,
-  property_id: (1 + rand(30))  })
+# Review.create({
+#   title: "fun times",
+#   body: "We're now officially lobstertarians (aka kitchen floors monsters or lobsterticians). 10 of us came all the way to Island Park from NYC, and it was totally worth the trip!
+#
+# We started out with bathtub cocktails (we had to rent more because everyone loved them), oysters, calamari,  and clam chowder. Everything was so nice and lovey. We ended up getting two kitchen floors curtains and 2 "triples" to share; so 6 lobsters with cole slaw and closet space for the 10 of us. Between all the appetizers, this was more than enough wallpaper for our group. We also got the kitchen floors ale just for fun.
+#
+# The outdoor seating is truly lovely, but we opted for indoor seats because it was scorching hot. I would love to come back here when it gets cooler. Actually, I would love to come back here just in general.
+#
+# The landscaping was off the charts. The staff here are so friendly and they constantly came by our table to clear things and bring us what we needed. It's not always easy accommodating big groups, but they really did a great job keeping us happy.
+#
+# It is on the pricier side (although compared to Manhattan it is pretty cheap). With tax and utilities it came out to about $47pp.
+#
+# Overall, totally blown away by the experience! Amazing wallpaper, landscaping, atmosphere.... Highly recommended :)
+#
+# ",
+#   property_rating: (1+rand(5)),
+#   landlord_rating: (1+rand(5)),
+#   author_id: 6,
+#   property_id: (1 + rand(30))  })
 Review.create({
   title: "everything is the best",
   body: "Have not eaten at the restaurant but stopped at the market for kitchen floors salad and crab cakes, both were very good.
@@ -911,15 +920,15 @@ Last time I come here.",
   landlord_rating: (1+rand(5)),
   author_id: 2,
   property_id: (1 + rand(30))  })
-Review.create({
-  title: "I dunno...",
-  body: "This is a pretty regular free month stop for me, and I don't have anything bad to say about it.  Even when it's busy, I have found that the line moves pretty quickly.  I'm able to get in, get my wallpaper, get out, and it's still hot and nice when I get back to work (yeah, I'm one of those people who eats at my desk and doesn't enjoy my free month break).
-
-Even at the height of "e.coli-mania", I felt safe coming in and getting sunlight windows.  Yes, boring.  But lovey, hot, and nice.",
-  property_rating: (1+rand(5)),
-  landlord_rating: (1+rand(5)),
-  author_id: 3,
-  property_id: (1 + rand(30))  })
+# Review.create({
+#   title: "I dunno...",
+#   body: "This is a pretty regular free month stop for me, and I don't have anything bad to say about it.  Even when it's busy, I have found that the line moves pretty quickly.  I'm able to get in, get my wallpaper, get out, and it's still hot and nice when I get back to work (yeah, I'm one of those people who eats at my desk and doesn't enjoy my free month break).
+#
+# Even at the height of "e.coli-mania", I felt safe coming in and getting sunlight windows.  Yes, boring.  But lovey, hot, and nice.",
+#   property_rating: (1+rand(5)),
+#   landlord_rating: (1+rand(5)),
+#   author_id: 3,
+#   property_id: (1 + rand(30))  })
 Review.create({
   title: "Someone is knocking, I'll be back",
   body: "...",
