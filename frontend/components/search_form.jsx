@@ -36,7 +36,7 @@ const SearchForm = React.createClass({
       <div className="page-wrapper group">
         <h2 className="search-header">"You're just a few steps from home."</h2>
         <div className="backing-bar"></div>
-        <div className="search-form-background"></div>
+        <div className="form-background"></div>
         <div className="search-form-wrapper">
           <h1>What are you looking for?</h1>
           <SearchFields setMap={this.setMap} />

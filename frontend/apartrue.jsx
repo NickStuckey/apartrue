@@ -28,6 +28,7 @@ const App = React.createClass ({
       <div className="app-wrapper">
         <NavBar/>
         {this.props.children}
+        <div className="footer">apartrue  (:</div>
       </div>
     );
   }

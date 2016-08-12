@@ -33,17 +33,6 @@
   font-size: 50px;
 }
 
-.search-form-background {
-  height: 500px;
-  width: 700px;
-  border-radius: 20%;
-  position: relative;
-  margin: auto;
-  transform: translateY(25%);
-  background: #e1a0a0;
-  opacity: 0.9;
-}
-
 .google-address-finder {
   display: block;
   margin: auto;
@@ -59,7 +48,7 @@
   border: 2px #7b7a7a solid;
   text-align: center;
   font-size: 20px;
-  margin: 0 auto 30px auto;
+  margin: 0 auto 0px auto;
   background: white;
   color: #7b7a7a;
 }
@@ -84,6 +73,7 @@
   display: block;
   float: left;
   margin-left: 50px;
+  margin-bottom: 23px;
 }
 
 .default {

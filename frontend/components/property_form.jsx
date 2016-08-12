@@ -29,7 +29,7 @@ const PropertyFrom = React.createClass ({
       address: address,
       city: city,
       zipcode: zipcode,
-      price: null,
+      price: "",
       numBedrooms: "",
       available: false,
       ownerId: null,
@@ -129,7 +129,8 @@ const PropertyFrom = React.createClass ({
   },
 
   updatePrice (e) {
-    this.setState({price: parseInt(e.target.value)});
+    const price = parseInt(e.target.value) || "";
+    this.setState({price: price});
   },
 
   updateNumBedRooms (e) {
@@ -164,47 +165,61 @@ const PropertyFrom = React.createClass ({
     ].join(', ');
 
     return (
-      <div className="property-form-component-wrapper">
-        <h1>{address} is not in our database, please complete the form and submit it</h1>
+      <div className="page-wrapper group">
+        <h1 className="search-header">{address} is not in our database</h1>
+        <div className="backing-bar"></div>
+        <div className="form-background"></div>
         <form className="property-form" onSubmit={this.handleSubmit}>
-          <div className="form-feild-error">{ addressError }</div>
-          <label>Address
-          <input
-              type="text"
-              className="property-form-input-field"
-              onChange={this.updateAddress}
-              value={this.state.address}
-              />
-          </label>
-          <label>Zipcode
-            <input
-              type="text"
-              className="property-form-input-field"
-              onChange={this.updateZipcode}
-              value={this.state.zipcode}
-              />
-          </label>
-          <div className="form-feild-error">{ cityError }</div>
-          <label>City
-            <input
-              type="text"
-              className="property-form-input-field"
-              onChange={this.updateCity}
-              value={this.state.city}
-              />
-          </label>
-          <label>Price
-            <input
-              type="text"
-              className="property-form-input-field"
-              onChange={this.updatePrice}
-              value={this.state.price}
-              />
-          </label>
-
-          <label>Number of Bedrooms
+          <div className="property-form-text-input-wrapper">
+              <label className="field-label">
+                <div className="form-field-error">{ addressError }</div>
+                <p className="label-text">Address</p>
+              <input
+                  type="text"
+                  placeholder="address"
+                  className="property-form-input-field"
+                  onChange={this.updateAddress}
+                  value={this.state.address}
+                  />
+              </label>
+              <label className="field-label">
+                <div className="form-field-error">{ cityError }</div>
+                <p className="label-text">City</p>
+                <input
+                  type="text"
+                  placeholder="city"
+                  className="property-form-input-field"
+                  onChange={this.updateCity}
+                  value={this.state.city}
+                  />
+              </label>
+              <label className="field-label">
+                <div className="form-field-error"></div>
+                <p className="label-text">Zipcode</p>
+                <input
+                  type="text"
+                  placeholder="city"
+                  className="property-form-input-field"
+                  onChange={this.updateZipcode}
+                  value={this.state.zipcode}
+                  />
+              </label>
+              <label className="field-label">
+                <div className="form-field-error"></div>
+                <p className="label-text">Price</p>
+                <input
+                  type="text"
+                  placeholder="price"
+                  className="property-form-input-field"
+                  onChange={this.updatePrice}
+                  value={this.state.price}
+                  />
+              </label>
+            </div>
+          <label className="bedroom-field-label">
+            <p className="label-text">Number of Bedrooms</p>
             <select
-              className="dropdown bedrooms-field"
+              className="bedroom-dropdown"
               onChange={this.updateNumBedRooms}
               value={ this.state.numBedrooms }>
               <option className="default" value="">bedrooms</option>
@@ -216,22 +231,30 @@ const PropertyFrom = React.createClass ({
               <option value="0">0</option>
             </select>
           </label>
-          <label>owner?
-            <input
-              type="checkbox"
-              className="property-form-check-box"
-              onChange={this.updateIsCurrentOwner}
-              />
-          </label>
-          <label>Available?
-            <input
-              type="checkbox"
-              className="property-form-check-box"
-              onChange={this.updateIsAvailable}
-              />
-          </label>
-          <input type="file" onChange={this.updateFile} />
-          <input type="submit" value="Add Location"/>
+          <div className="checkbox-wrapper">
+            <label className="checkbox-field-label">
+              <p className="label-text">Your property?</p>
+              <input
+                type="checkbox"
+                id="toggle-property"
+                className="property-form-check-box"
+                onChange={this.updateIsCurrentOwner}
+                />
+              <label for="toggle-property"><span className="checkbox-filler"></span></label>
+            </label>
+            <label className="checkbox-field-label">
+              <p className="label-text">Is it available?</p>
+              <input
+                type="checkbox"
+                id="toggle-property"
+                className="property-form-check-box"
+                onChange={this.updateIsAvailable}
+                />
+              <label for="toggle-available"><span className="checkbox-filler"></span></label>
+            </label>
+          </div>
+          <input type="file" className="file-upload" onChange={this.updateFile} />
+          <input type="submit" className="submit-form-button" value="Add Location"/>
         </form>
       </div>
     );

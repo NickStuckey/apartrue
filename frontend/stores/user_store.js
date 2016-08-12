@@ -12,12 +12,8 @@ const addUser = function (user) {
 };
 
 UserStore.find = function (id) {
-  return Object.assign({}, _user.id);
+  return Object.assign({}, _user[id]);
 };
-
-// const resetUser = function {
-//
-// }
 
 UserStore.__onDispatch = function (payload) {
   switch (payload.actionType) {

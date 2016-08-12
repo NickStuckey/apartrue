@@ -11,6 +11,8 @@ const React = require('react'),
       ReviewStore = require('../stores/review_store'),
       PropertyActions = require('../actions/property_actions');
 
+let loginError;
+
 const ShowProperty = React.createClass({
   getInitialState () {
     return ({
@@ -22,10 +24,10 @@ const ShowProperty = React.createClass({
     });
   },
 
-
   componentDidMount() {
     this.reviewListener = ReviewStore.addListener(this._onReviewChange);
     this.propertyListener = PropertyStore.addListener(this._onPropertyChange);
+    this.sessionListener = SessionStore.addListener(this._onSessionChange);
     PropertyActions.fetchProperty(this.props.params.propertyId);
     ReviewActions.fetchPropertyReviews(this.props.params.propertyId);
   },
@@ -55,18 +57,22 @@ const ShowProperty = React.createClass({
     return (<p className="avg-stars">{stars.join('')}</p>);
   },
 
+  _onSessionChange() {
+    this.forceUpdate();
+  },
+
+  updateUsernameFeild (e) {
+    this.setState({modalLoginInfo: {username: e.target.value}});
+  },
+
+  updatePasswordFeild (e) {
+    this.setState({modalLoginInfo: {password: e.target.value}});
+  },
+
   handleSubmit (e) {
     e.preventDefault();
-    const formData = {
-      username: this.state.username,
-      password: this.state.password
-    };
-
-    if (this.props.location.pathname.toLowerCase() === "/login") {
-      SessionActions.logIn(formData);
-    } else {
-      SessionActions.signUp(formData);
-    }
+    SessionActions.logIn(this.state.modalLoginInfo);
+    this.closeModal();
   },
 
   modalStyle () {
@@ -81,6 +87,7 @@ const ShowProperty = React.createClass({
         zIndex         : 10
       },
       content : {
+        backgroundColor : 'rgba(0,0,0, 0.75)',
         position        : 'fixed',
         top             : '100px',
         left            : '500px',
@@ -114,15 +121,21 @@ const ShowProperty = React.createClass({
     return reviewsArray;
   },
 
-  showLogin () {
-    hashHistory.push("/login");
-  },
-
   closeModal (){
     this.setState({ modalOpen: false });
   },
+
   openModal (){
     this.setState({ modalOpen: true });
+  },
+
+  signInUser (loginInfo) {
+    SessionActions.logIn(loginInfo);
+  },
+
+  signInGuest () {
+    SessionActions.logIn({username: 'GuestUser', password: 'password'});
+    this.closeModal();
   },
 
   render () {
@@ -156,7 +169,7 @@ const ShowProperty = React.createClass({
     }
 
     return (
-      <div className="show-property-wrapper">
+      <div className="content-wrapper">
         <div className="header-wrapper">
           <h1 className="title-address">{address}</h1>
             <h2>Property</h2>
@@ -183,15 +196,34 @@ const ShowProperty = React.createClass({
           isOpen={this.state.modalOpen}
           onRequestClose={this.closeModal}
           style={this.modalStyle()}>
-
-          <h2>Im a modal!</h2>
+          <p>{loginError}</p>
           <form className="modal-login-form">
+            <h2>Log In</h2>
             <input
               type="text"
               value={this.state.modalLoginInfo.username}
-              onChange={this.loginUser}
+              onChange={this.updateUsernameFeild}
+              className="form-feilds"
+              />
+            <input
+              type="password"
+              value={this.state.modalLoginInfo.password}
+              onChange={this.updatePasswordFeild}
+              className="form-feilds"
+              />
+            <input
+              type="submit"
+              onClick={this.handleSubmit}
+              className="sign-in-button"
+              value="Sign In"
               />
           </form>
+
+          <h2>Or continue as a guest</h2>
+        <button
+          onClick={this.signInGuest}
+          className="sign-in-button"
+          >Welcome</button>
 
         </Modal>
       </div>

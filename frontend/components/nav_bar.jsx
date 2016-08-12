@@ -5,17 +5,37 @@ const React = require('react'),
       SessionStore = require('../stores/session_store');
 
 const NavBar = React.createClass ({
+  getInitialState () {
+    return {user: null};
+  },
+
+  componentDidMount () {
+    self.sessionListener = SessionStore.addListener(this._onSessionChange);
+  },
+
   handleLogout () {
     SessionActions.logOut();
     hashHistory.push("/searchform");
   },
 
+  _onSessionChange () {
+    this.setState({user: SessionStore.currentUser()});
+  },
+
   sessionOption () {
     if (SessionStore.isUserLoggedIn()) {
-      return <button  onClick={ this.handleLogout }>Log Out</button>;
+      return <button onClick={ this.handleLogout }>Log Out</button>;
     } else {
       if (hashHistory[-1] !== "/login")
         return <a href="#/login" >Log In</a>;
+    }
+  },
+
+  profileOption () {
+    const user = this.state.user;
+    if (user) {
+      const path = `#/users/${user.id}`;
+      return <a href={path} >Profile</a>;
     }
   },
 
@@ -28,6 +48,7 @@ const NavBar = React.createClass ({
             <ul className="link-list">
               <li className="nav-link hoverable"><a href="#/searchform" >search</a></li>
               <li className="nav-link hoverable">{ this.sessionOption() }</li>
+              <li className="nav-link hoverable">{ this.profileOption() }</li>
             </ul>
           </nav>
       </header>

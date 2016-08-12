@@ -6,7 +6,6 @@ const React = require('react'),
 const UserProfile = React.createClass({
   getInitialState () {
     const userId = parseInt(this.props.params.userId);
-    // const user = UserStore.find(userId);
     return { user: {} };
   },
 
@@ -19,16 +18,15 @@ const UserProfile = React.createClass({
   _onUsersChange () {
     const userId = parseInt(this.props.params.userId);
     const user = UserStore.find(userId);
-    this.setState({ user });
+    this.setState({ user: user });
   },
 
   render () {
-    let user = this.state.user;
-    let userInfo = Object.keys(user).map((detail, i) => {
-      return <li key={i} className="user-info-list-item">{user[detail]}</li>;
-    });
+    const user = this.state.user;
     return (
-      <div>{ userInfo }</div>
+      <div className="content-wrapper">
+      <h1>{user.username}</h1>
+      </div>
     );
   }
 });

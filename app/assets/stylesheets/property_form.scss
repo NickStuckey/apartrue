@@ -1,22 +1,139 @@
-.property-form {
-  position: relative;;;
-  height: 300px;
+.bedroom-dropdown {
+  box-sizing: border-box;
+      display: block;
+      padding: 5px 10px 5px 10px;
+      height: 45px;
+      width: 200px;
+      border: 2px #7b7a7a solid;
+      text-align: center;
+      font-size: 20px;
+      background: white;
+      color: #a6a6a6;
+      margin: auto;
+}
+
+.bedroom-field-label {
+  margin: 33px 0 0 46px;
+  font-size: 20px;
+  width: 210px;
+  display: block;
+  float: left;
+  text-align: center;
+}
+
+.checkbox-wrapper {
+  width: 600px;
+  height: 150px;
+}
+
+.checkbox-field-label {
+  font-size: 20px;
+  width: 157px;
+  margin-top: 33px;
+  display: block;
+  float: right;
+  text-align: center;
+}
+
+input.property-form-check-box {
+  height: 45px;
+  width: 45px;
+  background: white;
+  border: 2px solid #7b7a7a;
+  color: black;
+}
+
+
+
+// input[type=checkbox] + label{
+//   height: 45px;
+//   width: 45px;
+//   background: white;
+//   border: 2px solid #7b7a7a;
+//   color: black;
+// }
+//
+// input[type=checkbox]:checked + label{
+//   height: 45px;
+//   width: 45px;
+//   background: red;
+//   border: 2px solid #7b7a7a;
+//   color: black;
+// }
+
+.label-text{
+  padding: 5px;
+}
+
+.field-label {
+  font-size: 20px;
   width: 300px;
-  background-color: grey;
+  display: block;
+  float: left;
+  text-align: center;
+}
+
+.file-upload {
+  height: 50px;
+  width: 220px;
+  font-size: 15px;
+  padding-top: 16px;
+  margin-left: 63px;
+}
+
+.form-field-error {
+  color:red;
+  height: 40px;
+  width: 300px;
+  text-align: center;
+  line-height: 50px;
+}
+
+.property-form {
+  display: block;
+  width: 603px;
   margin: auto;
-  top: 100px;
+  height: 400px;
+  top: -374px;
+  position: relative;
 }
 
 .property-form-input-field {
-  height: 20px;
-  width: 100px;
-  border: 2px black solid;
-  margin: 5px;
+  height: 40px;
+  width: 200px;
+  background: white;
+  border: 2px #7b7a7a solid;
+  margin: auto;
+  text-align: center;
+  font-size: 20px;
 }
 
-.property-form-component-wrapper > h1 {
-  color: white;
-  max-width: 800px;
-  text-align: center;
-  margin:auto;
+.property-form-text-input-wrapper {
+  width: 600px;
+  height:240px;
+}
+
+.property-form-background {
+  height: 500px;
+  width: 700px;
+  border-radius: 20%;
+  position: relative;
+  margin: auto;
+  transform: translateY(35%);
+  background: #e1a0a0;
+  opacity: 0.95;
+}
+
+.submit-form-button {
+  padding: 10px 40px;
+  margin: 5px;
+  color: #white;
+  font-size: 20px;
+  background-color: #7a7b7b;
+  float: right;
+  margin-right: 60px;
+}
+
+.submit-form-button:hover {
+  background-color: grey;
 }

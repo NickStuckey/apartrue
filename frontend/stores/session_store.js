@@ -4,16 +4,15 @@ const SessionConstants = require('../constants/session_constants');
 
 const SessionStore = new Store(AppDispatcher);
 let _currentUser = {};
-let _currentUserHasBeenFetched = false;
 
 const _login = function(currentUser) {
   _currentUser = currentUser;
-  _currentUserHasBeenFetched = true;
+  SessionStore.__emitChange();
 };
 
 const _logout = function() {
   _currentUser = {};
-  _currentUserHasBeenFetched = true;
+  SessionStore.__emitChange();
 };
 
 SessionStore.userId = function() {
@@ -22,6 +21,10 @@ SessionStore.userId = function() {
 
 SessionStore.isUserLoggedIn = function() {
   return !!_currentUser.id;
+};
+
+SessionStore.currentUser = function () {
+  return Object.assign({}, _currentUser);
 };
 
 SessionStore.__onDispatch = function (payload) {
