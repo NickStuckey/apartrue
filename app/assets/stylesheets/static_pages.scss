@@ -5,7 +5,7 @@
 
 
 html, body, p, ul, li, input, button, a, option, select,
-h1, h2, h3, label, option{
+h1, h2, h3, label, option, {
   -webkit-appearance:none;
   color: inherit;
   background-color: transparent;
@@ -18,6 +18,9 @@ h1, h2, h3, label, option{
   border-radius: 0;
 }
 
+.button:hover {
+  background-color: #7a7b7b;
+}
 
 .group {
   content: "";
@@ -44,6 +47,8 @@ h1, h2, h3, label, option{
   min-height: 900px;
   margin: auto;
 }
+
+
 
 .footer {
   bottom:0px;

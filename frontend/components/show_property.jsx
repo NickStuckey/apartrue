@@ -84,16 +84,22 @@ const ShowProperty = React.createClass({
         left            : 0,
         right           : 0,
         bottom          : 0,
+        margin          : 0,
+        padding         : 0,
         backgroundColor : 'rgba(128,128,128, 0.5)',
         zIndex         : 1000
       },
       content : {
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
         backgroundColor : 'rgba(0,0,0, 0.75)',
-        position        : 'fixed',
-        top             : '100px',
-        left            : '500px',
-        right           : '500px',
-        bottom          : '100px',
+        height: '500px',
+        width: '450px',
+        transform: 'translateY(25%)',
+        position: 'relative',
+        margin: 'auto',
         border          : '1px solid #ccc',
         padding         : '20px',
         zIndex         : 1000
@@ -230,6 +236,7 @@ const ShowProperty = React.createClass({
               value="Sign In"
               />
           </form>
+          <a className="centered-link" href="#/signup">sign up</a>
 
           <h2 className="guest-login-modal">Or continue as a guest</h2>
         <button

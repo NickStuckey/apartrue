@@ -1,3 +1,41 @@
+// modalStyle = {
+//     overlay : {
+//         backgroundColor: null
+//     },
+//     content : {
+//         top: null,
+//         left: null,
+//         right: null,
+//         bottom: null,
+//         border: null,
+//         background: null,
+//         borderRadius: null,
+//         padding: null,
+//         position: null
+//     }
+// };
+
+.centered-link {
+  color: grey;
+  text-align: center;
+  display: block;
+  width: 100px;
+  margin: auto;
+}
+
+.guest-login-modal {
+  font-size: 30px;
+  color: white;
+  width: 350px;
+  text-align: center;
+  margin: auto;
+  margin-top: 70px;
+}
+
+.modal-login-form {
+  margin-top: 44px;
+}
+
 .modal-login-form > input {
   border: 1px solid black;
   height: 40px;
@@ -11,6 +49,7 @@
 
 .modal-login-form > h2 {
   color: white;
+  margin-top: 20px;
   font-size: 30px;
   text-align: center;
 }
