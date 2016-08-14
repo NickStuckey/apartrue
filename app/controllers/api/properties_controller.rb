@@ -26,6 +26,7 @@ class Api::PropertiesController < ApplicationController
     property_params[:image] = nil if property_params[:image] = "null"
     @property = Property.new(property_params)
 
+
     city_name = property_params[:city]
     neighborhood = Neighborhood.find_by_name(city_name)
 

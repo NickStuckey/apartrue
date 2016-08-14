@@ -5,7 +5,6 @@ const React = require('react'),
 
 const UserProfile = React.createClass({
   getInitialState () {
-    const userId = parseInt(this.props.params.userId);
     return { user: {} };
   },
 
@@ -15,9 +14,14 @@ const UserProfile = React.createClass({
     UserActions.fetchUser(userId);
   },
 
+  componentWillUnmount () {
+    this.usersListener.remove();
+  },
+
   _onUsersChange () {
     const userId = parseInt(this.props.params.userId);
     const user = UserStore.find(userId);
+    // debugger
     this.setState({ user: user });
   },
 

@@ -35,6 +35,7 @@ const ShowProperty = React.createClass({
   componentWillUnmount() {
     this.reviewListener.remove();
     this.propertyListener.remove();
+    this.sessionListener.remove();
   },
 
   drawPropertyRating () {

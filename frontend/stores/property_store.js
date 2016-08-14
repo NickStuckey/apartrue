@@ -7,8 +7,8 @@ const PropertyStore = new Store(AppDispatcher);
 
 let _properties = [];
 
-const addProperty = function (property) {
-  _properties.push(property);
+const setProperty = function (property) {
+  _properties = [property];
   PropertyStore.__emitChange();
 };
 
@@ -28,7 +28,7 @@ PropertyStore.all = function () {
 };
 
 PropertyStore.mostRecentlyAdded = function () {
-  return _properties.pop();
+  return _properties[_properties.length -1];
 };
 
 PropertyStore.__onDispatch = (payload) => {
@@ -37,7 +37,7 @@ PropertyStore.__onDispatch = (payload) => {
       resetProperties(payload.properties);
       break;
     case PropertyConstants.PROPERTY_RECEIVED:
-      addProperty(payload.property);
+      setProperty(payload.property);
       break;
     case PropertyConstants.PROPERTY_REMOVED:
       removeProperty(payload.property);

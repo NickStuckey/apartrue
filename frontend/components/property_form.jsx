@@ -5,6 +5,8 @@
       StagingStore = require('../stores/staging_store'),
       hashHistory = require('react-router').hashHistory;
 
+let currentUser;
+
 const geocoder = new google.maps.Geocoder();
 
 const fieldErrorMsg = 'field cannot be blank';
@@ -25,6 +27,8 @@ const PropertyFrom = React.createClass ({
       city = property.city;
     }
 
+    currentUser = SessionStore.currentUser();
+
     return ({
       address: address,
       city: city,
@@ -32,7 +36,7 @@ const PropertyFrom = React.createClass ({
       price: "",
       numBedrooms: "",
       available: false,
-      ownerId: null,
+      owernId: false,
       lat: null,
       lng: null,
       imageFile: null,
@@ -46,6 +50,7 @@ const PropertyFrom = React.createClass ({
     } else {
       return " ";
     }
+    this.forceUpdate();
   },
 
   lordClicked() {
@@ -54,13 +59,16 @@ const PropertyFrom = React.createClass ({
     } else {
       return " ";
     }
+    this.forceUpdate();
   },
 
   componentDidMount () {
+    this.sessionListener = SessionStore.addListener(this._sessionChange);
     this.propertyListener = PropertyStore.addListener(this._onChange);
   },
 
   componentWillUnmount () {
+    // this.SessionStore.remove();
     this.propertyListener.remove();
   },
 
@@ -154,18 +162,13 @@ const PropertyFrom = React.createClass ({
     this.setState({numBed: e.target.value});
   },
 
-  // updateIsCurrentOwner () {
-  //   SessionStore.isUserLoggedIn();
-  //   if (!!this.state.ownerId) {
-  //     this.setState({ownerId: SessionStore.currentUser()});
-  //   } else {
-  //     this.setState({ownerId: null});
-  //   }
-  // },
+  updateIsCurrentOwner () {
+    this.setState({isOwner: !this.state.isOwner});
+  },
 
-  // updateIsAvailable () {
-  //   this.setState({available: !this.state.available});
-  // },
+  updateIsAvailable () {
+    this.setState({available: !this.state.available});
+  },
 
   updateFile (e) {
     const file = e.currentTarget.files[0];
@@ -242,10 +245,10 @@ const PropertyFrom = React.createClass ({
             <p className="label-text">Number of Bedrooms</p>
             <select
               className="bedroom-dropdown"
-              placeholder="bedrooms"
+              // placeholder="bedrooms  ∆"
               onChange={this.updateNumBedRooms}
               >
-              <option className="default" value="">bedrooms</option>
+              <option value="bedrooms" hidden>bedrooms</option>
               <option value="5">5</option>
               <option value="4">4</option>
               <option value="3">3</option>
@@ -259,18 +262,16 @@ const PropertyFrom = React.createClass ({
               <p className="label-text">Your property?</p>
               <div
                 className="property-form-check-box"
-                value={this.lordClicked()}
                 onClick={this.updateIsCurrentOwner}
-                ></div>
+                >{this.lordClicked()}</div>
               <label><span className="checkbox-filler"></span></label>
             </label>
             <label className="checkbox-field-label">
               <p className="label-text">Is it available?</p>
               <div
                 className="property-form-check-box"
-                value={this.availClicked()}
                 onClick={this.updateIsAvailable}
-                ></div>
+                >{this.availClicked()}</div>
               <label ><span className="checkbox-filler"></span></label>
             </label>
           </div>
