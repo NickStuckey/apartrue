@@ -20,6 +20,7 @@ const NavBar = React.createClass ({
 
   _onSessionChange () {
     this.setState({user: SessionStore.currentUser()});
+    this.forceUpdate();
   },
 
   sessionOption () {
@@ -33,13 +34,17 @@ const NavBar = React.createClass ({
 
   profileOption () {
     const user = SessionStore.currentUser();
-    if (user) {
+    if (user.id) {
       const path = `#/users/${user.id}`;
       return <a href={path} >Profile</a>;
     }
   },
 
   render () {
+
+    const sessionOption = this.sessionOption();
+    const profileOption = this.profileOption();
+
     return (
       <header className="nav-bar-wrapper">
         <div className="nav-bar-background"></div>
@@ -47,8 +52,8 @@ const NavBar = React.createClass ({
             <a href="#/" className="home-button hoverable">aparTrue</a>
             <ul className="link-list">
               <li className="nav-link hoverable"><a href="#/searchform" >search</a></li>
-              <li className="nav-link hoverable">{ this.sessionOption() }</li>
-              <li className="nav-link hoverable">{ this.profileOption() }</li>
+              <li className="nav-link hoverable">{sessionOption }</li>
+              <li className="nav-link hoverable">{ profileOption }</li>
             </ul>
           </nav>
       </header>

@@ -20,7 +20,7 @@ SessionStore.userId = function() {
 };
 
 SessionStore.isUserLoggedIn = function() {
-  return !!_currentUser.id;
+  return _currentUser.id;
 };
 
 SessionStore.currentUser = function () {
