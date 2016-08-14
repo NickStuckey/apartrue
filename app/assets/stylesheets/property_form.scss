@@ -41,7 +41,8 @@
   background: white;
   border: 2px solid #7b7a7a;
   margin-left: 50px;
-  // color: black;
+  font-size: 40px;
+  line-height: 40px;
 
 }
 
@@ -52,24 +53,6 @@
   border: 2px solid #7b7a7a;
   color: black;
 }
-
-
-
-// input[type=checkbox] + label{
-//   height: 45px;
-//   width: 45px;
-//   background: white;
-//   border: 2px solid #7b7a7a;
-//   color: black;
-// }
-//
-// input[type=checkbox]:checked + label{
-//   height: 45px;
-//   width: 45px;
-//   background: red;
-//   border: 2px solid #7b7a7a;
-//   color: black;
-// }
 
 .label-text{
   padding: 5px;

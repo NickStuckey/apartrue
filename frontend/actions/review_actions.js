@@ -15,6 +15,10 @@ const ReviewActions = {
     ReviewApiUtil.fetchPropertyReviews(propId, this.receiveAllReviews);
   },
 
+  fetchUserReviews (userId) {
+    // NOTE to do
+  },
+
   receiveAllReviews (reviews) {
     AppDispatcher.dispatch({
       actionType: ReviewConstants.RESET_REVIEWS,

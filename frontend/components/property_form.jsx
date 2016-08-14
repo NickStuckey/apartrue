@@ -36,7 +36,7 @@ const PropertyFrom = React.createClass ({
       price: "",
       numBedrooms: "",
       available: false,
-      owernId: false,
+      ownerId: false,
       lat: null,
       lng: null,
       imageFile: null,
@@ -46,7 +46,7 @@ const PropertyFrom = React.createClass ({
 
   availClicked() {
     if (this.state.available) {
-      return "√";
+      return "x";
     } else {
       return " ";
     }
@@ -54,8 +54,8 @@ const PropertyFrom = React.createClass ({
   },
 
   lordClicked() {
-    if (!!this.state.ownerId) {
-      return "√";
+    if (this.state.ownerId) {
+      return "x";
     } else {
       return " ";
     }
@@ -68,7 +68,7 @@ const PropertyFrom = React.createClass ({
   },
 
   componentWillUnmount () {
-    // this.SessionStore.remove();
+    this.sessionListener.remove();
     this.propertyListener.remove();
   },
 
@@ -162,11 +162,17 @@ const PropertyFrom = React.createClass ({
     this.setState({numBed: e.target.value});
   },
 
-  updateIsCurrentOwner () {
-    this.setState({isOwner: !this.state.isOwner});
+  toggleOwnerId () {
+    const user = SessionStore.currentUser();
+    if (this.state.ownerId) {
+      this.setState({ownerId: false});
+    } else {
+      this.setState({ownerId: user.id});
+    }
+
   },
 
-  updateIsAvailable () {
+  toggleAvailable () {
     this.setState({available: !this.state.available});
   },
 
@@ -245,7 +251,6 @@ const PropertyFrom = React.createClass ({
             <p className="label-text">Number of Bedrooms</p>
             <select
               className="bedroom-dropdown"
-              // placeholder="bedrooms  ∆"
               onChange={this.updateNumBedRooms}
               >
               <option value="bedrooms" hidden>bedrooms</option>
@@ -262,7 +267,7 @@ const PropertyFrom = React.createClass ({
               <p className="label-text">Your property?</p>
               <div
                 className="property-form-check-box"
-                onClick={this.updateIsCurrentOwner}
+                onClick={this.toggleOwnerId}
                 >{this.lordClicked()}</div>
               <label><span className="checkbox-filler"></span></label>
             </label>
@@ -270,7 +275,7 @@ const PropertyFrom = React.createClass ({
               <p className="label-text">Is it available?</p>
               <div
                 className="property-form-check-box"
-                onClick={this.updateIsAvailable}
+                onClick={this.toggleAvailable}
                 >{this.availClicked()}</div>
               <label ><span className="checkbox-filler"></span></label>
             </label>
@@ -282,12 +287,5 @@ const PropertyFrom = React.createClass ({
     );
   }
 });
-
-// <input
-//   type="text"
-//   className="property-form-input-field"
-//   onChange={this.updateNumBedRooms}
-//   value={this.state.numBedrooms}
-//   />
 
 module.exports = PropertyFrom;
