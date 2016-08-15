@@ -1,6 +1,13 @@
 class Api::ReviewsController < ApplicationController
   def index
-    @reviews = Review.where(property_id: review_params[:property_id])
+    if review_params[:property_id]
+      @reviews = Review.where(property_id: review_params[:property_id])
+    elsif review_params[:user_id]
+      @reviews = Review.where(author_id: review_params[:user_id])
+    else
+      @reviews = Review.all
+    end
+
     if @reviews
       render "api/reviews/index"
     else
@@ -29,7 +36,7 @@ class Api::ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(
-      :title, :body, :property_rating, :landlord_rating, :image, :property_id
+      :title, :body, :property_rating, :landlord_rating, :image, :property_id, :user_id
       )
   end
 end

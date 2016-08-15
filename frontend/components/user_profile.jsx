@@ -3,6 +3,7 @@ const React = require('react'),
       UserActions = require('../actions/user_actions'),
       UserStore = require('../stores/user_store'),
       UpdateUserInfo = require('./update_user_info'),
+      SingleReview = require('./single_review'),
       ReviewStore = require('../stores/review_store'),
       ReviewActions = require('../actions/review_actions'),
       MyMap = require('./property_map');
@@ -21,7 +22,7 @@ const UserProfile = React.createClass({
     this.reviewsListener = ReviewStore.addListener(this._onReviewsChange);
     const userId = this.props.params.userId;
     UserActions.fetchUser(userId);
-    // ReviewActions.fetchUserReviews(userId);  NOTE flux not set up yet for user specific reviews
+    ReviewActions.fetchUserReviews(userId);
   },
 
   componentWillUnmount () {
@@ -37,7 +38,18 @@ const UserProfile = React.createClass({
 
   _onReviewsChange () {
     const userReviews = ReviewStore.all();
+    let x;
     this.setState({userReviews: userReviews});
+  },
+
+  showReviews () {
+    const reviewObject = this.state.userReviews;
+    const reviewsArray = Object.keys(reviewObject).map((revId) => {
+      const review = reviewObject[revId];
+      return <SingleReview key={revId} review={review}/>;
+    });
+
+    return reviewsArray;
   },
 
   render () {
@@ -47,18 +59,14 @@ const UserProfile = React.createClass({
           updateForm = <UpdateUserInfo user={this.state.user}/>;
     }
 
-    if (this.state.reviews) {
-      const reviews = this.state.reviews;
-      userReviews = Object.keys(reviews).map((revKey) => {
-        return reviews[revKey]; // NOTE probably going to convert the review store to array so this wont be nessecary
-      });
+    if (this.state.userReviews) {
+      userReviews = this.showReviews();
     }
-
 
     const user = this.state.user;
     return (
       <div className="content-wrapper">
-        <h1>{user.username}</h1>
+        <h1>Reviews by {user.username}</h1>
         { userReviews }
         { updateForm }
       </div>

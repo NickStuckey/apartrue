@@ -31,6 +31,19 @@ const ReviewApiUtil = {
     });
   },
 
+  fetchUserReviews (userId, success) {
+    $.ajax({
+      url: `api/reviews`,
+      type: "GET",
+      data: {review: {user_id: userId}},
+      success,
+      error: (xhr) => {
+        const error = xhr.responseJSON;
+        console.log('fetchUserReviews', error);
+      }
+    });
+  },
+
   removeReview (id, success) {
     $.ajax({
       url: `api/reviews/${id}`,

@@ -16,7 +16,7 @@ const ReviewActions = {
   },
 
   fetchUserReviews (userId) {
-    // NOTE to do
+    ReviewApiUtil.fetchUserReviews(userId, this.receiveAllReviews);
   },
 
   receiveAllReviews (reviews) {

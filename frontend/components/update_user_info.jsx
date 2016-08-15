@@ -30,7 +30,7 @@ const UpdateUserInfo = React.createClass ({
   render () {
     return (
       <div className="update-user-info-component-wrapper">
-      <button onClick={this.toggleUserForm}>update info</button>
+      <button className="button" onClick={this.toggleUserForm}>update info</button>
         <div className="slide-down-form" ref="slide">
           <form className="update-profile">
             <input
