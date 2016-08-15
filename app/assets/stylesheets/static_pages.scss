@@ -29,11 +29,7 @@ h1, h2, h3, label, option, {
 }
 
 .app-wrapper {
-  // position: absolute;
-  // top: 0;
-  // left: 0;
   min-width: 200px;
-  // max-width: 1000px;
 }
 
 .page-wrapper {
@@ -48,8 +44,6 @@ h1, h2, h3, label, option, {
   margin: auto;
 }
 
-
-
 .footer {
   bottom:0px;
   color: white;
@@ -58,7 +52,6 @@ h1, h2, h3, label, option, {
   padding: 20px 0;
   display: block;
   width: 100%;
-  // height: 50px;
   background: #575757;
   opacity: 0.5;
 }

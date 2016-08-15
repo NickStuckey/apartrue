@@ -145,6 +145,14 @@ const ShowProperty = React.createClass({
     this.closeModal();
   },
 
+  sizeAddress () {
+    const property = this.state.property;
+    if (property.address.length > 26) {
+      return property.address.slice(0, 26) + "...";
+    } else
+      return property.address;
+  },
+
   render () {
     let address, city, zipcode, lat, lng, reviews, propRating, lordRating, map, sessionOption;
     const property = this.state.property;
@@ -161,7 +169,7 @@ const ShowProperty = React.createClass({
 
     if (property.address) {
       reviews = this.showReviews();
-      address = property.address;
+      address = this.sizeAddress();
       city = property.city;
       zipcode = property.zipcode;
       lat = property.lat;

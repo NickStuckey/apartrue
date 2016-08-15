@@ -56,13 +56,14 @@ h3.personal-rating {
 }
 
 li.address-detail {
-  padding-left: 20px;
+  font-size: 18px;
+  padding-left: 18px;
   color: #515252;
 }
 
 li.address-detail:first-child {
     padding-top: 10px;
-    font-size: 27px;
+    font-size: 20px;
     color: white;
 }
 
@@ -155,12 +156,13 @@ p.review-body {
 }
 
 h1.review-title {
-  font-size: 50px;
+  font-size: 26px;
+
   color: #64aaaa;
   display: block;
   float: left;
   margin-left: 10px;
-  padding: 0 0 0 10px;
+  padding: 10px 0 0 10px;
 }
 
 .single-prop-map {
@@ -211,11 +213,11 @@ p.single-review-star-label {
 }
 
 .title-address {
-  font-size: 50px;
+  font-size: 40px;
   color: #64aaaa;
-  padding: 0 0 0 10px;
+  padding: 20px 0 0 10px;
   width: 450px;
-  height: 150px;
+  height: 110px;
   text-align: center;
   float: left;
 }
