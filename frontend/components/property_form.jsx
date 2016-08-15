@@ -229,7 +229,7 @@ const PropertyFrom = React.createClass ({
                 <p className="label-text">Zipcode</p>
                 <input
                   type="text"
-                  placeholder="city"
+                  placeholder="zipcode"
                   className="property-form-input-field"
                   onChange={this.updateZipcode}
                   value={this.state.zipcode}

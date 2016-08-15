@@ -67,11 +67,13 @@ const UserProfile = React.createClass({
     return (
       <div className="content-wrapper">
         <h1>Reviews by {user.username}</h1>
-        { userReviews }
         { updateForm }
+        { userReviews }
       </div>
     );
   }
 });
+// <img className="profile-pic" src={this.state.user.image_url}/>
+// <p className="user-bio">{this.state.user.userBio}</p>
 
 module.exports = UserProfile;
