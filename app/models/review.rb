@@ -8,12 +8,13 @@ class Review < ActiveRecord::Base
     class_name: :User,
   )
 
-  def average_rating
-
-  end
-
   def self.find_all_for_property(prop_id)
     self.where(property_id: prop_id)
+  end
+
+  def add_author
+    self.author_name = User.find(self.author_id).username
+    self.save!
   end
 
 end

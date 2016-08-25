@@ -8,6 +8,11 @@ class Api::ReviewsController < ApplicationController
       @reviews = Review.all
     end
 
+    # usefull for updating seeds
+    @reviews.each { |r|
+      r.add_author if !r.author_name
+    }
+
     if @reviews
       render "api/reviews/index"
     else
@@ -18,10 +23,9 @@ class Api::ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.author_id = current_user.id
+    @review.add_author
 
     if @review.save
-      # associated_property = Property.find(review_params[:property_id])
-      # associated_property.update_rating_averages!
       @review.property.update_rating_averages!
       render "api/reviews/show"
     else

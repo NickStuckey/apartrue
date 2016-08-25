@@ -1,10 +1,11 @@
 const React = require('react'),
       SessionStore = require('../stores/session_store'),
+      hashHistory = require('react-router').hashHistory,
       ReviewActions = require('../actions/review_actions');
 
 const SingleReview = React.createClass({
   getInitialState () {
-    return ({review: this.props.review});
+    return ({review: this.props.review, author: ""});
   },
 
   deleteReview () {
@@ -31,16 +32,22 @@ const SingleReview = React.createClass({
     return (<p className="single-review-avg-stars">{stars.join('')}</p>);
   },
 
+  userPage () {
+    const userId = this.state.review.author_id;
+    hashHistory.push(`/users/${userId}`);
+  },
+
   render () {
-    let propRating, lordRating, deleteButtonOption, auth_id;
+    let propRating, lordRating, deleteButtonOption, authorId, authorName;
     const review = this.state.review;
     if (review) {
-      auth_id = review.author_id;
+      authorId = review.author_id;
+      authorName = review.author_name;
       propRating = this.drawPropertyRating();
       lordRating = this.drawLandlordRating();
     }
 
-    if (SessionStore.isUserLoggedIn() && SessionStore.currentUser().id === auth_id) {
+    if (SessionStore.isUserLoggedIn() && SessionStore.currentUser().id === authorId) {
       deleteButtonOption = <button
         onClick={this.deleteReview}
         className="delete-button"
@@ -50,6 +57,7 @@ const SingleReview = React.createClass({
     return (
       <li key={review.id} className="review-wrapper group">
         <ul className="single-review-star-ratings">
+          <li className="user-name"><a onClick={this.userPage}>{authorName}</a></li>
           <li className="single-review-star-wrapper">
             <p className="single-review-star-label">Property</p>
             {propRating}
