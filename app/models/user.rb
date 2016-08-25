@@ -42,9 +42,7 @@ class User < ActiveRecord::Base
   end
 
   def is_password?(password)
-    # debugger
     BCrypt::Password.new(self.password_digest).is_password?(password)
-    # debugger
   end
 
   def generate_token

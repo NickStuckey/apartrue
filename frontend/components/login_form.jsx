@@ -73,7 +73,7 @@ const LoginForm = React.createClass({
   redirectIfLoggedIn () {
     if (SessionStore.isUserLoggedIn()) {
       const userId = SessionStore.userId();
-      this.context.router.push(`/users/${userId}`);
+      this.context.router.push(`/searchform`);
     }
   },
 

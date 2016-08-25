@@ -40,7 +40,6 @@ const SingleReview = React.createClass({
       lordRating = this.drawLandlordRating();
     }
 
-    // debugger
     if (SessionStore.isUserLoggedIn() && SessionStore.currentUser().id === auth_id) {
       deleteButtonOption = <button
         onClick={this.deleteReview}

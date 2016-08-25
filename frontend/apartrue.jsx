@@ -31,7 +31,7 @@ const App = React.createClass ({
 const routes = (
   <Router history={ hashHistory }>
     <Route path="/" component={ App } >
-      <IndexRoute component={ SearchForm } />
+      <IndexRoute component={ LogInForm } />
       <Route path="searchform" component={ SearchForm } />
       <Route path="login" component={ LogInForm }/>
       <Route path="signup" component={ LogInForm }/>

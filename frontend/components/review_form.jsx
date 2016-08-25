@@ -50,7 +50,7 @@ const ReviewForm = React.createClass({
 
     if (!!(LRating && PRating && title && body)){
       ReviewActions.createReview(this.state);
-      setState({title: "", body: "", landlordRating: null, propertyRating: null});
+      this.setState({title: "", body: "", landlordRating: null, propertyRating: null});
     } else {
       errorMessage = "Please complete all fields!";
     }
