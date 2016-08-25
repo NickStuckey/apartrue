@@ -37,6 +37,12 @@ const SingleReview = React.createClass({
     hashHistory.push(`/users/${userId}`);
   },
 
+  propertyPage () {
+    console.log('propPage clicked');
+    const propId = this.state.review.property_id;
+    hashHistory.push(`/properties/${propId}`);
+  },
+
   render () {
     let propRating, lordRating, deleteButtonOption, authorId, authorName;
     const review = this.state.review;
@@ -57,7 +63,6 @@ const SingleReview = React.createClass({
     return (
       <li key={review.id} className="review-wrapper group">
         <ul className="single-review-star-ratings">
-          <li className="user-name"><a onClick={this.userPage}>{authorName}</a></li>
           <li className="single-review-star-wrapper">
             <p className="single-review-star-label">Property</p>
             {propRating}
@@ -67,7 +72,8 @@ const SingleReview = React.createClass({
             {lordRating}
           </li>
         </ul>
-        <h1 className="review-title">{ review.title }</h1>
+        <a className="review-title" onClick={this.propertyPage}>{ review.title }</a>
+        <a className="user-name" onClick={this.userPage}> by {authorName}</a>
         <p className="review-body">{ review.body }</p>
         <div className="delete-button-place-holder">
           {deleteButtonOption}

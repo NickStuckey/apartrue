@@ -22,7 +22,7 @@ h1, h2, h3, label, option, {
   background-color: #7a7b7b;
 }
 
-.group {
+.group:after {
   content: "";
   clear: both;
   display: block;

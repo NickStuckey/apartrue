@@ -141,9 +141,9 @@ li.single-review-star-wrapper {
   height: auto;
   display: block;
   width: 1000px;
-  padding-bottom: 200px;
   background: white;
   border-top: 2px solid #e6e6e6;
+  padding-bottom: 10px;
 }
 
 p.review-body {
@@ -155,7 +155,7 @@ p.review-body {
   background: #f1f0f0;
 }
 
-h1.review-title {
+.review-title {
   font-size: 26px;
 
   color: #64aaaa;

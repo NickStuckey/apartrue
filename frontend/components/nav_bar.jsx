@@ -49,7 +49,7 @@ const NavBar = React.createClass ({
       <header className="nav-bar-wrapper">
         <div className="nav-bar-background"></div>
           <nav className="nav-bar ">
-            <a href="#/" className="home-button hoverable">aparTrue</a>
+            <a href="#/searchform" className="home-button hoverable">aparTrue</a>
             <ul className="link-list">
               <li className="nav-link hoverable"><a href="#/searchform" >search</a></li>
               <li className="nav-link hoverable">{sessionOption }</li>
