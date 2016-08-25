@@ -36,16 +36,17 @@ const SearchForm = React.createClass({
   render () {
     return (
       <div className="page-wrapper group">
-        <h2 className="search-header">"You're just a few steps from home."</h2>
-        <div className="backing-bar"></div>
-        <div className="form-background"></div>
-        <div className="search-form-wrapper">
-          <h1>What are you looking for?</h1>
-          <SearchFields setMap={this.setMap} />
-          <h1>Or, search by address</h1>
-          <AddressFinder className="address-finder"/>
-          { results }
+        <div className="rotating-photo-background"></div>
+          <h2 className="search-header">Just a few steps from home...</h2>
+          <div className="backing-bar"></div>
+          <div className="search-form-wrapper">
+            <AddressFinder className="address-finder"/>
         </div>
+        <div className="criteria-search-wrapper">
+          <h1>Or, search by criteria</h1>
+          <SearchFields setMap={this.setMap} />
+        </div>
+        { results }
       </div>
     );
   }

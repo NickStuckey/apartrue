@@ -57,8 +57,10 @@ h3.personal-rating {
 
 li.address-detail {
   font-size: 18px;
-  padding-left: 18px;
-  color: #515252;
+padding-left: 18px;
+color: #515252;
+transform: translateY(-100px);
+
 }
 
 li.address-detail:first-child {
@@ -104,10 +106,9 @@ li.single-review-star-wrapper {
   padding: 5px;
   color: white;
   left: 50px;
-  // top: 10px;
   font-size: 20px;
   border: 2px solid #515252;
-  transform: translateY(-20px);
+  transform: translateY(110px);
 }
 
 
@@ -127,11 +128,9 @@ li.single-review-star-wrapper {
 .property-pic {
   z-index: 200;
   position: relative;
-  max-width: 510px;
-  /* height: auto; */
+  width: 510px;
   float: left;
-      transform: translate(366px, -406px);
-  // transform: translate(366px, -396px);
+  transform: translate(76px, -346px);
   border: 10px solid white;
   margin-left: 36px;
   max-height: 390px;
@@ -170,6 +169,7 @@ p.review-body {
   width: 295px;
   float: left;
   border: 2px solid #7a7b7b;
+  transform: translateY(-120px);
 }
 
 ul.show-page-star-ratings {

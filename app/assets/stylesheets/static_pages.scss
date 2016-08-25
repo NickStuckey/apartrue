@@ -5,7 +5,7 @@
 
 
 html, body, p, ul, li, input, button, a, option, select,
-h1, h2, h3, label, option, {
+h1, h2, h3, h4,label, option, div {
   -webkit-appearance:none;
   color: inherit;
   background-color: transparent;
@@ -16,6 +16,11 @@ h1, h2, h3, label, option, {
   text-decoration: inherit;
   list-style: none;
   border-radius: 0;
+
+}
+
+body {
+  background: #2d2d2d;
 }
 
 .button:hover {
@@ -28,14 +33,14 @@ h1, h2, h3, label, option, {
   display: block;
 }
 
-.app-wrapper {
-  min-width: 200px;
-}
-
-.page-wrapper {
-  height: 900px;
-  width: 100%;
-}
+// .app-wrapper {
+//   min-width: 200px;
+// }
+//
+// .page-wrapper {
+//   height: 900px;
+//   width: 100%;
+// }
 
 .content-wrapper {
   max-width: 1000px;
@@ -56,16 +61,16 @@ h1, h2, h3, label, option, {
   opacity: 0.5;
 }
 
-.form-background {
-  height: 500px;
-  width: 700px;
-  border-radius: 20%;
-  position: relative;
-  margin: auto;
-  transform: translateY(25%);
-  background: #e1a0a0;
-  opacity: 0.95;
-}
+// .form-background {
+//   height: 500px;
+//   width: 700px;
+//   border-radius: 20%;
+//   position: relative;
+//   margin: auto;
+//   transform: translateY(25%);
+//   background: #e1a0a0;
+//   opacity: 0.95;
+// }
 
 .no-background {
   background: none;
@@ -77,4 +82,31 @@ h1, h2, h3, label, option, {
   color: #7a7b7b;
   width: 100%;
   z-index: -1;
+}
+
+.rotating-photo-background {
+  background-image: image-url('pool.jpg');
+  background-color: grey;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: absolute;
+  top: 0;
+
+  position: relative;
+  min-height: 750px;
+  min-width: 1000px;
+  z-index: -1;
+  outline: 2px solid blue;
+  /* display: block; */
+  top: -50px;
+  margin: auto;
+}
+
+.search-page-image-overlay {
+  max-height: 400px;
+  // outline: 2px solid red;
+  display: block;
+  /* display: block; */
+  top: -50px;
+  margin: auto;
 }

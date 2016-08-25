@@ -69,11 +69,14 @@
 
 .property-list-item {
   height: 200px;
+  margin: auto;
+  width: 1000px;
 }
 
 .search-results-wrapper {
-  min-width: 1000px;
-  transform: translateX(-147px);
+  min-width: 800px;
+  transform: translateY(-480px);
+  transform: translateY(-535px);
 }
 
 .star-labels {
@@ -81,7 +84,6 @@
   color: white;
   text-align: center;
   padding: 5px;
-  // margin-left: 63px;
 }
 
 .star-wrapper {

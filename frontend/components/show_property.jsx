@@ -198,16 +198,14 @@ const ShowProperty = React.createClass({
               </li>
             </ul>
             <div className="mid-content-wrapper">
-              <div className="map-box group">
+              <div className="map-box ">
                 { map }
-                <div className="map-box-text">
-                  <ul>
+                  <ul className>
                     <li className="address-detail">{address}</li>
                     <li className="address-detail">{city}</li>
                     <li className="address-detail">{zipcode}</li>
                   </ul>
 
-                </div>
               </div>
               <img className="property-pic" src={property.image_url}/>
             </div>
