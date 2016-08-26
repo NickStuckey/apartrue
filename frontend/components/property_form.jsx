@@ -197,10 +197,11 @@ const PropertyFrom = React.createClass ({
 
     return (
       <div className="page-wrapper group">
-        <h1 className="search-header">{address} is not in our database</h1>
-        <div className="backing-bar"></div>
-        <div className="form-background"></div>
-        <form className="property-form" onSubmit={this.handleSubmit}>
+        <div className="property-form-top-gap"></div>
+        <h1 className="header property-header">{address} is not in our database</h1>
+        <div className="wide-backing-bar"></div>
+        <div className="property-form-background">
+        <form id="property-form" onSubmit={this.handleSubmit}>
           <div className="property-form-text-input-wrapper">
               <label className="field-label">
                 <div className="form-field-error">{ addressError }</div>
@@ -283,6 +284,8 @@ const PropertyFrom = React.createClass ({
           <input type="file" className="file-upload" onChange={this.updateFile} />
           <input type="submit" className="submit-form-button" value="Add Location"/>
         </form>
+
+      </div>
       </div>
     );
   }

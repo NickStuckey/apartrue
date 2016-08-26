@@ -82,15 +82,6 @@
   line-height: 50px;
 }
 
-.property-form {
-  display: block;
-  width: 603px;
-  margin: auto;
-  height: 400px;
-  top: -374px;
-  position: relative;
-}
-
 .property-form-input-field {
   height: 40px;
   width: 200px;
@@ -107,15 +98,26 @@
 }
 
 .property-form-background {
-  height: 500px;
-  width: 700px;
-  border-radius: 20%;
-  position: relative;
-  margin: auto;
-  transform: translateY(35%);
-  background: #e1a0a0;
-  opacity: 0.95;
+  width: 100%;
+  background-color: #2d2d2d;
+  padding-bottom: 40px;
 }
+
+.property-form-top-gap {
+  height: 50px;
+  display: block;
+}
+
+// .property-form-background {
+//   height: 500px;
+//   width: 700px;
+//   border-radius: 20%;
+//   position: relative;
+//   margin: auto;
+//   transform: translateY(35%);
+//   background: #e1a0a0;
+//   opacity: 0.95;
+// }
 
 .submit-form-button {
   padding: 10px 40px;
@@ -132,14 +134,5 @@
 }
 
 .login-to-review {
-  border-right: 2px grey solid;
-border-bottom: 2px grey solid;
-/* border-radius: 10px; */
-background-color: #8ee0e0;
-padding: 10px 50px;
-text-align: center;
-color: #444343;
-font-size: 20px;
-margin: 10px auto;
-display: block;
+  margin: 10px auto;
 }

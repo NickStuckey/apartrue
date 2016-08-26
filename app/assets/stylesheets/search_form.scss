@@ -21,10 +21,38 @@
   opacity: 0.5;
 }
 
+.wide-backing-bar {
+  height: 100px;
+  width: 100%;
+  padding-bottom: 40px;
+  position: absolute;
+  background: #575757;
+  opacity: 0.5;
+  transform: translateY(-140px);
+}
+
+#property-form {
+  display: block;
+  width: 610px;
+  margin: auto;
+  /* height: 400px; */
+  /* top: -564px; */
+  position: relative;
+  opacity: 1;
+}
+
 .search-wrapper {
-  height: 140px;
+  height: 130px;
   background: #2d2d2d;
   padding: 20px;
+
+}
+
+.bottom-backing {
+  height: 150px;
+  background: #2d2d2d;
+  position: relative;
+  z-index: 100;
 }
 
 .search-wrapper h1{
@@ -32,23 +60,11 @@
   margin: 0 auto 10px auto;
   width: 500px;
   text-align: center;
-  // transform: translateY(30px);
-}
-
-.search-header {
-  color: white;
-  text-align: center;
-  font-size: 50px;
-  height: 280px;
-  line-height: 13;
-  position: relative;
-  z-index: 10;
-  width: 930px;
-  margin: auto;
-  text-align: center;
+  padding-bottom: 10px;
 }
 
 .google-address-finder {
+  width: 645px;
   display: block;
   margin: auto;
 }
@@ -65,13 +81,15 @@
   margin: 0 auto 0px auto;
   background: white;
   color: #7b7a7a;
+  float: left;
 }
 
 .search-button {
   display: block;
   padding: 10px 50px;
   background: #5c9a9a;
-  margin-top: 10px;
+  float: left;
+  margin-left: 10px;
 }
 
 .search-filter-inputs {
@@ -89,11 +107,4 @@
 
 .default {
   color: #7b7a7a;
-}
-
-.welcome-message {
-  text-align: center;
-  width: 500px;
-  font-size: 20px;
-  color: white;
 }

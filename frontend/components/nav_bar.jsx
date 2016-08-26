@@ -13,6 +13,20 @@ const NavBar = React.createClass ({
     self.sessionListener = SessionStore.addListener(this._onSessionChange);
   },
 
+  goTo (type) {
+    switch (type) {
+    case 'search':
+      hashHistory.push("/searchform");
+      break;
+    case 'session':
+      this.sessionActions();
+      break;
+    case 'profile':
+     this.profileAction();
+     break;
+    }
+  },
+
   handleLogout () {
     SessionActions.logOut();
     hashHistory.push("/searchform");
@@ -24,24 +38,30 @@ const NavBar = React.createClass ({
   },
 
   sessionOption () {
-    if (SessionStore.isUserLoggedIn()) {
-      return <button onClick={ this.handleLogout }>Log Out</button>;
-    } else {
-      if (hashHistory[-1] !== "/login")
-        return <a href="#/login" >Log In</a>;
-    }
+    return SessionStore.isUserLoggedIn() ? 'Log Out' : 'Log In';
   },
 
-  profileOption () {
+  profileAction () { // NOTE CHANGE THIS SO IT GOES TO THE APPROPRIATE USER< RIGHT NOW IT"S GOING TO Last profile visited
     const user = SessionStore.currentUser();
     if (user.id) {
-      const path = `#/users/${user.id}`;
-      return <a href={path} >Profile</a>;
+      hashHistory.push(`/users/${user.id}`);
+      }
+    },
+
+  profileOption () {
+    return SessionStore.isUserLoggedIn() ? 'Profile' : '';
+  },
+
+  sessionActions () {
+    if (SessionStore.isUserLoggedIn()) {
+      this.handleLogout();
+    } else {
+      if (hashHistory[-1] !== "/login")
+        hashHistory.push("/login");
     }
   },
 
   render () {
-
     const sessionOption = this.sessionOption();
     const profileOption = this.profileOption();
 
@@ -51,9 +71,9 @@ const NavBar = React.createClass ({
           <nav className="nav-bar ">
             <a href="#/searchform" className="home-button hoverable">aparTrue</a>
             <ul className="link-list">
-              <li className="nav-link hoverable"><a href="#/searchform" >search</a></li>
-              <li className="nav-link hoverable">{sessionOption }</li>
-              <li className="nav-link hoverable">{ profileOption }</li>
+              <li className="nav-link hoverable" onClick={ () => this.goTo('search') }>search</li>
+              <li className="nav-link hoverable" onClick={ () => this.goTo('session') }>{ sessionOption }</li>
+              <li className="nav-link hoverable" onClick={ () => this.goTo('profile') }>{ profileOption }</li>
             </ul>
           </nav>
       </header>
