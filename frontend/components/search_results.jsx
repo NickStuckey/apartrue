@@ -5,6 +5,7 @@ const React = require('react'),
 
 const SearchResults = React.createClass ({
   render () {
+    debugger
     return (
       <div className="search-results-wrapper">
         <PropertyMap

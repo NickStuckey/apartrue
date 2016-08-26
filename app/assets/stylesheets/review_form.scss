@@ -48,26 +48,26 @@
 }
 
 .review-form {
-  border: 1px solid grey;
   padding: 10px;
+  background: #2b2b2b;
+  color: #64aaaa;
 }
 
 .review-form-stars {
   position: relative;
-      font-size: 20px;
-      margin-right: 45px;
-      margin-top: 19px;
-      float: right;
-      text-align: center;
+  font-size: 20px;
+  margin-right: 45px;
+  margin-top: 19px;
+  float: right;
+  text-align: center;
 }
 
 .review-form-wrapper {
   width: 1000px;
-height: 450px;
-border-top: 10px solid grey;
-display: block;
-float: left;
-background: white;
+  height: 450px;
+  display: block;
+  float: left;
+  background: #2b2b2b;
 }
 
 .text-feild-input-wrapper {

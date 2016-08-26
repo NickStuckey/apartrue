@@ -238,7 +238,7 @@ const ShowProperty = React.createClass({
             <input
               type="submit"
               onClick={this.handleSubmit}
-              className="sign-in-button"
+              className="button white-text-"
               value="Sign In"
               />
           </form>
@@ -247,7 +247,7 @@ const ShowProperty = React.createClass({
           <h2 className="guest-login-modal">Or continue as a guest</h2>
         <button
           onClick={this.signInGuest}
-          id="modal-sign-in-button"
+          className="button"
           >Welcome</button>
 
         </Modal>

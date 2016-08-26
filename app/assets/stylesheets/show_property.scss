@@ -44,7 +44,6 @@
 
 .bottom-content-wrapper {
   width: 1000px;
-  min-height: 800px;
   border-top: 50px solid grey;
   background: white;
   position: absolute;;
@@ -114,7 +113,7 @@ li.single-review-star-wrapper {
 
 .mid-content-wrapper {
   height: 400px;
-  // padding-top:0px;
+  width: 900px;
 }
 
 .property-content-wrapper {
@@ -130,7 +129,7 @@ li.single-review-star-wrapper {
   position: relative;
   width: 510px;
   float: left;
-  transform: translate(76px, -346px);
+  transform: translate(76px, -326px);
   border: 10px solid white;
   margin-left: 36px;
   max-height: 390px;

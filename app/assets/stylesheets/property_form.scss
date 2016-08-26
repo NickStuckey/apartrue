@@ -56,6 +56,7 @@
 
 .label-text{
   padding: 5px;
+  color: #5c9a9a;
 }
 
 .field-label {
@@ -108,29 +109,19 @@
   display: block;
 }
 
-// .property-form-background {
-//   height: 500px;
-//   width: 700px;
-//   border-radius: 20%;
-//   position: relative;
-//   margin: auto;
-//   transform: translateY(35%);
-//   background: #e1a0a0;
-//   opacity: 0.95;
-// }
-
 .submit-form-button {
+
   padding: 10px 40px;
   margin: 5px;
-  color: #white;
-  font-size: 20px;
-  background-color: #7a7b7b;
   float: right;
   margin-right: 60px;
-}
-
-.submit-form-button:hover {
-  background-color: grey;
+  border-right: 1px grey solid;
+  border-bottom: 1px grey solid;
+  background-color: #64aaaa;
+  padding: 10px 50px;
+  text-align: center;
+  color: white;
+  font-size: 20px;
 }
 
 .login-to-review {

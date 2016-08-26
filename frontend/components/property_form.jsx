@@ -30,9 +30,9 @@ const PropertyFrom = React.createClass ({
     currentUser = SessionStore.currentUser();
 
     return ({
-      address: address,
-      city: city,
-      zipcode: zipcode,
+      address: address || "",
+      city: city || "",
+      zipcode: zipcode || "",
       price: "",
       numBedrooms: "",
       available: false,
@@ -132,8 +132,6 @@ const PropertyFrom = React.createClass ({
     formData.append("property[image]", this.state.imageFile);
 
     PropertyActions.createProperty(formData);
-
-    // PropertyActions.createProperty(this.state);
   },
 
   showErrors () {
@@ -282,7 +280,7 @@ const PropertyFrom = React.createClass ({
             </label>
           </div>
           <input type="file" className="file-upload" onChange={this.updateFile} />
-          <input type="submit" className="submit-form-button" value="Add Location"/>
+          <input type="submit" className="button submit-form-button" value="Add Location"/>
         </form>
 
       </div>

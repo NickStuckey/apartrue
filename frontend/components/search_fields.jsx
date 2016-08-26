@@ -24,6 +24,7 @@ const SearchFields = React.createClass({
 
     if (!!bedrooms && !!priceLimit && !!neighborhoodId) {
       FilterActions.updateFilters(this.state);
+      this.updateMapCenter(this.state.neighborhoodId);
     } else {
       bedroomsError = bedrooms ? "" : fieldErrorMsg;
       priceLimitError = priceLimit ? "" : fieldErrorMsg;
@@ -64,7 +65,6 @@ const SearchFields = React.createClass({
   updateNeighborhoodId (e) {
     const id = e.target.value;
     this.setState({neighborhoodId: id});
-    this.updateMapCenter(id);
   },
 
   render () {

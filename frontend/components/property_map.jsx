@@ -18,7 +18,6 @@ const PropertyMap = React.createClass ({
       };
 
       FilterActions.updateBounds(bounds);
-      // const testFilters = FilterStore.filters();
       PropertyActions.fetchAllPropertiesWithParams(FilterStore.filters());
     });
     google.maps.event.addListener(this.map, 'click', event => {
@@ -28,6 +27,7 @@ const PropertyMap = React.createClass ({
   },
 
   componentDidMount () {
+    debugger
     const mapOptions = {center: this.props.mapCenter, zoom: 12};
     this.propertyListener = PropertyStore.addListener(this._onChange);
     this.map = new google.maps.Map(this.mapContainer, mapOptions);

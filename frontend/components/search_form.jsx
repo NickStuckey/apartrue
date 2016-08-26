@@ -7,11 +7,9 @@ const React = require('react'),
       SearchResults = require('./search_results'),
       SessionStore = require('../stores/session_store');
 
-let results;
-
 const SearchForm = React.createClass({
   getInitialState () {
-    return ({mapCenter: {lat: 40.75662, lng: -73.985367}});
+    return ({mapCenter: {lat: 40.75662, lng: -73.985367}, results: null});
   },
 
   componentDidMount () {
@@ -23,14 +21,17 @@ const SearchForm = React.createClass({
   },
 
   _onFilterChange () {
-    results = <SearchResults
+    debugger
+    const results = <SearchResults
       mapCenter={ this.state.mapCenter }
       className="search-map-wrapper"/>;
-    this.forceUpdate();
+
+    this.setState({results: results});
   },
 
   setMap (newCenter) {
     this.setState({mapCenter: newCenter});
+    let x = FilterStore.filters;
   },
 
   render () {
@@ -46,7 +47,7 @@ const SearchForm = React.createClass({
             <h1>Or, search by criteria</h1>
             <SearchFields setMap={this.setMap} />
           </div>
-        { results }
+        { this.state.results }
       </div>
     );
   }
