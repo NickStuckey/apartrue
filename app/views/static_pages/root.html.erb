@@ -3,6 +3,29 @@
     window.currentUser = <%= render("api/users/user.json.jbuilder",
     user: current_user).html_safe %>;
   <% end %>
+
+  // $(document).ready(function(){
+  //   var header = $('body');
+  //
+  //   var backgrounds = new Array(
+  //       'url(app/assets/images/pool.jpg)'
+  //       'url(app/assets/images/skyline.jpg)'
+  //     // , 'url(http://placekitten.com/200)'
+  //     // , 'url(http://placekitten.com/300)'
+  //     // , 'url(http://placekitten.com/400)'
+  //   );
+  //
+  //   var current = 0;
+  //
+  //   function nextBackground() {
+  //       current++;
+  //       current = current % backgrounds.length;
+  //       header.css('background-image', backgrounds[current]);
+  //   }
+  //   setInterval(nextBackground, 1000);
+  //
+  //   header.css('background-image', backgrounds[0]);
+  //   });
 </script>
 
 <div id="content"></div>

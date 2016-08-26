@@ -16,7 +16,6 @@ h1, h2, h3, h4,label, option, div {
   text-decoration: inherit;
   list-style: none;
   border-radius: 0;
-
 }
 
 body {
@@ -33,19 +32,9 @@ body {
   display: block;
 }
 
-// .app-wrapper {
-//   min-width: 200px;
-// }
-//
-// .page-wrapper {
-//   height: 900px;
-//   width: 100%;
-// }
-
 .content-wrapper {
   max-width: 1000px;
-  background: white;
-  min-height: 900px;
+  // min-height: 900px;
   margin: auto;
 }
 
@@ -61,21 +50,6 @@ body {
   opacity: 0.5;
 }
 
-// .form-background {
-//   height: 500px;
-//   width: 700px;
-//   border-radius: 20%;
-//   position: relative;
-//   margin: auto;
-//   transform: translateY(25%);
-//   background: #e1a0a0;
-//   opacity: 0.95;
-// }
-
-.no-background {
-  background: none;
-}
-
 .page-break {
   position: absolute;
   height: 50px;
@@ -84,29 +58,22 @@ body {
   z-index: -1;
 }
 
-.rotating-photo-background {
+body {
   background-image: image-url('pool.jpg');
   background-color: grey;
   background-repeat: no-repeat;
   background-size: 100% auto;
-  background-position: absolute;
-  top: 0;
-
   position: relative;
-  min-height: 750px;
-  min-width: 1000px;
-  z-index: -1;
-  outline: 2px solid blue;
-  /* display: block; */
-  top: -50px;
-  margin: auto;
+  background-attachment: fixed;
 }
 
 .search-page-image-overlay {
   max-height: 400px;
-  // outline: 2px solid red;
   display: block;
-  /* display: block; */
   top: -50px;
   margin: auto;
+}
+
+.submit-button {
+  margin: 10px auto;
 }

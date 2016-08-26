@@ -52,8 +52,6 @@
 
 .property-list-item-address {
   width: 900px;
-  /* padding: 5px; */
-  /* margin: 10px; */
   color: white;
   font-size: 45px;
   display: block;
@@ -75,8 +73,6 @@
 
 .search-results-wrapper {
   min-width: 800px;
-  transform: translateY(-480px);
-  transform: translateY(-535px);
 }
 
 .star-labels {
@@ -110,7 +106,7 @@
 .transparent-list-item-background {
   height: 200px;
   width: 1000px;
-  background: grey;
+  background: #5c9a9a;
   opacity: 0.8;
   margin: 10px;
 }

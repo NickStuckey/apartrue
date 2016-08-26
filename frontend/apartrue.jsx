@@ -23,6 +23,7 @@ const App = React.createClass ({
       <div className="app-wrapper">
         <NavBar/>
         {this.props.children}
+        <div id="rotating-photo-background"></div>
       </div>
     );
   }

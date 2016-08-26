@@ -83,7 +83,7 @@ const AddressFinder = React.createClass({
           onChange={this.updateAddress}
           ref={(input) => this.searchBoxInput = input}
         />
-        <input type="submit" className="search-button button" value="find" />
+      <input type="submit" className="search-button button" value="find" />
       </form>
     );
   }

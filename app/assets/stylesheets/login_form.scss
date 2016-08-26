@@ -6,13 +6,12 @@ body {
 
 
 .button {
-  border-right: 2px grey solid;
-  border-bottom: 2px grey solid;
-  /* border-radius: 10px; */
-  background-color: #8ee0e0;
+  border-right: 1px grey solid;
+  border-bottom: 1px grey solid;
+  background-color: #64aaaa;
   padding: 10px 50px;
   text-align: center;
-  color: #444343;
+  color: white;
   font-size: 20px;
   margin: auto;
   display: block;
@@ -76,11 +75,10 @@ body {
 }
 
 .login-box-wrapper {
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  left: 50%;
+  display: block;
   width: 920px;
+  transform: translateX(45px);
+  float: left;
 }
 
 @media(max-width:920px) {

@@ -2,45 +2,50 @@
   display: block;
   margin: auto;
   max-width: 1000px;
-  transform: translateY(-450px);
+  // transform: translateY(-450px);
 }
 
 .search-form-wrapper h1 {
-  color: #575757;
+  color: white;
   font-size: 36px;
   text-align: center;
   padding: 20px;
+  transform: translateY(-150px);
 }
 
 .backing-bar {
-  height: 200px;
+  height: 100px;
   width: 100%;
   position: relative;
   background: #575757;
   opacity: 0.5;
-  top: -310px;
 }
 
-.criteria-search-wrapper {
-  height: 200px;
+.search-wrapper {
+  height: 140px;
   background: #2d2d2d;
-  transform: translateY(-420px);
+  padding: 20px;
 }
 
-.criteria-search-wrapper h1{
+.search-wrapper h1{
   color: #5c9a9a;
-  margin: auto;
+  margin: 0 auto 10px auto;
   width: 500px;
   text-align: center;
-  transform: translateY(30px);
+  // transform: translateY(30px);
 }
 
 .search-header {
   color: white;
   text-align: center;
   font-size: 50px;
-  transform: translateY(-600px);
-  top: -600px;
+  height: 280px;
+  line-height: 13;
+  position: relative;
+  z-index: 10;
+  width: 930px;
+  margin: auto;
+  text-align: center;
 }
 
 .google-address-finder {
@@ -65,15 +70,14 @@
 .search-button {
   display: block;
   padding: 10px 50px;
-  background: #e1e6e3;
+  background: #5c9a9a;
   margin-top: 10px;
-
 }
 
 .search-filter-inputs {
   width: 680px;
   margin: auto;
-  transform: translateY(50px);
+  // transform: translateY(50px);
 }
 
 .search-filter-inputs select {

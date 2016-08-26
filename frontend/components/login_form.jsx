@@ -99,7 +99,7 @@ const LoginForm = React.createClass({
     }
 
     return (
-      <div className="content-wrapper no-background">
+      <div className="content-wrapper">
         <div className="login-box-wrapper">
           <p className="errors">{ this.errors }</p>
           <div className="login-box guest-login-box">
@@ -148,7 +148,7 @@ const LoginForm = React.createClass({
                     placeholder="password"
                     />
 
-                <input className="button" type="submit" value={button}/>
+                  <input className="button submit-button" type="submit" value={button}/>
               </form>
               <Link className="sign-in-navLink" to={route}>{linkText}</Link>
             </div>
@@ -159,6 +159,5 @@ const LoginForm = React.createClass({
   }
 
 });
-// <div className="sign-log-in-link-wrapper">{ navLink }</div>
 
 module.exports = LoginForm;
