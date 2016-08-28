@@ -7,7 +7,7 @@ const FilterStore = new Store(AppDispatcher);
 
 const setBounds = function (newBounds) {
   _filters.bounds = newBounds;
-  FilterStore.__emitChange();
+  // FilterStore.__emitChange();
 };
 
 const setFilters = function (filters) {

@@ -3,6 +3,7 @@ const React = require('react'),
       hashHistory = require('react-router').hashHistory,
       FilterStore = require('../stores/filter_store'),
       NavBar = require('./nav_bar'),
+      MapUtil = require('../util/map_util'),
       PropertyActions = require('../actions/property_actions'),
       SearchFields = require('./search_fields'),
       SearchResults = require('./search_results'),
@@ -10,7 +11,7 @@ const React = require('react'),
 
 const SearchForm = React.createClass({
   getInitialState () {
-    return ({mapCenter: {lat: 40.676993, lng: -73.940048}, results: null});
+    return ({results: null});
   },
 
   componentDidMount () {
@@ -22,17 +23,15 @@ const SearchForm = React.createClass({
   },
 
   _onFilterChange () {
-    PropertyActions.fetchAllPropertiesWithParams(FilterStore.filters());
+    let filters = FilterStore.filters();
+    let mapCenter = MapUtil.updateMapCenter(filters.neighborhoodId);
+    PropertyActions.fetchAllPropertiesWithParams(filters);
 
     const results = <SearchResults
-      // mapCenter={ this.state.mapCenter }
+      mapCenter={ mapCenter }
       className="search-map-wrapper"/>;
     this.setState({results: results});
   },
-  //
-  // setMap (newCenter) {
-  //   this.setState({mapCenter: newCenter});
-  // },
 
   render () {
     return (
