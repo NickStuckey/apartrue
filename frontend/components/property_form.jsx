@@ -34,7 +34,7 @@ const PropertyFrom = React.createClass ({
       city: city || "",
       zipcode: zipcode || "",
       price: "",
-      numBedrooms: "",
+      num_bedrooms: "",
       available: false,
       ownerId: false,
       lat: null,
@@ -123,7 +123,7 @@ const PropertyFrom = React.createClass ({
     formData.append("property[address]", this.state.address);
     formData.append("property[zipcode]", this.state.zipcode);
     formData.append("property[price]", this.state.price);
-    formData.append("property[num_bedrooms]", this.state.numBedrooms);
+    formData.append("property[num_bedrooms]", this.state.num_bedrooms);
     formData.append("property[available]", this.state.available);
     formData.append("property[lat]", this.state.lat);
     formData.append("property[lng]", this.state.lng);
@@ -157,7 +157,8 @@ const PropertyFrom = React.createClass ({
   },
 
   updateNumBedRooms (e) {
-    this.setState({numBed: e.target.value});
+
+    this.setState({num_bedrooms: e.target.value});
   },
 
   toggleOwnerId () {

@@ -9,7 +9,7 @@ const React = require('react'),
 
 const SearchForm = React.createClass({
   getInitialState () {
-    return ({mapCenter: {lat: 40.75662, lng: -73.985367}, results: null});
+    return ({mapCenter: {lat: 40.676993, lng: -73.940048}, results: null});
   },
 
   componentDidMount () {
@@ -21,15 +21,14 @@ const SearchForm = React.createClass({
   },
 
   _onFilterChange () {
-    debugger
     const results = <SearchResults
       mapCenter={ this.state.mapCenter }
       className="search-map-wrapper"/>;
-
     this.setState({results: results});
   },
 
   setMap (newCenter) {
+    // debugger
     this.setState({mapCenter: newCenter});
     let x = FilterStore.filters;
   },

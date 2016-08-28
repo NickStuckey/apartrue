@@ -23,6 +23,7 @@ class Api::PropertiesController < ApplicationController
   end
 
   def create
+    debugger
     prop_par = property_params
     prop_par[:image] = nil if property_params[:image] == "null"
 
@@ -37,6 +38,7 @@ class Api::PropertiesController < ApplicationController
       @property.neighborhood_id = Neighborhood.create_and_return_id(city_name)
     end
 
+    debugger
     if @property.save
       render "api/properties/show"
     else

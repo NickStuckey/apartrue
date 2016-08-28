@@ -23,8 +23,8 @@ const SearchFields = React.createClass({
           neighborhoodId = this.state.neighborhoodId;
 
     if (!!bedrooms && !!priceLimit && !!neighborhoodId) {
-      FilterActions.updateFilters(this.state);
       this.updateMapCenter(this.state.neighborhoodId);
+      FilterActions.updateFilters(this.state);
     } else {
       bedroomsError = bedrooms ? "" : fieldErrorMsg;
       priceLimitError = priceLimit ? "" : fieldErrorMsg;
