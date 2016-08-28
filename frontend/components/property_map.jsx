@@ -20,14 +20,15 @@ const PropertyMap = React.createClass ({
       FilterActions.updateBounds(bounds);
       PropertyActions.fetchAllPropertiesWithParams(FilterStore.filters());
     });
-    google.maps.event.addListener(this.map, 'click', event => {
-      const coords = { lat: event.latLng.lat(), lng: event.latLng.lng() };
-      that._handleClick(coords);
-    });
+
+    // google.maps.event.addListener(this.map, 'click', event => {
+    //   const coords = { lat: event.latLng.lat(), lng: event.latLng.lng() };
+    //   that._handleClick(coords);
+    // });
   },
 
   componentDidMount () {
-    const mapOptions = {center: this.props.mapCenter, zoom: 12};
+    const mapOptions = {center: {lat: 40.676993, lng: -73.940048}, zoom: 11};
     this.propertyListener = PropertyStore.addListener(this._onChange);
     this.map = new google.maps.Map(this.mapContainer, mapOptions);
     this.addMapListeners();
@@ -52,10 +53,10 @@ const PropertyMap = React.createClass ({
     });
     this.markers.push(marker);
   },
-
-  _handleClick(coords) {
-    console.log('this will be used to add property');
-  },
+  //
+  // _handleClick(coords) {
+  //   console.log('this will be used to add property');
+  // },
 
   markersToRemove () {
     return [];              // NOTE update with search filters NOTE

@@ -3,6 +3,7 @@ const React = require('react'),
       hashHistory = require('react-router').hashHistory,
       FilterStore = require('../stores/filter_store'),
       NavBar = require('./nav_bar'),
+      PropertyActions = require('../actions/property_actions'),
       SearchFields = require('./search_fields'),
       SearchResults = require('./search_results'),
       SessionStore = require('../stores/session_store');
@@ -21,17 +22,17 @@ const SearchForm = React.createClass({
   },
 
   _onFilterChange () {
+    PropertyActions.fetchAllPropertiesWithParams(FilterStore.filters());
+
     const results = <SearchResults
-      mapCenter={ this.state.mapCenter }
+      // mapCenter={ this.state.mapCenter }
       className="search-map-wrapper"/>;
     this.setState({results: results});
   },
-
-  setMap (newCenter) {
-    // debugger
-    this.setState({mapCenter: newCenter});
-    let x = FilterStore.filters;
-  },
+  //
+  // setMap (newCenter) {
+  //   this.setState({mapCenter: newCenter});
+  // },
 
   render () {
     return (

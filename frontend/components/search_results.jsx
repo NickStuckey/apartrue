@@ -4,6 +4,7 @@ const React = require('react'),
       PropertyIndex = require('./property_index');
 
 const SearchResults = React.createClass ({
+
   render () {
     return (
       <div className="search-results-wrapper">
