@@ -10,7 +10,7 @@ let currentUser;
 const geocoder = new google.maps.Geocoder();
 
 const fieldErrorMsg = 'field cannot be blank';
-let addressError, zipcodeError, cityError;
+let addressError, cityError;
 
 let isOwner = false;
 
@@ -65,6 +65,7 @@ const PropertyFrom = React.createClass ({
   componentDidMount () {
     this.sessionListener = SessionStore.addListener(this._sessionChange);
     this.propertyListener = PropertyStore.addListener(this._onChange);
+    this.stagedListener = StagingStore.addListener(this._resetErrors);
   },
 
   componentWillUnmount () {
@@ -93,7 +94,6 @@ const PropertyFrom = React.createClass ({
       addressError = address ? "" : fieldErrorMsg;
       cityError =  city ? "" : fieldErrorMsg;
       this.forceUpdate();
-      return;
     }
 
     this.codeAddress();
@@ -185,6 +185,11 @@ const PropertyFrom = React.createClass ({
     if (file) {
       fileReader.readAsDataURL(file);
     }
+   },
+
+   _resetErrors () {
+     addressError = "";
+     cityError = "";
    },
 
   render () {

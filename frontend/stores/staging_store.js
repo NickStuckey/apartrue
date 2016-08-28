@@ -9,6 +9,7 @@ let _stagedProperty = null;
 
 const stage = function (property) {
   _stagedProperty = property;
+  StagingStore.__emitChange();
 };
 
 StagingStore.getStagedProperty = function () {

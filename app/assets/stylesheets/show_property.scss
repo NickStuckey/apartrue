@@ -113,7 +113,7 @@ li.single-review-star-wrapper {
 
 .mid-content-wrapper {
   height: 400px;
-  width: 900px;
+  width: 1000px;
 }
 
 .property-content-wrapper {
@@ -128,11 +128,12 @@ li.single-review-star-wrapper {
   z-index: 200;
   position: relative;
   width: 510px;
-  float: left;
-  transform: translate(76px, -326px);
+  float: right;
   border: 10px solid white;
   margin-left: 36px;
   max-height: 390px;
+  margin-right: 50px;
+  transform: translateY(-325px);
 }
 
 .review-wrapper {
