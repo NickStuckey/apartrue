@@ -9,12 +9,14 @@ const React = require('react'),
       SearchResults = require('./search_results'),
       SessionStore = require('../stores/session_store');
 
+let searchError = "";
 const SearchForm = React.createClass({
   getInitialState () {
     return ({results: null});
   },
 
   componentDidMount () {
+    searchError = "";
     this.filterListener = FilterStore.addListener(this._onFilterChange);
   },
 
@@ -41,6 +43,7 @@ const SearchForm = React.createClass({
           <div className="search-wrapper">
             <h1>Search by address</h1>
             <AddressFinder className="address-finder"/>
+            <div className="search-error-field">{ searchError }</div>
           </div>
           <div className="search-wrapper">
             <h1>Or, search by criteria</h1>

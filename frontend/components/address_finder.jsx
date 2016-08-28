@@ -53,6 +53,7 @@ const AddressFinder = React.createClass({
       zipcode: zipcode,
       city: city
     });
+
     if (!!property) {
       hashHistory.push(`properties/${property.id}`);
     } else {
