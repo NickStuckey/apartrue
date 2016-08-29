@@ -16,9 +16,7 @@ class Property < ActiveRecord::Base
   )
 
   def self.satisfy_params(filters)
-    debugger
     properties = self.where(lat:filters[:bounds][:southWest][:lat]...filters[:bounds][:northEast][:lat],lng: filters[:bounds][:southWest][:lng]...filters[:bounds][:northEast][:lng]).where('price < ?', filters[:price]).where('num_bedrooms = ?', filters[:num_bedrooms])
-      debugger
     properties
   end
 

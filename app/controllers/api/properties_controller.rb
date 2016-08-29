@@ -1,6 +1,5 @@
 class Api::PropertiesController < ApplicationController
   def index
-    debugger
     if property_params[:address] != "dummy"
       @properties = Property.satisfy_params(property_params)
     else
