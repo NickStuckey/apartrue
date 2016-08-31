@@ -1,18 +1,28 @@
 const React = require('react'),
       FilterActions = require('../actions/filter_actions'),
       PropertyMap = require('./property_map'),
+      NeighborhoodActions = require('../actions/neighborhood_actions'),
+      NeighborhoodStore = require('../stores/neighborhood_store'),
       PropertyActions = require('../actions/property_actions');
 
 const fieldErrorMsg = "required field";
-let bedroomsError, priceLimitError, neighborhoodIdError;
+let bedroomsError, priceLimitError, neighborhoodNameError;
 let mapCenter;
 let propertyMap;
+let neighborhoods = [];
+let matchingNeighborhoods = [];
+let textEntered = false;
 
 const SearchFields = React.createClass({
   getInitialState() {
     return ({
-      bedrooms: 0, priceLimit: 0, neighborhoodId: 0
+      bedrooms: 0, priceLimit: 0, neighborhoodId: 0, neighborhoodName: "",
     });
+  },
+
+  componentDidMount () {
+    this.neighborhoodListener = NeighborhoodStore.addListener(this._onNeighborhoodChange);
+    NeighborhoodActions.fetchAllNeighbrohoods();
   },
 
   handleSubmit (e) {
@@ -20,15 +30,19 @@ const SearchFields = React.createClass({
 
     const bedrooms = this.state.bedrooms,
           priceLimit = this.state.priceLimit,
-          neighborhoodId = this.state.neighborhoodId;
+          neighborhoodName = this.state.neighborhoodName;
 
-    if (!!bedrooms && !!priceLimit && !!neighborhoodId) {
+    if (!!bedrooms && !!priceLimit && !!neighborhoodName) {
       FilterActions.updateFilters(this.state);
     } else {
       bedroomsError = bedrooms ? "" : fieldErrorMsg;
       priceLimitError = priceLimit ? "" : fieldErrorMsg;
-      neighborhoodIdError = neighborhoodIdError ? "" : fieldErrorMsg;
+      neighborhoodNameError = neighborhoodNameError ? "" : fieldErrorMsg;
     }
+  },
+
+  _onNeighborhoodChange () {
+    neighborhoods = NeighborhoodStore.all();
   },
 
   updateSize (e) {
@@ -39,12 +53,41 @@ const SearchFields = React.createClass({
     this.setState({priceLimit: e.target.value});
   },
 
-  updateNeighborhoodId (e) {
-    const id = e.target.value;
-    this.setState({neighborhoodId: id});
+  updateNeighborhoodName (e) {
+    const name = e.target.value;
+
+    if (name){
+      this.matchNeighborhood(name);
+    } else {
+      matchingNeighborhoods = [];
+    }
+
+    this.setState({neighborhoodName: name});
+  },
+
+  matchNeighborhood (query) {
+    // debugger
+    const re = new RegExp(query,'i');
+    matchingNeighborhoods = neighborhoods.filter((hood) => {
+      if (!!hood.name.match(re)) { return hood; }
+    });
+  },
+
+  selectNeighborhood(id, name) {
+    this.setState({neighborhoodId: id, neighborhoodName: name});
+    matchingNeighborhoods = [];
   },
 
   render () {
+    const neighborhoodList = matchingNeighborhoods.map(el => {
+      return <li
+        key={el.id}
+        onClick={() => this.selectNeighborhood(el.id, el.name)}
+        >
+        {el.name}
+      </li>;
+    });
+
     return (
       <form className={"search-filter-inputs"} onSubmit={ this.handleSubmit }>
         <p>{ bedroomsError } </p>
@@ -73,19 +116,20 @@ const SearchFields = React.createClass({
           <option value="99999999999">none</option>
         </select>
 
-        <p>{ neighborhoodIdError }</p>
-        <select
-          className="search-field-list input-field"
-          onChange={this.updateNeighborhoodId}>
-          <option className="default" value="" hidden>Neighborhood</option>
-          <option value="1">Manhattan</option>
-          <option value="2">Brooklyn</option>
-          <option value="3">Queens</option>
-          <option value="4">Bronx</option>
-          <option value="5">Staten Island</option>
-        </select>
+        <p>{ neighborhoodNameError }</p>
+        <input
+          type="text"
+          className="input-field short"
+          onChange={this.updateNeighborhoodName}
+          value ={this.state.neighborhoodName}
+          placeholder = "Search Neighborhoods">
+        </input>
 
         <input type="submit" className="search-button button" value="go!"/>
+
+        <ul className="prop-search-dropdown">
+          { neighborhoodList }
+        </ul>
       </form>
     );
   }

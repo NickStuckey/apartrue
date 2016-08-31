@@ -27,16 +27,22 @@ class Api::PropertiesController < ApplicationController
     prop_par[:image] = nil if property_params[:image] == "null"
 
     @property = Property.new(prop_par)
+    # debugger
+    
+    city_name = property_params[:city]#.downcase
+    # debugger
+    neighborhood_id = Neighborhood.find_by_name(city_name).id
+    # debugger
 
-    city_name = property_params[:city]
-    neighborhood = Neighborhood.find_by_name(city_name)
-
-    if neighborhood
-      @property.neighborhood_id = neighborhood.id
+    if neighborhood_id
+      # debugger
+      @property.neighborhood_id = neighborhood_id
     else
+      # debugger
       @property.neighborhood_id = Neighborhood.create_and_return_id(city_name)
     end
 
+    # debugger
     if @property.save
       render "api/properties/show"
     else

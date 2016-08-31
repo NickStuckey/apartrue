@@ -96,6 +96,7 @@ const PropertyFrom = React.createClass ({
       this.forceUpdate();
     }
 
+    if (!this.state.price) { this.setState({price: 0}); }
     this.codeAddress();
   },
 

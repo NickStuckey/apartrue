@@ -13,11 +13,11 @@ User.create({username: 'ParaDoxox', password: 'password', hometown: 'Queens'})
 User.create({username: 'MrBobBobbington', password: 'password', hometown: 'Staten Island'})
 
 
-Neighborhood.create({name: 'Manhattan'})
-Neighborhood.create({name: 'Brooklyn'})
-Neighborhood.create({name: 'Queens'})
-Neighborhood.create({name: 'Bronx'})
-Neighborhood.create({name: 'Staten Island'})
+Neighborhood.create({name: 'manhattan'})
+Neighborhood.create({name: 'brooklyn'})
+Neighborhood.create({name: 'queens'})
+Neighborhood.create({name: 'bronx'})
+Neighborhood.create({name: 'staten island'})
 
 # Manhattan
 Property.create({

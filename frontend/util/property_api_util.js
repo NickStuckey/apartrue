@@ -1,4 +1,3 @@
-
 module.exports = {
 
   createProperty (formData, success, error) {

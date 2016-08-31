@@ -96,3 +96,38 @@ body {
 .welcome {
   line-height: 5;
 }
+
+ul.prop-search-dropdown {
+  width: 246px;
+  background: white;
+  text-align: center;
+  float: right;
+  margin-right: 143px;
+  border: 2px solid grey;
+  transform: translateY(-14px);
+  position: relative;
+  overflow: hidden;
+
+  li:first-child {
+    padding-top:25px;
+  }
+
+    li {
+      margin: 0;
+      display: block;
+      text-align: left;
+      padding: 10px;
+    }
+
+    li:hover {
+      background: #aeb1b1;
+    }
+}
+
+.short {
+  width: 250px;
+  position: relative;
+  margin-left: 10px;
+  z-index: 1;
+  // color: #aeb1b1;   this is a light grey that matches the place holder
+}

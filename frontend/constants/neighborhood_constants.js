@@ -1,0 +1,3 @@
+module.exports = {
+  RECEIVE_NEIGHBORHOODS: "RECEIVE_NEIGHBORHOODS"
+};
