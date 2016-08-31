@@ -72,11 +72,8 @@ const PropertyMap = React.createClass ({
     const currentPropertyIds = this.state.markers.map((marker) => marker.propertyId);
     const newProperties = PropertyStore.all();
     const newPropertyIds = Object.keys(newProperties);
-    // get the new neighborhood from the a property in the hash
-    // const hoodId = newProperties[newPropertyIds[0]].neighborhood_id;
-    // this.updateMapCenter(hoodId);
 
-    let properties = [];
+    var properties = [];
     newPropertyIds.forEach((propId) => {
       if (!currentPropertyIds.includes(propId)) {
         properties.push(newProperties[propId]);
@@ -97,9 +94,13 @@ const PropertyMap = React.createClass ({
   },
 
   render () {
-    return (
-      <div className="map" ref={(map) => this.mapContainer = map}></div>
-    );
+    let mapOption;
+    if (this.state.markers.length === 0) {
+      mapOption = <p>Sorry, nothing in the database yet.  Try the address search/add to create a new listing</p>;
+    } else {
+      mapOption = <div className="map" ref={(map) => this.mapContainer = map}></div>;
+    }
+   return (mapOption);
   }
 });
 

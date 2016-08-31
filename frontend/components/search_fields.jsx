@@ -32,6 +32,7 @@ const SearchFields = React.createClass({
           priceLimit = this.state.priceLimit,
           neighborhoodName = this.state.neighborhoodName;
 
+          // matchingNeighborhoods = [];
     if (!!bedrooms && !!priceLimit && !!neighborhoodName) {
       FilterActions.updateFilters(this.state);
     } else {
