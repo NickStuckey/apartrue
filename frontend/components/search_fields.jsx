@@ -4,31 +4,24 @@ const React = require('react'),
       PropertyActions = require('../actions/property_actions');
 
 const fieldErrorMsg = "required field";
-let bedroomsError, priceLimitError, neighborhoodIdError;
 let mapCenter;
 let propertyMap;
 
 const SearchFields = React.createClass({
   getInitialState() {
     return ({
-      bedrooms: 0, priceLimit: 0, neighborhoodId: 0
+      bedrooms: null, priceLimit: null, neighborhoodId: null
     });
   },
 
   handleSubmit (e) {
     e.preventDefault();
-
     const bedrooms = this.state.bedrooms,
           priceLimit = this.state.priceLimit,
           neighborhoodId = this.state.neighborhoodId;
 
-    if (!!bedrooms && !!priceLimit && !!neighborhoodId) {
-      FilterActions.updateFilters(this.state);
-    } else {
-      bedroomsError = bedrooms ? "" : fieldErrorMsg;
-      priceLimitError = priceLimit ? "" : fieldErrorMsg;
-      neighborhoodIdError = neighborhoodIdError ? "" : fieldErrorMsg;
-    }
+    FilterActions.updateBounds(null);
+    FilterActions.updateFilters(this.state);
   },
 
   updateSize (e) {
@@ -47,7 +40,6 @@ const SearchFields = React.createClass({
   render () {
     return (
       <form className={"search-filter-inputs"} onSubmit={ this.handleSubmit }>
-        <p>{ bedroomsError } </p>
         <select
           className="search-field-list input-field"
           onChange={this.updateSize}>
@@ -60,7 +52,6 @@ const SearchFields = React.createClass({
           <option value="0">0</option>
         </select>
 
-        <p>{ priceLimitError } </p>
         <select
           className="search-field-list input-field"
           onChange={this.updatePrice}>
@@ -73,7 +64,6 @@ const SearchFields = React.createClass({
           <option value="99999999999">none</option>
         </select>
 
-        <p>{ neighborhoodIdError }</p>
         <select
           className="search-field-list input-field"
           onChange={this.updateNeighborhoodId}>

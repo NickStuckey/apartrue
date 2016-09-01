@@ -24,7 +24,12 @@ const SearchForm = React.createClass({
 
   _onFilterChange () {
     let filters = FilterStore.filters();
-    let mapCenter = MapUtil.updateMapCenter(filters.neighborhoodId);
+    let mapCenter;
+    if (filters.neighborhoodId){
+      mapCenter = MapUtil.updateMapCenter(filters.neighborhoodId);
+    } else {
+      mapCenter = MapUtil.defaultCenter();
+    }
     PropertyActions.fetchAllPropertiesWithParams(filters);
 
     const results = <SearchResults

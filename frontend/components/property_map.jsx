@@ -73,7 +73,8 @@ const PropertyMap = React.createClass ({
     const newProperties = PropertyStore.all();
     const newPropertyIds = Object.keys(newProperties);
     // get the new neighborhood from the a property in the hash
-    const hoodId = newProperties[newPropertyIds[0]].neighborhoodId;
+    // debugger
+    // const hoodId = newProperties[newPropertyIds[0]].neighborhood_id;
     // this.updateMapCenter(hoodId);
 
     let properties = [];

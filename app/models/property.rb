@@ -16,12 +16,55 @@ class Property < ActiveRecord::Base
   )
 
   def self.satisfy_params(filters)
-    properties = self.where(
-        lat:  filters[:bounds][:southWest][:lat]...filters[:bounds][:northEast][:lat],
-        lng: filters[:bounds][:southWest][:lng]...filters[:bounds][:northEast][:lng]
+    if filters[:bounds] && filters[:neighborhood_id] && !filters[:price] && !filters[:num_bedrooms]
+      properties = self.where(
+      lat:  filters[:bounds][:southWest][:lat]...filters[:bounds][:northEast][:lat],
+      lng: filters[:bounds][:southWest][:lng]...filters[:bounds][:northEast][:lng]
+      ).where('neighborhood_id = ?', filters[:neighborhood_id])
+    elsif filters[:bounds] && filters[:neighborhood_id] && filters[:price] &&
+      properties = self.where(
+      lat:  filters[:bounds][:southWest][:lat]...filters[:bounds][:northEast][:lat],
+      lng: filters[:bounds][:southWest][:lng]...filters[:bounds][:northEast][:lng]
       ).where('price < ?', filters[:price])
-      .where('num_bedrooms = ?', filters[:num_bedrooms])
       .where('neighborhood_id = ?', filters[:neighborhood_id])
+    elsif filters[:bounds] && filters[:neighborhood_id] && filters[:num_bedrooms]
+      properties = self.where(
+      lat:  filters[:bounds][:southWest][:lat]...filters[:bounds][:northEast][:lat],
+      lng: filters[:bounds][:southWest][:lng]...filters[:bounds][:northEast][:lng]
+      )
+      .where('num_bedrooms <= ?', filters[:num_bedrooms])
+      .where('neighborhood_id = ?', filters[:neighborhood_id])
+    elsif filters[:bounds]
+      properties = self.where(
+          lat:  filters[:bounds][:southWest][:lat]...filters[:bounds][:northEast][:lat],
+          lng: filters[:bounds][:southWest][:lng]...filters[:bounds][:northEast][:lng]
+        ).where('price < ?', filters[:price])
+        .where('num_bedrooms <= ?', filters[:num_bedrooms])
+        .where('neighborhood_id = ?', filters[:neighborhood_id])
+    elsif filters[:price] && filters[:num_bedrooms] && [:neighborhood_id]
+      properties = self
+        .where('price < ?', filters[:price])
+        .where('num_bedrooms <= ?', filters[:num_bedrooms])
+        .where('neighborhood_id = ?', filters[:neighborhood_id])
+    elsif filters[:price] && filters[:num_bedrooms]
+      properties = self
+        .where('price < ?', filters[:price])
+        .where('num_bedrooms <= ?', filters[:num_bedrooms])
+    elsif filters[:neighborhood_id] && filters[:num_bedrooms]
+      properties = self
+        .where('num_bedrooms <= ?', filters[:num_bedrooms])
+        .where('neighborhood_id = ?', filters[:neighborhood_id])
+    elsif filters[:price] && filters[:neighborhood_id]
+      properties = self
+        .where('price < ?', filters[:price])
+        .where('neighborhood_id = ?', filters[:neighborhood_id])
+    elsif filters[:neighborhood_id]
+      properties = self.where('neighborhood_id = ?', filters[:neighborhood_id])
+    elsif filters[:price]
+      properties = self.where('price <= ?', filters[:price])
+    elsif filters[:num_bedrooms]
+      properties = self.where('num_bedrooms <= ?', filters[:num_bedrooms])
+    end
     properties
   end
 
