@@ -37,10 +37,6 @@ const PropertyMap = React.createClass ({
     });
   },
 
-  _handleClick(coords) {
-    console.log('this will be used to add property');
-  },
-
   render () {
     return (
       <div className="single-prop-map" ref={(map) => this.mapContainer = map}></div>

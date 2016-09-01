@@ -13,7 +13,6 @@ const ReviewApiUtil = {
       success,
       error: (xhr) => {
         const error = xhr.responseJSON;
-        console.log('createReview', error);
       }
     });
   },
@@ -26,7 +25,6 @@ const ReviewApiUtil = {
       success,
       error: (xhr) => {
         const error = xhr.responseJSON;
-        console.log('fetchPropertyReviews', error);
       }
     });
   },
@@ -39,7 +37,6 @@ const ReviewApiUtil = {
       success,
       error: (xhr) => {
         const error = xhr.responseJSON;
-        console.log('fetchUserReviews', error);
       }
     });
   },
@@ -51,7 +48,6 @@ const ReviewApiUtil = {
       success,
       error: (xhr) => {
         const error = xhr.responseJSON;
-        console.log('removeReview', error);
       }
     });
   }

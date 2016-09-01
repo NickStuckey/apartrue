@@ -7,7 +7,6 @@ module.exports = {
       error: (xhr) => {
         const errors = xhr.responseJSON;
         error("fetch user", errors);
-        console.log("fetch User" + errors);
       }
     });
   }
