@@ -19,7 +19,6 @@ const SessionApiUtil = {
       method: 'DELETE',
       success,
       error: function () {
-      console.log("Logout error in SessionApiUtil#logout");
     }
     });
   },
@@ -45,7 +44,6 @@ fetchCurrentUser(success, error) {
     success,
     error: function (xhr) {
       const errors = xhr.responseJSON;
-      console.log("fetchCurrentUser", errors);
     }
   });
 }

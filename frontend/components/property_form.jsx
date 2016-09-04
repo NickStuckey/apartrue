@@ -106,7 +106,6 @@ const PropertyFrom = React.createClass ({
   },
 
   _placeError (status) {
-    console.log(status);
   },
 
   sendToAPI (results) {

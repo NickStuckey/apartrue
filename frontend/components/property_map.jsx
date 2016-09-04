@@ -37,9 +37,14 @@ const PropertyMap = React.createClass ({
   componentDidMount () {
     const mapOptions = {center: this.state.mapCenter, zoom: 11};
     this.propertyListener = PropertyStore.addListener(this._onChange);
+    debugger
+    map = new google.maps.Map(this.mapContainer, mapOptions);
+    let x;
+    debugger
+    x = 3;
+
     this.propertiesToAdd().forEach(this.createMarker);
     // this.filterListener = FilterStore.addListener(this._changeFilters);
-    map = new google.maps.Map(this.mapContainer, mapOptions);
     this.addMapListeners();
   },
 
@@ -56,6 +61,7 @@ const PropertyMap = React.createClass ({
       propertyId: property.id,
       visible: true
     });
+    debugger
     marker.addListener('click', () => {
       hashHistory.push(`properties/${property.id}`);
     });

@@ -20,4 +20,8 @@ module.exports = {
       }
     return center;
   },
+
+  defaultCenter () {
+    return {lat: 40.75662, lng: -73.985367};
+  }
 };

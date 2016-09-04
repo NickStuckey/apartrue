@@ -43,38 +43,35 @@ const PropertyIndex = React.createClass ({
   },
 
   showPage (i) {
-    const id = parseInt(i) + 1;
-    hashHistory.push(`/properties/${id}`);
+    hashHistory.push(`/properties/${i}`);
   },
 
   render () {
     let propertiesArray;
-    const propertiesObject = this.state.properties;
+    let properties = this.state.properties;
 
-    if (propertiesObject) {
-
-      propertiesArray = Object.keys(propertiesObject).map((propKey) => {
-        const prop = propertiesObject[propKey];
+    if (properties) {
+      propertiesArray = properties.map((property) => {
         return (
-          <li key={propKey} className="property-list-item">
-            <a onClick={()=>{this.showPage(propKey);}}>
+          <li key={property.id} className="property-list-item">
+            <a onClick={()=>{this.showPage(property.id);}}>
               <div className="transparent-list-item-background"></div>
               <div className="list-item-content ">
-                <img src={prop.image_url} className="thumbnail"></img>
-                <h2 className="property-list-item-address ">{prop.address}</h2>
+                <img src={property.image_url} className="thumbnail"></img>
+                <h2 className="property-list-item-address ">{property.address}</h2>
                 <ul className="property-details">
-                  <li className="property-detail">{prop.city}</li>
-                  <li className="property-detail">rent: ${prop.price}</li>
-                  <li className="property-detail">bedrooms: {prop.num_bedrooms}</li>
+                  <li className="property-detail">{property.city}</li>
+                  <li className="property-detail">rent: ${property.price}</li>
+                  <li className="property-detail">bedrooms: {property.num_bedrooms}</li>
                 </ul>
                 <div className="list-item-star-wrapper">
                   <div className="star-wrapper">
                     <label className="star-labels">average property rating</label>
-                    <div className="property-list-item-stars">{this.drawPropertyStars(prop)}</div>
+                    <div className="property-list-item-stars">{this.drawPropertyStars(property)}</div>
                   </div>
                   <div className="star-wrapper">
                     <label className="star-labels">average landlord rating</label>
-                    <div className="property-list-item-stars">{this.drawLandlordStars(prop)}</div>
+                    <div className="property-list-item-stars">{this.drawLandlordStars(property)}</div>
                   </div>
                 </div>
               </div>
@@ -83,6 +80,7 @@ const PropertyIndex = React.createClass ({
         );
       });
     }
+
 
     return (
       <div>

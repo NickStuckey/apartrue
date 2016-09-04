@@ -6,7 +6,6 @@ const React = require('react'),
       PropertyActions = require('../actions/property_actions');
 
 const fieldErrorMsg = "required field";
-let bedroomsError, priceLimitError, neighborhoodNameError;
 let mapCenter;
 let propertyMap;
 let neighborhoods = [];
@@ -16,7 +15,7 @@ let textEntered = false;
 const SearchFields = React.createClass({
   getInitialState() {
     return ({
-      bedrooms: 0, priceLimit: 0, neighborhoodId: 0, neighborhoodName: "",
+      bedrooms: null, priceLimit: null, neighborhoodId: null, neighborhoodName: ""
     });
   },
 
@@ -27,19 +26,11 @@ const SearchFields = React.createClass({
 
   handleSubmit (e) {
     e.preventDefault();
-
     const bedrooms = this.state.bedrooms,
           priceLimit = this.state.priceLimit,
           neighborhoodName = this.state.neighborhoodName;
-
-          // matchingNeighborhoods = [];
-    if (!!bedrooms && !!priceLimit && !!neighborhoodName) {
-      FilterActions.updateFilters(this.state);
-    } else {
-      bedroomsError = bedrooms ? "" : fieldErrorMsg;
-      priceLimitError = priceLimit ? "" : fieldErrorMsg;
-      neighborhoodNameError = neighborhoodNameError ? "" : fieldErrorMsg;
-    }
+    FilterActions.updateBounds(null);
+    FilterActions.updateFilters(this.state);
   },
 
   _onNeighborhoodChange () {
@@ -91,7 +82,6 @@ const SearchFields = React.createClass({
 
     return (
       <form className={"search-filter-inputs"} onSubmit={ this.handleSubmit }>
-        <p>{ bedroomsError } </p>
         <select
           className="search-field-list input-field"
           onChange={this.updateSize}>
@@ -104,7 +94,6 @@ const SearchFields = React.createClass({
           <option value="0">0</option>
         </select>
 
-        <p>{ priceLimitError } </p>
         <select
           className="search-field-list input-field"
           onChange={this.updatePrice}>
@@ -117,7 +106,6 @@ const SearchFields = React.createClass({
           <option value="99999999999">none</option>
         </select>
 
-        <p>{ neighborhoodNameError }</p>
         <input
           type="text"
           className="input-field short"

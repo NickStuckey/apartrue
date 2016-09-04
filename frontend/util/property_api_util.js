@@ -10,7 +10,6 @@ module.exports = {
       success,
       error: function (xhr) {
         const errors = xhr.responseJSON;
-        console.log("createProperty", errors);
       }
     });
   },
@@ -30,7 +29,6 @@ module.exports = {
       success,
       error: function (xhr) {
         const errors = xhr.responseJSON;
-        console.log("fetch all properties with params", errors);
       }
     });
   },
@@ -43,7 +41,6 @@ module.exports = {
       success,
       error: function (xhr) {
         const errors = xhr.responseJSON;
-        console.log("fetch all properties", errors);
       }
     });
   },
@@ -55,7 +52,6 @@ module.exports = {
       success,
       error: function (xhr) {
         const errors = xhr.responseJSON;
-        console.log("fetch property", errors);
       }
     });
   },

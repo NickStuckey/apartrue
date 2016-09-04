@@ -38,7 +38,6 @@ const SingleReview = React.createClass({
   },
 
   propertyPage () {
-    console.log('propPage clicked');
     const propId = this.state.review.property_id;
     hashHistory.push(`/properties/${propId}`);
   },

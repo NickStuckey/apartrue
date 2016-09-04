@@ -1,14 +1,23 @@
+
 class Api::PropertiesController < ApplicationController
   def index
-    if property_params[:address] != "dummy"
-      @properties = Property.satisfy_params(property_params)
+    # translate null values to ruby
+    prop_paras = property_params
+    ["neighborhood_id", "num_bedrooms", "price"].each do |param|
+      if property_params[param] == "" || property_params[param] == "null"
+        prop_paras[param] = nil
+      end
+    end
+
+    if prop_paras[:address] != "dummy"
+      @properties = Property.satisfy_params(prop_paras)
     else
       @properties = Property.all
     end
     if @properties
       render "api/properties/index"
     else
-      render json: ["No properties found"], status: 422 # NOTE update error codes
+      render json: ["No properties found"], status: 422
     end
   end
 
@@ -17,7 +26,7 @@ class Api::PropertiesController < ApplicationController
     if @property
       render "api/properties/show"
     else
-      render json: ["property not found"], status: 400 # NOTE update error codes
+      render json: ["property not found"], status: 400
     end
   end
 
@@ -27,11 +36,14 @@ class Api::PropertiesController < ApplicationController
 
     @property = Property.new(prop_par)
 
-    city_name = property_params[:city]#.downcase
-    neighborhood_id = Neighborhood.find_by_name(city_name).id
+    city_name = property_params[:city]
+    neighborhood = Neighborhood.find_by_name(city_name)
+    sub_hood = Subhood.find_by_name(city_name)
 
-    if neighborhood_id
-      @property.neighborhood_id = neighborhood_id
+    if neighborhood
+      @property.neighborhood_id = neighborhood.id
+    elsif sub_hood
+      @property.neighborhood_id = sub_hood.city_id
     else
       @property.neighborhood_id = Neighborhood.create_and_return_id(city_name)
     end
