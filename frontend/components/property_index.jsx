@@ -51,13 +51,14 @@ const PropertyIndex = React.createClass ({
     let propertiesArray;
     const propertiesObject = this.state.properties;
 
+
     if (propertiesObject) {
 
       propertiesArray = Object.keys(propertiesObject).map((propKey) => {
         const prop = propertiesObject[propKey];
         return (
           <li key={propKey} className="property-list-item">
-            <a onClick={()=>{this.showPage(propKey);}}>
+            <a onClick={()=>{this.showPage(prop.id);}}>
               <div className="transparent-list-item-background"></div>
               <div className="list-item-content ">
                 <img src={prop.image_url} className="thumbnail"></img>
@@ -83,6 +84,7 @@ const PropertyIndex = React.createClass ({
         );
       });
     }
+
 
     return (
       <div>

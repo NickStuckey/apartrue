@@ -1,7 +1,6 @@
 
 class Api::PropertiesController < ApplicationController
   def index
-
     # translate null values to ruby
     prop_paras = property_params
     ["neighborhood_id", "num_bedrooms", "price"].each do |param|
