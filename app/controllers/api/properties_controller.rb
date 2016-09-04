@@ -1,3 +1,4 @@
+
 class Api::PropertiesController < ApplicationController
   def index
 
@@ -39,9 +40,12 @@ class Api::PropertiesController < ApplicationController
 
     city_name = property_params[:city]
     neighborhood = Neighborhood.find_by_name(city_name)
+    sub_hood = Subhood.find_by_name(city_name)
 
     if neighborhood
       @property.neighborhood_id = neighborhood.id
+    elsif sub_hood
+      @property.neighborhood_id = sub_hood.city_id
     else
       @property.neighborhood_id = Neighborhood.create_and_return_id(city_name)
     end
