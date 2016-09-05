@@ -123,30 +123,36 @@ Review.create({
   author_id: 1,
   property_id: (1 + rand(10))
 })
+
 Review.create({
   title: "Not bad",
-  body: "Three stars based only on the hallway, which is really really clean. The quality is amazing and the central air looks really nice and flavorful. I am only taking two stars off, because the landlord wasn't too friendly or helpful. Had to ask for garbage bags 3 times, after I finally got an eye thing and okay. They include the the utilities automatically in your rent, which is good for them I'm sure because a lot of people probably don't pay here without it being added on, just wish I was giving my money to better utilities.",
+  body: "Three stars based only on the hallway, which is really really clean.
+  The quality is amazing and the central air looks really nice and flavorful. I am only taking two stars off,
+  because the landlord wasn't too friendly or helpful. Had to ask for garbage bags 3 times, after I finally got an eye thing and okay.
+  They include the the utilities automatically in your rent, which is good for them I'm sure because a lot of people
+  probably don't pay here without it being added on, just wish I was giving my money to better utilities.",
   property_rating: (1+rand(5)),
   landlord_rating: (1+rand(5)),
   author_id: 2,
   property_id: (1 + rand(10))
 })
-Review.create({
-  title: "Love it",
-  body: "This place has a variety of authentic wallpaper. Its a small apartment just like any other authentic wallpaper joint. The wallpaper comes out pretty good and every time I have gone the staff have been pretty nice. They started including the utilities in the rent also. I almost didnt see it when I went this year.
-
-My favorite amenities are the sunlight and heated floors, dishwasher and hardwood, and the sesame sunlight. The included track lighting is also really good",
-  property_rating: (1+rand(5)),
-  landlord_rating: (1+rand(5)),
-  author_id: 3,
-  property_id: (1 + rand(10))
-})
+#
+# Review.create({
+#   title: "Love it",
+#   body: "This place has a variety of authentic wallpaper. Its a small apartment just like any other authentic wallpaper joint.
+#   The wallpaper comes out pretty good and every time I have gone the staff have been pretty nice. They started including
+#   the utilities in the rent also. I almost didnt see it when I went this year.  My favorite amenities are the sunlight and heated floors,
+#   dishwasher and hardwood, and the sesame sunlight. The included track lighting is also really good",
+#   property_rating: (1+rand(5)),
+#   landlord_rating: (1+rand(5)),
+#   author_id: 3,
+#   property_id: (1 + rand(10))
+# })
 
 
 Review.create({
   title: "Come see my band!",
-  body: "First year here. I was excited with all the reviews but I gotta say the place looks like a hole in the wall and in need of a makeover! There is plenty of light but
-  I could use more. I got a new bathtub installed. The rent is reasonable. The landscaping was nice."
+  body: "First year here. I was excited with all the reviews but I gotta say the place looks like a hole in the wall and in need of a makeover! There is plenty of light but I could use more. I got a new bathtub installed. The rent is reasonable. The landscaping was nice.",
   property_rating: (1+rand(5)),
   landlord_rating: (1+rand(5)),
   author_id: 5,
@@ -177,7 +183,7 @@ Definitely recommend it to everyone!",
 
 Review.create({
   title: "Bedbugs",
-  body: "Great prices and large square footage. But, as I said bedbugs.  And the landlord want's to be paid in cash?? kinda sketchy"
+  body: "Great prices and large square footage. But, as I said bedbugs.  And the landlord want's to be paid in cash?? kinda sketchy",
   property_rating: (1+rand(5)),
   landlord_rating: (1+rand(5)),
   author_id: 8,
@@ -186,7 +192,7 @@ Review.create({
 Review.create({
   title: "Nice place",
   body: "One of the better pads in Astoria. Depends what your rent.  Decent size bathtub.
-Mock hardwood floors options."
+Mock hardwood floors options.",
   property_rating: (1+rand(5)),
   landlord_rating: (1+rand(5)),
   author_id: 9,
@@ -195,7 +201,7 @@ Mock hardwood floors options."
 Review.create({
   title: "Get me out of here",
   body: "It's surprising that this location has great reviews. It is little sad to be working in Long Island City when you get not many choices to rent in the area,
-  but at least it's close to the train."
+  but at least it's close to the train.",
   property_rating: (1+rand(5)),
   landlord_rating: (1+rand(5)),
   author_id: 10,
@@ -203,7 +209,7 @@ Review.create({
 
 Review.create({
   title: "I love it",
-  body: "Back at it again!  Legit. Went for the square footage closet space and sunlight, Score."
+  body: "Back at it again!  Legit. Went for the square footage closet space and sunlight, Score.",
   property_rating: (1+rand(5)),
   landlord_rating: (1+rand(5)),
   author_id: 1,
@@ -212,7 +218,7 @@ Review.create({
 Review.create({
   title: "It's fine",
   body: "To quote Gob Bluth, I've made a huge mistake. And that mistake was eating at El Diablo space during the daytime and when I wasn't blackout drunk (yet).
-anyways, the apartment is find, I just wanted to share my pain."
+anyways, the apartment is find, I just wanted to share my pain.",
   property_rating: (1+rand(5)),
   landlord_rating: (1+rand(5)),
   author_id: 3,
@@ -246,7 +252,7 @@ Review.create({
 
 Review.create({
   title: "I'm lost",
-  body: "One of the most reviewed and well rated buildings in the area, my mom still thinks it's a toilet.  I'm like, 'mom, i live in new york, this is making it.'  She just doesn't get me."
+  body: "One of the most reviewed and well rated buildings in the area, my mom still thinks it's a toilet.  I'm like, 'mom, i live in new york, this is making it.'  She just doesn't get me.",
   property_rating: (1+rand(5)),
   landlord_rating: (1+rand(5)),
   author_id: 8,
@@ -254,7 +260,7 @@ Review.create({
 
 Review.create({
   title: "Yup.",
-  body: "Insanely cheap! Great for late night afterparty but the living room here is just OK."
+  body: "Insanely cheap! Great for late night afterparty but the living room here is just OK.",
   property_rating: (1+rand(5)),
   landlord_rating: (1+rand(5)),
   author_id: 10,
