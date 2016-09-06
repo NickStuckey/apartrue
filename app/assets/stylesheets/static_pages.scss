@@ -77,6 +77,15 @@ body {
   margin: 10px auto;
 }
 
+p.title-count {
+    float: right;
+    position: relative;
+    height: 0px;
+    top: 12px;
+    right: 14px;
+    color: lightgray;
+}
+
 .header {
   color: white;
   text-align: center;

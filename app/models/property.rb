@@ -70,12 +70,19 @@ class Property < ActiveRecord::Base
 
   def update_rating_averages!
     ratings = {
-      property_average: self.reviews.average(:property_rating).round,
-      landlord_average: self.reviews.average(:landlord_rating).round
+      count: self.reviews.count,
+      prop_avg: self.reviews.average(:property_rating),
+      lord_avg: self.reviews.average(:landlord_rating)
     }
 
-    self.avg_property_rating = ratings[:property_average]
-    self.avg_landlord_rating = ratings[:landlord_average]
+    prop_avg, lord_avg = 0, 0
+    if ratings[:count] > 0
+      prop_avg = ratings[:prop_avg].round
+      lord_avg = ratings[:lord_avg].round
+    end
+
+    self.avg_property_rating = prop_avg
+    self.avg_landlord_rating = lord_avg
     self.save!
   end
 

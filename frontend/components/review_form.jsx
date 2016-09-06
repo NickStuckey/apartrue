@@ -5,7 +5,7 @@ const React = require('react'),
       PropertyStore = require('../stores/property_store'),
       ReviewStore = require('../stores/review_store');
 
-let errorMessage;
+let errorMessage = "", titleLength = "";
 
 const ReviewForm = React.createClass({
   getInitialState () {
@@ -31,8 +31,9 @@ const ReviewForm = React.createClass({
 
   updateTitle (e) {
     const title = e.target.value;
-    if (title.length < 22) {
+    if (title.length < 40) {
       this.setState({title: e.target.value});
+      titleLength = `${39 - title.length} characters remaining`;
     }
   },
 
@@ -48,12 +49,29 @@ const ReviewForm = React.createClass({
           body = this.state.body;
           errorMessage = "";
 
-    if (!!(LRating && PRating && title && body)){
-      ReviewActions.createReview(this.state);
-      this.setState({title: "", body: "", landlordRating: null, propertyRating: null});
-    } else {
-      errorMessage = "Please complete all fields!";
+    let reviews = ReviewStore.all();
+    let currentUser = SessionStore.currentUser();
+    let unique = true;
+
+    Object.keys(reviews).forEach((revId) => {
+      if (reviews[revId].author_id === currentUser.id ) {
+        errorMessage = "You have already reviewed this property.";
+        unique = false;
+        this.setState({title: "", body: "", landlordRating: null, propertyRating: null});
+        return;
+      }
+    });
+
+    if (unique) {
+      if (!!(LRating && PRating && title && body)){
+        ReviewActions.createReview(this.state);
+        titleLength = "";
+        this.setState({title: "", body: "", landlordRating: null, propertyRating: null});
+      } else {
+        errorMessage = "Please complete all fields!";
+      }
     }
+
     this.forceUpdate();
   },
 
@@ -101,6 +119,7 @@ const ReviewForm = React.createClass({
             </div>
           </div>
           <div className="text-feild-input-wrapper">
+            <p className="title-count">{ titleLength }</p>
             <input
               type="text"
               className="title-input-field"

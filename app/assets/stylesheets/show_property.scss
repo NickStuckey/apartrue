@@ -127,11 +127,11 @@ li.single-review-star-wrapper {
 .property-pic {
   z-index: 200;
   position: relative;
-  width: 510px;
+  max-width: 510px;
   float: right;
   border: 10px solid white;
   margin-left: 36px;
-  max-height: 390px;
+  max-height: 340px;
   margin-right: 50px;
   transform: translateY(-325px);
 }
