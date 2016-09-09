@@ -9,5 +9,19 @@ module.exports = {
         error("fetch user", errors);
       }
     });
+  },
+
+  updateUser (id, formData, cb) {
+    $.ajax({
+      url: `api/users/${id}`,
+      type: "PATCH",
+      dataType: "json",
+      contentType: false,
+      processData: false,
+      data: formData,
+      success: function() {
+        cb();
+      }
+    });
   }
 };

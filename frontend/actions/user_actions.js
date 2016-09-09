@@ -12,6 +12,14 @@ const UserActions = {
     );
   },
 
+  updateUser (id, form) {
+    UserApiUtil.updateUser(
+      id,
+      form,
+      UserActions.receiveUser
+    );
+  },
+
   receiveUser (user) {
     AppDispatcher.dispatch({
       actionType: UserConstants.PROFILE_RECIVED,

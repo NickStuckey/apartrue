@@ -11,15 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160904164234) do
+ActiveRecord::Schema.define(version: 20160906192541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "hoods", force: :cascade do |t|
-    t.string  "name"
-    t.integer "neighborhood_id"
-  end
 
   create_table "neighborhoods", force: :cascade do |t|
     t.string   "name"
@@ -66,11 +61,6 @@ ActiveRecord::Schema.define(version: 20160904164234) do
     t.string  "author_name"
   end
 
-  create_table "sub_neighborhoods", force: :cascade do |t|
-    t.string  "name",    null: false
-    t.integer "city_id"
-  end
-
   create_table "subhoods", force: :cascade do |t|
     t.string   "name",       null: false
     t.integer  "city_id"
@@ -79,12 +69,18 @@ ActiveRecord::Schema.define(version: 20160904164234) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",        null: false
+    t.string   "username",                           null: false
     t.string   "hometown"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.string   "session_token"
     t.string   "password_digest"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.text     "bio"
+    t.boolean  "is_landlord",        default: false
   end
 
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree

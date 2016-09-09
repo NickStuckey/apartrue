@@ -6,8 +6,10 @@ const React = require('react'),
       SingleReview = require('./single_review'),
       ReviewStore = require('../stores/review_store'),
       ReviewActions = require('../actions/review_actions'),
+      EditForm = require('./edit_form'),
       MyMap = require('./property_map');
 
+let editModal;
 const UserProfile = React.createClass({
   getInitialState () {
     return {
@@ -42,6 +44,11 @@ const UserProfile = React.createClass({
     this.setState({userReviews: userReviews});
   },
 
+  showEditForm () {
+    editModal = <EditForm user={this.state.user}/>;
+    this.forceUpdate();
+  },
+
   showReviews () {
     const reviewObject = this.state.userReviews;
     const reviewsArray = Object.keys(reviewObject).map((revId) => {
@@ -64,16 +71,34 @@ const UserProfile = React.createClass({
     }
 
     const user = this.state.user;
+    const landlord = user.is_landlord ? "Yes" : "No";
     return (
       <div className="content-wrapper">
-        <h1>Reviews by {user.username}</h1>
+        { editModal }
+        <div className="profile-content group">
+          <h1 className="username">{user.username}</h1>
+          <img className="profile-pic" src={user.image_url}/>
+          <p className="user-bio">{ user.bio }</p>
+          <ul className="user-stats">
+            <li className="stat">
+              <h3>Hometown</h3>
+              <p>{ user.hometown }</p>
+              <h3># of reviews</h3>
+              <p>{ user.num_reviews }</p>
+              <h3>Landlord?</h3>
+              <p>{ landlord }</p>
+              <h3>Member Since</h3>
+              <p>{ user.member_since }</p>
+            </li>
+          </ul>
+          <button className="edit-link" onClick={ this.showEditForm }>Edit</button>
+        </div>
         { updateForm }
         { userReviews }
       </div>
     );
   }
 });
-// <img className="profile-pic" src={this.state.user.image_url}/>
-// <p className="user-bio">{this.state.user.userBio}</p>
+
 
 module.exports = UserProfile;

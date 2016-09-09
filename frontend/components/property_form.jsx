@@ -270,7 +270,7 @@ const PropertyFrom = React.createClass ({
             <label className="checkbox-field-label">
               <p className="label-text">Your property?</p>
               <div
-                className="property-form-check-box"
+                className="form-check-box"
                 onClick={this.toggleOwnerId}
                 >{this.lordClicked()}</div>
               <label><span className="checkbox-filler"></span></label>
@@ -278,7 +278,7 @@ const PropertyFrom = React.createClass ({
             <label className="checkbox-field-label">
               <p className="label-text">Is it available?</p>
               <div
-                className="property-form-check-box"
+                className="form-check-box"
                 onClick={this.toggleAvailable}
                 >{this.availClicked()}</div>
               <label ><span className="checkbox-filler"></span></label>

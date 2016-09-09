@@ -12,6 +12,9 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
   before_validation :ensure_session_token_uniqueness
 
+  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "blank_profile.png"
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+
   # add relations
 
   def self.find_by_credentials(username, password)
@@ -47,5 +50,9 @@ class User < ActiveRecord::Base
 
   def generate_token
     SecureRandom.base64(16)
+  end
+
+  def num_reviews
+    Review.where(author_id: self.id).count
   end
 end

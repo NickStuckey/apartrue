@@ -10,6 +10,22 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def update
+    @user = User.find(user_params[:id])
+
+    user_params.keys.each do |key|
+      @user[key] = key if key
+    end
+
+    debugger
+
+    if @user.save
+      render "api/users/show"
+    else
+      render json: @user.errors
+    end
+  end
+
   def show
     @user = User.find(params[:id])
 
@@ -31,7 +47,9 @@ class Api::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :password, :hometown)
+    params.require(:user).permit(
+    :username, :password, :hometown, :image, :is_landlord, :bio, :id
+    )
   end
 
 end

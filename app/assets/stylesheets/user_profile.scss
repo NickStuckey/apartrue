@@ -1,0 +1,58 @@
+.profile-pic {
+  max-height: 300px;
+  float: left;
+}
+
+.username {
+  color: #64aaaa;
+  width: 480px;
+  display: block;
+  float: right;
+  /* background: blue; */
+  /* height: 0; */
+  padding: 10px 0 10px 0;
+  text-align: center;
+}
+
+.profile-content {
+  width: 960px;
+  background: #2b2b2b;
+  padding: 10px 20px 10px 20px;
+
+  .button{
+    float: right;
+  }
+}
+
+p.user-bio {
+  height: 300px;
+  width: 380px;
+  background: white;
+  float: right;
+  margin-right: 20px;
+}
+
+.user-stats {
+  float: left;
+  height: 300px;
+  width: 200px;
+  padding-left: 20px;
+
+  h3 {
+    color: #64aaaa;
+  }
+
+  ul {
+    padding-top: 40px;
+
+  }
+  p {
+    color: white;
+    padding: 5px 0 5px 20px;
+  }
+}
+
+.edit-link {
+  color: gray;
+  float: right
+}
