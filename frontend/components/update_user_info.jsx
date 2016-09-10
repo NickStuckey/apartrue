@@ -1,5 +1,6 @@
 const React = require('react');
 
+// NOTE I think this component can be completely removed
 
 const UpdateUserInfo = React.createClass ({
   getInitialState () {

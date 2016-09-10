@@ -7,6 +7,7 @@ const UserStore = new Store(AppDispatcher);
 let _user = {};
 
 const addUser = function (user) {
+  debugger
   _user[user.id] = user;
   UserStore.__emitChange();
 };

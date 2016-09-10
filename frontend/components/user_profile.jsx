@@ -22,7 +22,7 @@ const UserProfile = React.createClass({
   componentDidMount () {
     this.usersListener = UserStore.addListener(this._onUsersChange);
     this.reviewsListener = ReviewStore.addListener(this._onReviewsChange);
-    const userId = this.props.params.userId;
+    let userId = this.props.params.userId;
     UserActions.fetchUser(userId);
     ReviewActions.fetchUserReviews(userId);
   },
@@ -33,13 +33,14 @@ const UserProfile = React.createClass({
   },
 
   _onUsersChange () {
-    const userId = parseInt(this.props.params.userId);
-    const user = UserStore.find(userId);
+    let userId = parseInt(this.props.params.userId);
+    let user = UserStore.find(userId);
+    this.hideEditForm();
     this.setState({ user: user });
   },
 
   _onReviewsChange () {
-    const userReviews = ReviewStore.all();
+    let userReviews = ReviewStore.all();
     let x;
     this.setState({userReviews: userReviews});
   },
@@ -49,10 +50,15 @@ const UserProfile = React.createClass({
     this.forceUpdate();
   },
 
+  hideEditForm () {
+    editModal = null;
+    // this.forceUpdate();
+  },
+
   showReviews () {
-    const reviewObject = this.state.userReviews;
-    const reviewsArray = Object.keys(reviewObject).map((revId) => {
-      const review = reviewObject[revId];
+    let reviewObject = this.state.userReviews;
+    let reviewsArray = Object.keys(reviewObject).map((revId) => {
+      let review = reviewObject[revId];
       return <SingleReview key={revId} review={review}/>;
     });
 
@@ -70,14 +76,16 @@ const UserProfile = React.createClass({
       userReviews = this.showReviews();
     }
 
-    const user = this.state.user;
-    const landlord = user.is_landlord ? "Yes" : "No";
+    let user = this.state.user;
+    let landlord = user.is_landlord ? "Yes" : "No";
     return (
       <div className="content-wrapper">
         { editModal }
         <div className="profile-content group">
           <h1 className="username">{user.username}</h1>
-          <img className="profile-pic" src={user.image_url}/>
+          <div className="picture-frame">
+            <img className="profile-pic" src={user.image_url}/>
+          </div>
           <p className="user-bio">{ user.bio }</p>
           <ul className="user-stats">
             <li className="stat">
@@ -93,7 +101,6 @@ const UserProfile = React.createClass({
           </ul>
           <button className="edit-link" onClick={ this.showEditForm }>Edit</button>
         </div>
-        { updateForm }
         { userReviews }
       </div>
     );

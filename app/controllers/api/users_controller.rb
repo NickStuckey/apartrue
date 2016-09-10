@@ -13,11 +13,12 @@ class Api::UsersController < ApplicationController
   def update
     @user = User.find(user_params[:id])
 
-    user_params.keys.each do |key|
-      @user[key] = key if key
+    user_para = {}
+    user_params.keys.each do |param|
+      user_para[param]= user_params[param] if user_params[param] != "undefined"
     end
 
-    debugger
+    @user.update_attributes(user_para)
 
     if @user.save
       render "api/users/show"

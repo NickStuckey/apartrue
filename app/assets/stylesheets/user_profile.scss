@@ -1,15 +1,22 @@
 .profile-pic {
-  max-height: 300px;
+  max-width: 100%;
+  float: left;
+  overflow: hidden;
+}
+
+.picture-frame {
+  overflow: hidden;
+  height: 300px;
+  width: 250px;
+  border: 1px solid blue;
+  display: block;
   float: left;
 }
 
 .username {
   color: #64aaaa;
-  width: 480px;
+  width: 250px;
   display: block;
-  float: right;
-  /* background: blue; */
-  /* height: 0; */
   padding: 10px 0 10px 0;
   text-align: center;
 }
