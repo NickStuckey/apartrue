@@ -15,8 +15,6 @@ class User < ActiveRecord::Base
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "blank_profile.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
-  # add relations
-
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
     return nil unless user && user.is_password?(password)

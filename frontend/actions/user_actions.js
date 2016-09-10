@@ -16,7 +16,8 @@ const UserActions = {
     UserApiUtil.updateUser(
       id,
       form,
-      UserActions.receiveUser
+      UserActions.receiveUser,
+      ErrorActions.setErrors
     );
   },
 

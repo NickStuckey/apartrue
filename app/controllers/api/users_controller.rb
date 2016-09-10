@@ -18,9 +18,7 @@ class Api::UsersController < ApplicationController
       user_para[param]= user_params[param] if user_params[param] != "undefined"
     end
 
-    @user.update_attributes(user_para)
-
-    if @user.save
+    if @user.update_attributes(user_para)
       render "api/users/show"
     else
       render json: @user.errors

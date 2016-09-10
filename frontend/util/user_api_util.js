@@ -11,7 +11,7 @@ module.exports = {
     });
   },
 
-  updateUser (id, formData, cb) {
+  updateUser (id, formData, success, error) {
     $.ajax({
       url: `api/users/${id}`,
       type: "PATCH",
@@ -19,8 +19,10 @@ module.exports = {
       contentType: false,
       processData: false,
       data: formData,
-      success: function() {
-        cb();
+      success,
+      error: (xhr) => {
+        const errors = xhr.responseJSON;
+        error("update user", errors);
       }
     });
   }

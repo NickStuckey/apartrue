@@ -52,7 +52,7 @@ const UserProfile = React.createClass({
 
   hideEditForm () {
     editModal = null;
-    // this.forceUpdate();
+    this.forceUpdate();
   },
 
   showReviews () {
@@ -66,10 +66,9 @@ const UserProfile = React.createClass({
   },
 
   render () {
-    let updateForm, userReviews;
-    if (SessionStore.isUserLoggedIn() &&
-        SessionStore.currentUser().id === this.props.params.userId) {
-          updateForm = <UpdateUserInfo user={this.state.user}/>;
+    let updateForm, userReviews, editButton;
+    if (SessionStore.isUserLoggedIn() == this.props.params.userId) {
+          editButton = <button className="edit-link" onClick={ this.showEditForm }>Edit</button>;
     }
 
     if (this.state.userReviews) {
@@ -99,7 +98,7 @@ const UserProfile = React.createClass({
               <p>{ user.member_since }</p>
             </li>
           </ul>
-          <button className="edit-link" onClick={ this.showEditForm }>Edit</button>
+          { editButton }
         </div>
         { userReviews }
       </div>
