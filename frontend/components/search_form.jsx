@@ -44,7 +44,7 @@ const SearchForm = React.createClass({
   _scroll () {
     $('html, body').animate({
       scrollTop: 600
-    }, 800);
+    }, 400);
   },
 
   render () {
