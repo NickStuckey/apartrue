@@ -1,20 +1,31 @@
 const React = require('react'),
-      UserActions = require('../actions/user_actions');
+      UserActions = require('../actions/user_actions'),
+      SessionStore = require('../stores/session_store');
 
 const EditForm = React.createClass({
   getInitialState () {
+    let bio = this.props.user.bio;
+    let username = this.props.user.username;
+    let hometown = this.props.user.hometown;
+
     return ({
-      bio: this.props.user.bio,
+      bio: bio,
       imageFile: this.props.user.image_file,
       imageUrl: this.props.user.image_url,
       is_landlord: this.props.user.is_landlord,
-      username: this.props.user.username,
-      hometown: this.props.user.hometown
+      username: username,
+      hometown: hometown
     });
   },
 
   handleSubmit (e) {
     e.preventDefault();
+
+    if (SessionStore.currentUser().username === "GuestUser") {
+      this.props.closeModal();
+      return;
+    }
+
     let formData = new FormData();
     formData.append("user[bio]", this.state.bio);
     formData.append("user[image]", this.state.imageFile);
@@ -31,6 +42,15 @@ const EditForm = React.createClass({
     this.setState({bio: e.target.value});
   },
 
+  updateUsername (e) {    let username = e.target.value;
+    this.setState({username: e.target.value});
+  },
+
+  updateHometown (e) {
+    let hometown = e.target.value;
+    this.setState({hometown: e.target.value});
+  },
+
   updateFile (e) {
     let file = e.currentTarget.files[0];
     let fileReader = new FileReader();
@@ -44,19 +64,44 @@ const EditForm = React.createClass({
   },
 
   render () {
+    let guestChanges;
+    if (SessionStore.currentUser().username === "GuestUser") {
+      guestChanges = <p className="warning-label">changes will not be saved for guest user</p>;
+    }
 
     return (
       <div className="edit-modal-wrapper">
         <div className="modal-background"></div>
         <form onSubmit={this.handleSubmit} className="edit-profile-form">
+          <p className="edit-form-label">User Name</p>
+
+          <input
+            type="text"
+            className="form-field"
+            onChange={this.updateUsername}
+            value={this.state.username}
+            />
+
+          <p className="edit-form-label">Hometown</p>
+          <input
+            type="text"
+            className="form-field"
+            onChange={this.updateHometown}
+            value={this.state.hometown}
+            />
+
+          <p className="edit-form-label">Bio</p>
           <textarea
+            type="text"
             className="bio-text"
             onChange={this.updateBio}
             value={this.state.bio}
             >
           </textarea>
+          <p className="edit-form-label">Profile Picture</p>
           <input type="file" className="upload-button" onChange={this.updateFile}/>
           <input type="submit" className="button" value="submit"/>
+          { guestChanges }
         </form>
       </div>
     );

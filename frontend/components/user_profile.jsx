@@ -46,7 +46,7 @@ const UserProfile = React.createClass({
   },
 
   showEditForm () {
-    editModal = <EditForm user={this.state.user}/>;
+    editModal = <EditForm closeModal={this.hideEditForm} user={this.state.user}/>;
     this.forceUpdate();
   },
 

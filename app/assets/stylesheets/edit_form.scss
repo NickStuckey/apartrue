@@ -14,18 +14,25 @@
   height: 100%;
   width: 100%;
   z-index: 1000;
-  background: gray;
+  background: black;
   opacity: .5;
 }
 
 
 .edit-profile-form {
   position: relative;
-  height: 500px;
-  width: 500px;
+  height: 480px;
+  width: 480px;
   opacity: 1;
   z-index: 10001;
   background: white;
-  margin: auto;
+  margin: 100px auto;
   display: block;
+  padding: 20px;
+  text-align: center;
+}
+
+p.edit-form-label {
+    color: #64aaaa;
+    margin: 10px;
 }

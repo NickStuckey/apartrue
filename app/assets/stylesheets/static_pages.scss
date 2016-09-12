@@ -31,6 +31,12 @@ body {
   cursor: pointer;
 }
 
+
+button:hover {
+  cursor: pointer;
+
+}
+
 .group:after {
   content: "";
   clear: both;
@@ -40,6 +46,28 @@ body {
 .content-wrapper {
   max-width: 1000px;
   margin: auto;
+}
+
+.form-field {
+  border: 1px solid grey;
+  padding: 5px;
+  width: 200px;
+  margin: 10px auto;
+  display: block;
+}
+
+.bio-text {
+  width: 400px;
+  height: 170px;
+  margin: auto;
+  display: block;
+}
+
+.upload-button {
+  display: block;
+  width: 160px;
+  margin: auto;
+  margin-bottom: 10px;
 }
 
 // .footer {
@@ -104,4 +132,9 @@ p.title-count {
 
 .welcome {
   line-height: 5;
+}
+
+.warning-label {
+  font-size: 12px;
+  color: red;
 }

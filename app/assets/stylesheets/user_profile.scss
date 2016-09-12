@@ -8,7 +8,6 @@
   overflow: hidden;
   height: 300px;
   width: 250px;
-  border: 1px solid blue;
   display: block;
   float: left;
 }
@@ -32,11 +31,12 @@
 }
 
 p.user-bio {
-  height: 300px;
-  width: 380px;
-  background: white;
-  float: right;
-  margin-right: 20px;
+  height: 230;
+width: 380px;
+padding: 5px;
+color: white;
+float: right;
+margin-right: 40px;
 }
 
 .user-stats {
@@ -60,6 +60,12 @@ p.user-bio {
 }
 
 .edit-link {
-  color: gray;
-  float: right
+  color: #64aaaa;
+  padding: 0 10px;
+  font-size: 20px;
+  float: right;
+}
+
+.edit-link:hover {
+
 }

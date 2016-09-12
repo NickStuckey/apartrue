@@ -5,6 +5,7 @@ const React = require('react'),
       NavBar = require('./nav_bar'),
       MapUtil = require('../util/map_util'),
       PropertyActions = require('../actions/property_actions'),
+      Scroll = require('react-scroll'),
       SearchFields = require('./search_fields'),
       SearchResults = require('./search_results'),
       SessionStore = require('../stores/session_store');
@@ -31,11 +32,19 @@ const SearchForm = React.createClass({
       mapCenter = MapUtil.defaultCenter();
     }
     PropertyActions.fetchAllPropertiesWithParams(filters);
+    this._scroll();
 
     const results = <SearchResults
+      id="results"
       mapCenter={ mapCenter }
       className="search-map-wrapper"/>;
     this.setState({results: results});
+  },
+
+  _scroll () {
+    $('html, body').animate({
+      scrollTop: 600
+    }, 800);
   },
 
   render () {
@@ -47,7 +56,7 @@ const SearchForm = React.createClass({
             <h1>Search by address</h1>
             <AddressFinder className="address-finder"/>
           </div>
-          <div className="search-wrapper">
+          <div id="search-wrapper" className="search-wrapper">
             <h1>Or, search by criteria</h1>
             <SearchFields setMap={this.setMap} />
           </div>
