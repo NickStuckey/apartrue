@@ -58,7 +58,7 @@ const PropertyIndex = React.createClass ({
               <div className="transparent-list-item-background"></div>
               <div className="list-item-content ">
                 <img src={property.image_url} className="thumbnail"></img>
-                <h2 className="property-list-item-address ">{property.address}</h2>
+                <h2 className="property-list-item-address hoverable">{property.address}</h2>
                 <ul className="property-details">
                   <li className="property-detail">{property.city}</li>
                   <li className="property-detail">rent: ${property.price}</li>
@@ -66,11 +66,11 @@ const PropertyIndex = React.createClass ({
                 </ul>
                 <div className="list-item-star-wrapper">
                   <div className="star-wrapper">
-                    <label className="star-labels">average property rating</label>
+                    <label className="star-labels hoverable">average property rating</label>
                     <div className="property-list-item-stars">{this.drawPropertyStars(property)}</div>
                   </div>
                   <div className="star-wrapper">
-                    <label className="star-labels">average landlord rating</label>
+                    <label className="star-labels hoverable">average landlord rating</label>
                     <div className="property-list-item-stars">{this.drawLandlordStars(property)}</div>
                   </div>
                 </div>

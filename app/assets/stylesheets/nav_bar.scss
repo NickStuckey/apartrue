@@ -1,9 +1,13 @@
-.hoverable {
-  width: 100%;
-  height: 100%;
-}
+// .hoverable {
+//   width: 100%;
+//   height: 100%;
+// }
 
 .hoverable:hover {
+  cursor: pointer;
+}
+
+.hoverable-color:hover {
   color: #E89595;
   cursor: pointer;
 }

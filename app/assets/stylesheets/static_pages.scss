@@ -127,8 +127,11 @@ p.title-count {
 }
 
 .warning-label {
-  font-size: 12px;
-  color: red;
+    font-size: 12px;
+    color: red;
+    display: block;
+    margin: auto;
+    width: 220px;
 }
 
 .small-box {

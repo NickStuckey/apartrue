@@ -43,7 +43,7 @@ const SearchFields = React.createClass({
         <select
           className="search-field-list input-field"
           onChange={this.updateSize}>
-          <option className="default" value="" hidden>bedrooms</option>
+          <option className="default" value="" hidden>Bedrooms +</option>
           <option value="5">5</option>
           <option value="4">4</option>
           <option value="3">3</option>

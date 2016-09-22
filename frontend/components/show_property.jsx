@@ -33,6 +33,7 @@ const ShowProperty = React.createClass({
     this.reviewListener = ReviewStore.addListener(this._onReviewChange);
     this.propertyListener = PropertyStore.addListener(this._onPropertyChange);
     this.sessionListener = SessionStore.addListener(this._onSessionChange);
+    this.errorListener = ErrorStore.addListener(this._addErrors);
     PropertyActions.fetchProperty(this.props.params.propertyId);
     ReviewActions.fetchPropertyReviews(this.props.params.propertyId);
   },
@@ -41,7 +42,9 @@ const ShowProperty = React.createClass({
     this.reviewListener.remove();
     this.propertyListener.remove();
     this.sessionListener.remove();
-    this.errorListener.remove();
+    if (this.errorListener) {
+      this.errorListener.remove();
+    }
   },
 
   _addErrors () {

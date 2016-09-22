@@ -1,5 +1,6 @@
 const React = require('react'),
       ReactDOM = require('react-dom'),
+      hashHistory = require('react-router').hashHistory,
       PropertyActions = require('../actions/property_actions'),
       PropertyStore = require('../stores/property_store'),
       FilterActions = require('../actions/filter_actions'),
@@ -60,6 +61,10 @@ const PropertyMap = React.createClass ({
       hashHistory.push(`properties/${property.id}`);
     });
     this.state.markers.push(marker);
+  },
+
+  _infoWindow (map, ctx) {
+
   },
 
   _onChange () {

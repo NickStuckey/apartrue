@@ -16,7 +16,7 @@ class Property < ActiveRecord::Base
   )
 
   def self.satisfy_params(filters)
-    num_bedrooms = filters[:num_bedrooms] ? filters[:num_bedrooms] : 99
+    num_bedrooms = filters[:num_bedrooms] ? filters[:num_bedrooms] : 0
     price = filters[:price] ? filters[:price] : 99999999999
 
     if filters[:bounds] && filters[:neighborhood_id] &&
@@ -25,16 +25,16 @@ class Property < ActiveRecord::Base
       lng: filters[:bounds][:southWest][:lng]...filters[:bounds][:northEast][:lng]
       ).where('neighborhood_id = ?', filters[:neighborhood_id])
       .where('price <= ?', price)
-      .where('num_bedrooms <= ?', num_bedrooms)
+      .where('num_bedrooms >= ?', num_bedrooms)
     elsif filters[:neighborhood_id]
       properties = self
       .where('neighborhood_id = ?', filters[:neighborhood_id])
       .where('price <= ?', price)
-      .where('num_bedrooms <= ?', num_bedrooms)
+      .where('num_bedrooms >= ?', num_bedrooms)
     else
       properties = self
       .where('price <= ?', price)
-      .where('num_bedrooms <= ?', num_bedrooms)
+      .where('num_bedrooms >= ?', num_bedrooms)
     end
     properties
   end

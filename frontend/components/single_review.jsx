@@ -71,8 +71,8 @@ const SingleReview = React.createClass({
             {lordRating}
           </li>
         </ul>
-        <a className="review-title" onClick={this.propertyPage}>{ review.title }</a>
-        <a className="user-name" onClick={this.userPage}> by {authorName}</a>
+        <a className="review-title hoverable" onClick={this.propertyPage}>{ review.title }</a>
+        <a className="user-name hoverable" onClick={this.userPage}> by {authorName}</a>
         <p className="review-body">{ review.body }</p>
         <div className="delete-button-place-holder">
           {deleteButtonOption}
