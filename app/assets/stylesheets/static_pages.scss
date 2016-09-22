@@ -21,7 +21,10 @@ body {
   background-image: image-url('pool.jpg');
   background-color: grey;
   background-repeat: no-repeat;
-  background-size: 100% auto;
+  background-position: center;
+  background-size: 1500px;
+  min-height: 900px;
+  min-width: 1000px;
   position: relative;
   background-attachment: fixed;
 }
@@ -30,7 +33,6 @@ body {
   background-color: #7a7b7b;
   cursor: pointer;
 }
-
 
 button:hover {
   cursor: pointer;
@@ -69,18 +71,6 @@ button:hover {
   margin: auto;
   margin-bottom: 10px;
 }
-
-// .footer {
-//   bottom:0px;
-//   color: white;
-//   text-align: right;
-//   font-size: 16px;
-//   padding: 20px 0;
-//   display: block;
-//   width: 100%;
-//   background: #575757;
-//   opacity: 0.5;
-// }
 
 .page-break {
   position: absolute;
