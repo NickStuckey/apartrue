@@ -93,11 +93,6 @@ const LoginForm = React.createClass({
       navHeader = "Create a new account";
     }
 
-    let pWordDots = "";
-    for (let p = 0; p < this.state.password.length; p++) {
-        pWordDots += "•";
-    }
-
     return (
       <div className="content-wrapper">
         <div className="login-box-wrapper">
@@ -141,8 +136,8 @@ const LoginForm = React.createClass({
                     { this.showErrors('password') }
                   </div>
                   <input
-                    type="text"
-                    value={pWordDots}
+                    type="password"
+                    value={this.state.password}
                     onChange={this.updatePasswordField}
                     className="login-form-input-field login-form-password-field"
                     placeholder="password"

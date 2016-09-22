@@ -9,14 +9,23 @@ const EditForm = React.createClass({
     let hometown = this.props.user.hometown;
 
     return ({
-      bio: bio,
+      bio: bio || "",
       imageFile: this.props.user.image_file,
       imageUrl: this.props.user.image_url,
       is_landlord: this.props.user.is_landlord,
-      username: username,
-      hometown: hometown
+      username: username || "",
+      hometown: hometown || ""
     });
   },
+
+  availClicked() {
+    if (this.state.is_landlord) {
+      return "x";
+    } else {
+      return " ";
+    }
+  },
+
 
   handleSubmit (e) {
     e.preventDefault();
@@ -33,6 +42,8 @@ const EditForm = React.createClass({
     formData.append("user[hometown]", this.state.hometown);
     formData.append("user[username]", this.state.username);
     formData.append("user[id]", this.props.user.id);
+
+    this.resetState();
 
     UserActions.updateUser(this.props.user.id, formData);
   },
@@ -63,6 +74,23 @@ const EditForm = React.createClass({
     }
   },
 
+  toggleLandlord () {
+    this.setState({is_landlord: !this.state.is_landlord});
+  },
+
+  resetState () {
+    const user = this.props.user;
+
+    this.setState({
+      bio: user.bio || "",
+      imageFile: user.image_file,
+      imageUrl: user.image_url,
+      is_landlord: user.is_landlord,
+      username: user.username || "",
+      hometown: user.hometown || ""
+    });
+  },
+
   render () {
     let guestChanges;
     if (SessionStore.currentUser().username === "GuestUser") {
@@ -82,6 +110,12 @@ const EditForm = React.createClass({
             value={this.state.username}
             />
 
+          <p className="edit-form-label">Are you a landlord?</p>
+          <div type="checkbox"
+            onClick={this.toggleLandlord}
+            className="checkbox"
+            >{this.availClicked()}</div>
+
           <p className="edit-form-label">Hometown</p>
           <input
             type="text"
@@ -100,7 +134,10 @@ const EditForm = React.createClass({
           </textarea>
           <p className="edit-form-label">Profile Picture</p>
           <input type="file" className="upload-button" onChange={this.updateFile}/>
-          <input type="submit" className="button" value="submit"/>
+          <div className="two-button-wrapper">
+            <button onClick={this.props.closeModal} className="button side-by">Cancel</button>
+            <input type="submit" className="button side-by" value="submit"/>
+          </div>
           { guestChanges }
         </form>
       </div>

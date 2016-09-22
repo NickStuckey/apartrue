@@ -1,4 +1,4 @@
-User.create({username: 'GuestUser', password: 'password', hometown: 'Manhattan'})
+User.create({username: 'GuestUser', password: 'password', hometown: 'Manhattan', bio: "Thanks for trying AparTrue!  Check out the search tab to find existing properties or add new ones, or browse listings by criteria and location around NYC.  Apartrue is a single page app build with Ruby on Rails, using JavaScript and React.  "})
 User.create({username: 'ILovePizza', password: 'password', hometown: 'Manhattan'})
 User.create({username: 'NickStuckey', password: 'password', hometown: 'Manhattan'})
 User.create({username: 'MrDudeGuy', password: 'password', hometown: 'Manhattan'})

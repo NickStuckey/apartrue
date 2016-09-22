@@ -1,4 +1,4 @@
-import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router';
+import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
 const ReactDOM = require('react-dom'),
       React = require('react'),
