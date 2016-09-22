@@ -31,7 +31,7 @@ ErrorStore.__onDispatch = function (payload) {
 };
 
 ErrorStore.errors = function () {
-  return Object.assign({}, errors);
+  return Object.assign({}, _errors);
 };
 
 ErrorStore.formErrors = function (form) {
@@ -43,6 +43,7 @@ ErrorStore.formErrors = function (form) {
   for (let field in _errors) {
     result[field] = Array.from(_errors[field]);
   }
+  _errors = {};
 
   return result;
 };

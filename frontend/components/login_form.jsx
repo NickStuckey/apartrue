@@ -20,10 +20,6 @@ const LoginForm = React.createClass({
     this.sessionListener.remove();
   },
 
-  errors () {
-
-  },
-
   showErrors(field) {
     const errors = ErrorStore.formErrors(this.formType());
 

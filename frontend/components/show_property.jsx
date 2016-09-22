@@ -1,5 +1,6 @@
 const React = require('react'),
       Modal = require('react-modal'),
+      ErrorStore = require('../stores/error_store'),
       PropertyStore = require('../stores/property_store'),
       hashHistory = require('react-router').hashHistory,
       SinglePropertyMap = require('./single_property_map'),
@@ -16,12 +17,16 @@ let loginError;
 const ShowProperty = React.createClass({
   getInitialState () {
     return ({
-      property: {}, reviews: {}, modalOpen: false,
+      property: {}, reviews: {}, modalOpen: false, errors: null,
       modalLoginInfo: {
         username: "",
         password: ""
       }
     });
+  },
+
+  componentWillmount () {
+    this.errorListener = ErrorStore.addListener(this._addErrors);
   },
 
   componentDidMount() {
@@ -36,6 +41,12 @@ const ShowProperty = React.createClass({
     this.reviewListener.remove();
     this.propertyListener.remove();
     this.sessionListener.remove();
+    this.errorListener.remove();
+  },
+
+  _addErrors () {
+    const errors = ErrorStore.formErrors('login');
+    this.setState({errors: errors.login[0]});
   },
 
   drawPropertyRating () {
@@ -63,11 +74,11 @@ const ShowProperty = React.createClass({
   },
 
   updateUsernameField (e) {
-    this.setState({modalLoginInfo: {username: e.target.value}});
+    this.setState({modalLoginInfo: {username: e.target.value, password: this.state.modalLoginInfo.password}});
   },
 
   updatePasswordField (e) {
-    this.setState({modalLoginInfo: {password: e.target.value}});
+    this.setState({modalLoginInfo: {password: e.target.value, username: this.state.modalLoginInfo.username}});
   },
 
   handleSubmit (e) {
@@ -134,6 +145,17 @@ const ShowProperty = React.createClass({
 
   openModal (){
     this.setState({ modalOpen: true });
+  },
+
+  showErrors(field) {
+    const errors = ErrorStore.formErrors('login');
+    if (!errors[field]) { return; }
+
+    const messages = errors[field].map( (errorMsg, i) => {
+      return <li className="error-list-item" key={ i }>{ errorMsg }</li>;
+    });
+
+    return <ul className="error-list">{ messages }</ul>;
   },
 
   signInUser (loginInfo) {
@@ -213,6 +235,7 @@ const ShowProperty = React.createClass({
             <div className="bottom-content-wrapper" >
               { reviews }
               { sessionOption }
+              <p className="error">{this.state.errors}</p>
             </div>
         </div>
 
@@ -221,7 +244,7 @@ const ShowProperty = React.createClass({
           onRequestClose={this.closeModal}
           style={this.modalStyle()}>
           <p>{loginError}</p>
-          <form className="modal-login-form">
+          <form className="modal-login-form" onSubmit={this.handleSubmit}>
             <h2>Log In</h2>
             <input
               type="text"
@@ -237,7 +260,6 @@ const ShowProperty = React.createClass({
               />
             <input
               type="submit"
-              onClick={this.handleSubmit}
               className="button white-text-"
               value="Sign In"
               />
