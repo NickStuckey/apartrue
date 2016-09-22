@@ -19,12 +19,14 @@ h1, h2, h3, h4,label, option, div {
 body {
   background: #2d2d2d;
   background-image: image-url('pool.jpg');
-  background-color: grey;
+  background-color: #2d2d2d;
   background-repeat: no-repeat;
   background-position: center;
   background-size: 1500px;
   min-height: 900px;
   min-width: 1000px;
+  max-width: 1500px;
+  margin: auto;
   position: relative;
   background-attachment: fixed;
 }
