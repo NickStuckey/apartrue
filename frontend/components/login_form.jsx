@@ -20,9 +20,7 @@ const LoginForm = React.createClass({
     this.sessionListener.remove();
   },
 
-  showErrors(field) {
-    const errors = ErrorStore.formErrors(this.formType());
-
+  formatErrors(errors, field) {
     if (!errors[field]) { return; }
 
     const messages = errors[field].map( (errorMsg, i) => {
@@ -74,6 +72,9 @@ const LoginForm = React.createClass({
   },
 
   render () {
+    const errors = ErrorStore.formErrors(this.formType());
+
+
     let navLink, navHeader, button, linkText, route;
     if (this.formType() === "login") {
       linkText = "Sign Up";
@@ -116,8 +117,8 @@ const LoginForm = React.createClass({
               <form onSubmit={this.handleSubmit} className="login-form">
                   <div className="error-list-place-holder username-error">
 
-                    { this.showErrors(this.formType()) }
-                    { this.showErrors('username') }
+                    { this.formatErrors(errors, this.formType()) }
+                    { this.formatErrors(errors, 'username') }
                   </div>
                   <input
                     type="text"
@@ -129,7 +130,7 @@ const LoginForm = React.createClass({
 
                   <div className="error-list-place-holder password-error">
 
-                    { this.showErrors('password') }
+                    { this.formatErrors(errors, 'password') }
                   </div>
                   <input
                     type="password"

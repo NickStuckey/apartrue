@@ -35,9 +35,7 @@ ErrorStore.errors = function () {
 };
 
 ErrorStore.formErrors = function (form) {
-  if (form !== _form) {
-    return {};
-  }
+  if (form !== _form) return {};
 
   const result = {};
   for (let field in _errors) {
