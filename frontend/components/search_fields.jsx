@@ -61,7 +61,6 @@ const SearchFields = React.createClass({
           <option value="3500">3500</option>
           <option value="4500">4500</option>
           <option value="5500">5500</option>
-          <option value="99999999999">none</option>
         </select>
 
         <select
