@@ -8,11 +8,6 @@ class Api::ReviewsController < ApplicationController
       @reviews = Review.all
     end
 
-    # usefull for updating seeds
-    @reviews.each { |r|
-      r.add_author if !r.author_name
-    }
-
     if @reviews
       render "api/reviews/index"
     else
