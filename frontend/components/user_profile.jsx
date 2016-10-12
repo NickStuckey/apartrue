@@ -32,6 +32,11 @@ const UserProfile = React.createClass({
     this.reviewsListener.remove();
   },
 
+  componentWillReceiveProps () {
+    const user = SessionStore.currentUser();
+    this.setState({user: user});
+  },
+
   _onUsersChange () {
     let userId = parseInt(this.props.params.userId);
     let user = UserStore.find(userId);
@@ -50,7 +55,8 @@ const UserProfile = React.createClass({
     this.forceUpdate();
   },
 
-  hideEditForm () {
+  hideEditForm (e) {
+    if (e) e.preventDefault();
     editModal = null;
     this.forceUpdate();
   },
@@ -68,7 +74,7 @@ const UserProfile = React.createClass({
   render () {
     let updateForm, userReviews, editButton;
     if (SessionStore.isUserLoggedIn() == this.props.params.userId) {
-          editButton = <button className="edit-link" onClick={ this.showEditForm }>Edit</button>;
+      editButton = <button className="edit-link" onClick={ this.showEditForm }>Edit</button>;
     }
 
     if (this.state.userReviews) {

@@ -41,12 +41,12 @@ const NavBar = React.createClass ({
     return SessionStore.isUserLoggedIn() ? 'Log Out' : 'Log In';
   },
 
-  profileAction () { // NOTE CHANGE THIS SO IT GOES TO THE APPROPRIATE USER< RIGHT NOW IT"S GOING TO Last profile visited
+  profileAction () {
     const user = SessionStore.currentUser();
     if (user.id) {
       hashHistory.push(`/users/${user.id}`);
-      }
-    },
+    }
+  },
 
   profileOption () {
     return SessionStore.isUserLoggedIn() ? 'Profile' : '';

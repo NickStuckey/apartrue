@@ -26,7 +26,6 @@ const EditForm = React.createClass({
     }
   },
 
-
   handleSubmit (e) {
     e.preventDefault();
 
