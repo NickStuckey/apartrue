@@ -29,11 +29,6 @@ const EditForm = React.createClass({
   handleSubmit (e) {
     e.preventDefault();
 
-    if (SessionStore.currentUser().username === "GuestUser") {
-      this.props.closeModal();
-      return;
-    }
-
     let formData = new FormData();
     formData.append("user[bio]", this.state.bio);
     formData.append("user[image]", this.state.imageFile);
@@ -91,10 +86,6 @@ const EditForm = React.createClass({
   },
 
   render () {
-    let guestChanges;
-    if (SessionStore.currentUser().username === "GuestUser") {
-      guestChanges = <p className="warning-label">changes will not be saved for guest user</p>;
-    }
 
     return (
       <div className="edit-modal-wrapper">
@@ -137,7 +128,6 @@ const EditForm = React.createClass({
             <button onClick={this.props.closeModal} className="button side-by">Cancel</button>
             <input type="submit" className="button side-by" value="submit"/>
           </div>
-          { guestChanges }
         </form>
       </div>
     );
